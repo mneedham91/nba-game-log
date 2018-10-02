@@ -28,7 +28,7 @@ export class AddEntryComponent implements OnInit {
 
   ngOnInit() {
     const currentDate = new Date().toISOString().substring(0, 10);
-    this.teamsService.getJSON().subscribe(data => {
+    this.teamsService.getJSON().subscribe((data: Array<Team>) => {
       this.teams = data;
     });
 

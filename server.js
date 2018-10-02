@@ -93,10 +93,6 @@ app.delete('/entry/:id', passport.authenticate('jwt', {session: false}), functio
 	var resp = factory.deleteEntry(req.params.id,res);
 });
 
-app.get('', function(req, res) {
-	var resp = factory.getEntries({},res);
-});
-
 //app.listen(3000);
 app.listen(process.env.PORT || 8080);
 

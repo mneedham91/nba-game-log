@@ -10,9 +10,7 @@ export class EntriesService {
 
   constructor(private http: HttpClient) { }
   baseUrl: string = 'http://localhost:3000';
-  headers = new HttpHeaders({
-    'Authorization': 'Bearer ' + localStorage.getItem('token');
-  });
+  headers = new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('token')});
   options: {} = { headers: this.headers };
 
   getEntries() {

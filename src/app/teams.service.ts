@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Team } from './team';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,6 @@ export class TeamsService {
   }
 
   public getJSON(): Observable<any> {
-  	return this.http.get('./assets/nba_teams.json')
+  	return this.http.get<Array<Team>>('./assets/nba_teams.json')
   }
 }

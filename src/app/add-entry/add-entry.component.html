@@ -3,6 +3,7 @@
     <div class = "pure-u-1">
       <h2 class="text-center">Add Entry</h2>
     </div>
+    <p *ngFor="let x of teams">x</p>
     <div class="pure-u-1">
       <form [formGroup]="addForm" (ngSubmit)="onSubmit()" class="pure-form">  
         <div class="pure-u-1-2">

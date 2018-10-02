@@ -10,8 +10,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-entry.component.css']
 })
 export class AddEntryComponent implements OnInit {
+  lengthOptions: Array<number>;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private entriesService: EntriesService) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private entriesService: EntriesService) {
+    this.lengthOptions = [0, 1, 2, 3, 4];
+  }
 
   addForm: FormGroup;
 

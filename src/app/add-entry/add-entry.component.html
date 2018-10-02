@@ -6,8 +6,9 @@
     <div class="pure-u-1">
       <form [formGroup]="addForm" (ngSubmit)="onSubmit()" class="pure-form">  
         <div class="pure-u-1-2">
-          <input type="text" formControlName="home" placeholder="Home" name="home" class="pure-input-1-8" id="home">
-          <p>{{ teams }}</p>
+          <select formControlName="home" name="home" class="pure-input-1-8" id="home">
+            <option *ngFor="let x of teams" value="{{x.team}}">{{x.team}}</option>
+          </select>
           <input type="text" formControlName="away" placeholder="Away" name="away" class="pure-input-1-8" id="away">
           <input type="date" formControlName="date" placeholder="Date" name="date" class="pure-input-1-8" id="date">
         </div>

@@ -1,23 +1,31 @@
 <div class="pure-g">
-  <div class="pure-u-1-1">
-    <h1 class="text-center">Register</h1>
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="pure-form">
-      <div class="pure-u-1-1">
-        <input type="email" class="form-control pure-input-1-1" formControlName="email" id="email" placeholder="email">
-        <div *ngIf="submitted && loginForm.controls.email.errors">
-          <div *ngIf="loginForm.controls.email.errors.required">Email is required</div>
+  <div class="pure-u-1">
+    <div class="pure-u-1">
+      <h1 class="text-center">Register</h1>
+    </div>
+    <div class="pure-u-1">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="pure-form">
+        <div class="pure-u-1">
+          <div class="pure-u-1-2 text-center">
+            <input type="email" class="form-control pure-input-1" formControlName="email" id="email" placeholder="email">
+            <div *ngIf="submitted && loginForm.controls.email.errors">
+              <div *ngIf="loginForm.controls.email.errors.required">Email is required</div>
+            </div>
+          </div>
+          <div class="pure-u-1-2 text-center">
+            <input type="password" class="form-control pure-input-1-1" formControlName="password" id="pwd" placeholder="password">
+            <div *ngIf="submitted && loginForm.controls.password.errors">
+              <div *ngIf="loginForm.controls.password.errors.required">Password is required</div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="pure-u-1-2">
-        <input type="password" class="form-control pure-input-1-1" formControlName="password" id="pwd" placeholder="password">
-        <div *ngIf="submitted && loginForm.controls.password.errors">
-          <div *ngIf="loginForm.controls.password.errors.required">Password is required</div>
+        <div class="pure-u-1 text-center">
+          <button class="pure-button pure-input-1-16 pure-button-primary">Register</button>
+          <div *ngIf="invalidLogin" class="error">
+            <div>Invalid credentials.</div>
+          </div>
         </div>
-      </div>
-      <button class="pure-button pure-input-1-16 pure-button-primary">Register</button>
-      <div *ngIf="invalidLogin" class="error">
-        <div>Invalid credentials.</div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </div>

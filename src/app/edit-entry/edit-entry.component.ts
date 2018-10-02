@@ -15,13 +15,16 @@ export class EditEntryComponent implements OnInit {
   private sub: any;
   entry: Entry;
   editForm: FormGroup;
+  lengthOptions: Array<number>;
 
   constructor(
     private route: ActivatedRoute, 
     private formBuilder: FormBuilder, 
     private router: Router, 
     private entriesService: EntriesService
-  ) { }
+  ) { 
+    this.lengthOptions = [0, 1, 2, 3, 4];
+  }
 
   ngOnInit() {
   	this.sub = this.route.params.subscribe(params => {

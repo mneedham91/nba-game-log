@@ -9,7 +9,8 @@ import { User } from './user';
 export class AuthenticationService {
 
   constructor(private http: HttpClient) { }
-  baseUrl: string = 'http://localhost:3000';
+  //baseUrl: string = 'http://localhost:3000';
+  baseUrl: string = '';
 
   getUsers() {
   	return this.http.get<User[]>(this.baseUrl + '/user');

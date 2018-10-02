@@ -1,0 +1,47 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+	background-color: #30579D;
+}
+
+.table-center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.sidepanel {
+	background-color: #30579D;
+}
+
+.blackpanel {
+	background-color: black;
+}
+
+.mainpanel {
+	background-color: #FFFFFF;
+}
+
+.footerpanel {
+	background-color: #F05772;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.l-box {
+	padding: 2em;
+}
+
+.pure-button-primary {
+	background: rgb(12, 48, 113);
+}
+
+.button-secondary {
+	color: white;
+	border-radius: 4px;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.button-error {
+	background: rgb(201, 8, 42);
+}

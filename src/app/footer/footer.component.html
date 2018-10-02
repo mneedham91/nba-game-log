@@ -1,0 +1,27 @@
+<div class="pure-g footerpanel">
+	<div class="pure-u-1">
+		<div class="pure-u-1 blackpanel"></div>
+		
+		<div class="pure-u-1">
+			<!-- if logged IN -->
+			<div *ngIf="loggedIn" class="pure-u-1-1">
+				<div class="pure-u-1-2 text-center">
+					<button routerLink="/entries" class="pure-button">Home</button>
+				</div>
+				<div class="pure-u-1-2 text-center">
+					<button *ngIf="loggedIn" (click)="onLogOutClick()" class="pure-button">Logout</button>
+				</div>
+			</div>
+			<!-- if logged OUT -->
+			<div *ngIf="!loggedIn" class="pure-u-1-1">
+				<div class="pure-u-1-2 text-center">
+					<button *ngIf="!loggedIn" routerLink="/login" class="pure-button">Login</button>
+				</div>
+				<div class="pure-u-1-2 text-center">
+					<button *ngIf="!loggedIn" routerLink="/register" class="pure-button">Register</button>
+				</div>
+			</div>
+		</div>
+	
+	</div>
+</div>

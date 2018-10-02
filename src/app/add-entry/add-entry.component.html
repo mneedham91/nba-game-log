@@ -1,0 +1,29 @@
+<div class="pure-g">
+  <div class="pure-u-1">
+    <div class = "pure-u-1">
+      <h2 class="text-center">Add Entry</h2>
+    </div>
+    <div class="pure-u-1">
+      <form [formGroup]="addForm" (ngSubmit)="onSubmit()" class="pure-form">  
+        <div class="pure-u-1-2">
+          <input type="text" formControlName="home" placeholder="Home" name="home" class="pure-input-1-8" id="home">
+          <input type="text" formControlName="away" placeholder="Away" name="away" class="pure-input-1-8" id="away">
+          <input type="date" formControlName="date" placeholder="Date" name="date" class="pure-input-1-8" id="date">
+        </div>
+        <div class="pure-u-1-2">
+          <p>Roughly how many quarters of the game did you watch?</p>
+          <select formControlName="length" name="length" class="pure-input-1-8" id="length">
+            <option *ngFor="let x of lengthOptions" value="{{x}}">{{x}}</option>
+          </select>
+          <button class="pure-button pure-input-1-8 pure-button-primary">Add</button>
+        </div>
+        <div class="pure-u-1">
+          <div></div>
+        </div>
+        <div class="pure-u-1">
+          <textarea formControlName="notes" placeholder="Notes" name="notes" class="pure-input-1" id="notes"></textarea>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

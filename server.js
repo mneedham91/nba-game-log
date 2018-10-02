@@ -94,10 +94,8 @@ app.get('/', function (req, res) {
 
 //app.listen(3000);
 app.listen(process.env.PORT || 8080, function() {
-	var port = server.address().port;
-	console.log("App now running on port", port);
+	console.log("App now running on port? ");
 }
-console.log('Listening on port 3000...');
 
 db.on('error', function callback() {
 	console.log('Connection Error');

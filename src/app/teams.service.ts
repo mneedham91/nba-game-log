@@ -8,13 +8,9 @@ import { Team } from './team';
 })
 export class TeamsService {
 
-  constructor(private http: HttpClient) {
-  	this.getJSON().subscribe(data => {
-  		console.log(data)
-  	});
-  }
+  constructor(private http: HttpClient) { }
 
-  public getJSON(): Observable<any> {
+  public getJSON() {
   	return this.http.get<Array<Team>>('./assets/nba_teams.json')
   }
 }

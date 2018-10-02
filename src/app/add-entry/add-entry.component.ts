@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EntriesService } from '../entries.service';
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { Team } from '../team';
+import { TeamsService } from '../teams.service';
 
 @Component({
   selector: 'app-add-entry',
@@ -11,8 +13,14 @@ import { Router } from '@angular/router';
 })
 export class AddEntryComponent implements OnInit {
   lengthOptions: Array<number>;
+  teams: Array<Team>;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private entriesService: EntriesService) {
+  constructor(
+    private formBuilder: FormBuilder, 
+    private router: Router, 
+    private entriesService: EntriesService,
+    private teamsService: TeamsService) 
+  {
     this.lengthOptions = [0, 1, 2, 3, 4];
   }
 
@@ -20,6 +28,9 @@ export class AddEntryComponent implements OnInit {
 
   ngOnInit() {
     const currentDate = new Date().toISOString().substring(0, 10);
+    this.teamsService.getJSON().subscribe(data => {
+      this.teams = data;
+    });
 
   	this.addForm = this.formBuilder.group({
   	  home: ['', Validators.required],

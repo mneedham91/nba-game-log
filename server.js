@@ -88,7 +88,7 @@ app.delete('/entry/:id', passport.authenticate('jwt', {session: false}), functio
 	var resp = factory.deleteEntry(req.params.id,res);
 });
 
-app.get('/entry', function(req, res) {
+app.get('', function(req, res) {
 	var resp = factory.getEntries({},res);
 });
 

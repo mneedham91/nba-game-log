@@ -93,9 +93,7 @@ app.get('/', function (req, res) {
 });
 
 //app.listen(3000);
-app.listen(process.env.PORT || 8080, function() {
-	console.log("App now running on port? ");
-}
+app.listen(process.env.PORT || 8080);
 
 db.on('error', function callback() {
 	console.log('Connection Error');

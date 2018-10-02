@@ -12,6 +12,8 @@
     "postinstall": "ng build --output-path dist"
   },
   "dependencies": {
+    "@angular/cli": "^7.0.0-rc.1",
+    "@angular/compiler-cli": "^6.1.9",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
@@ -31,6 +33,6 @@
     "passport-local": "^1.0.0"
   },
   "engines": {
-	"node": "8.11.3"
+    "node": "8.11.3"
   }
 }

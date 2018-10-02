@@ -15,7 +15,6 @@ export class EditEntryComponent implements OnInit {
   private sub: any;
   entry: Entry;
   editForm: FormGroup;
-  lengthOptions: [];
 
   constructor(
     private route: ActivatedRoute, 
@@ -25,7 +24,6 @@ export class EditEntryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.lengthOptions = [0, 1, 2, 3, 4];
   	this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
     });

@@ -10,14 +10,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-entry.component.css']
 })
 export class AddEntryComponent implements OnInit {
-  lengthOptions: [];
 
   constructor(private formBuilder: FormBuilder, private router: Router, private entriesService: EntriesService) { }
 
   addForm: FormGroup;
 
   ngOnInit() {
-    this.lengthOptions = [0, 1, 2, 3, 4];
     const currentDate = new Date().toISOString().substring(0, 10);
 
   	this.addForm = this.formBuilder.group({

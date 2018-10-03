@@ -16,4 +16,4 @@ const routes: Routes = [
   { path: '', component: LoginComponent}
 ];
 
-export const routing = RouterModule.forRoot(routes);
+export const routing = RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'});

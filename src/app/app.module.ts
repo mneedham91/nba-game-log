@@ -17,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DetailEntryComponent } from './detail-entry/detail-entry.component';
 import { RegisterComponent } from './register/register.component';
 import { FooterComponent } from './footer/footer.component';
+import { DetailUserComponent } from './detail-user/detail-user.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FooterComponent } from './footer/footer.component';
     LoginComponent,
     DetailEntryComponent,
     RegisterComponent,
-    FooterComponent
+    FooterComponent,
+    DetailUserComponent
   ],
   imports: [
     BrowserModule,

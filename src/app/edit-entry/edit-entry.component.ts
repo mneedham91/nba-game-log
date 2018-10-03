@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Entry } from '../entry';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import { Team } from '../team';
+import { TeamsService } from '../teams.service';
 
 @Component({
   selector: 'app-edit-entry',

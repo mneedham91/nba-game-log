@@ -11,6 +11,6 @@ export class TeamsService {
   constructor(private http: HttpClient) { }
 
   public getJSON() {
-  	return this.http.get<Array<Team>>('./assets/nba_teams.json')
+  	return this.http.get('./assets/nba_teams.json')
   }
 }

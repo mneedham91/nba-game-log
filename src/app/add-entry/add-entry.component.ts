@@ -13,7 +13,7 @@ import { TeamsService } from '../teams.service';
 })
 export class AddEntryComponent implements OnInit {
   lengthOptions: Array<number>;
-  teams: Array<Team>;
+  public teams: Team[];
 
   constructor(
     private formBuilder: FormBuilder, 
@@ -29,14 +29,9 @@ export class AddEntryComponent implements OnInit {
   ngOnInit() {
     const currentDate = new Date().toISOString().substring(0, 10);
     this.teamsService.getJSON()
-      .subscribe(
-        (result: Array<Team>) => {
-          this.teams = result
-        },
-        (error: any) => {
-          console.log('json_error',error);
-        }
-        )
+      .subscribe(result => {
+        this.teams = result.json() as Team[];
+      }, error => console.error(error));
 
   	this.addForm = this.formBuilder.group({
   	  home: ['', Validators.required],

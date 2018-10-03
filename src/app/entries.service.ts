@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Entry } from './entry';
+import { LocalStorage } from '@ngx-pwa/local-storage';
 
 @Injectable({
   providedIn: 'root'
@@ -8,10 +9,11 @@ import { Entry } from './entry';
 
 export class EntriesService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, protected localStorage: LocalStorage) { }
   //baseUrl: string = 'http://localhost:3000';
   baseUrl: string = '';
-  headers = new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('token')});
+  //headers = new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('token')});
+  headers = new HttpHeaders({'Authorization': 'Bearer ' + this.localStorage.getItem('token').subscribe((data) => { data; })});
   options: {} = { headers: this.headers };
 
   getEntries() {

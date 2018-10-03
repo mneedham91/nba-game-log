@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
-import { LocalStorage } from '@ngx-pwa/local-storage';
 
 @Component({
   selector: 'app-footer',
@@ -12,8 +11,8 @@ export class FooterComponent implements OnInit {
   loggedIn: boolean;
   token: string;
 
-  constructor(private router: Router, private authService: AuthenticationService, protected localStorage: LocalStorage) {
-    this.localStorage.getItem('token').subscribe((token) => {
+  constructor(private router: Router, private authService: AuthenticationService) {
+    localStorage.getItem('token').subscribe((token) => {
       if (token) {
         this.loggedIn = true;
       } else {

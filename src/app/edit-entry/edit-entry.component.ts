@@ -16,6 +16,7 @@ export class EditEntryComponent implements OnInit {
   entry: Entry;
   editForm: FormGroup;
   lengthOptions: Array<number>;
+  public teams: Team[];
 
   constructor(
     private route: ActivatedRoute, 
@@ -30,6 +31,10 @@ export class EditEntryComponent implements OnInit {
   	this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
     });
+    this.teamsService.getJSON()
+      .subscribe(result => {
+        this.teams = result as Team[];
+      }, error => console.error(error));
   	this.editForm = this.formBuilder.group({
       _id: [''],
   		home: ['', Validators.required],

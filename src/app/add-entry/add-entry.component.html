@@ -9,7 +9,9 @@
           <select formControlName="home" name="home" class="pure-input-1-8" id="home">
             <option *ngFor="let x of teams" value="{{x.team}}">{{x.team}}</option>
           </select>
-          <input type="text" formControlName="away" placeholder="Away" name="away" class="pure-input-1-8" id="away">
+          <select formControlName="away" name="away" class="pure-input-1-8" id="away">
+            <option *ngFor="let x of teams" value="{{x.team}}">{{x.team}}</option>
+          </select>
           <input type="date" formControlName="date" placeholder="Date" name="date" class="pure-input-1-8" id="date">
         </div>
         <div class="pure-u-1-2">
@@ -28,5 +30,4 @@
       </form>
     </div>
   </div>
-  {{teams}}
 </div>

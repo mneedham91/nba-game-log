@@ -24,7 +24,8 @@ export class EditEntryComponent implements OnInit {
     private route: ActivatedRoute, 
     private formBuilder: FormBuilder, 
     private router: Router, 
-    private entriesService: EntriesService
+    private entriesService: EntriesService,
+    private teamsService: TeamsService
   ) { 
     this.lengthOptions = [0, 1, 2, 3, 4];
   }

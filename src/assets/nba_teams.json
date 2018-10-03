@@ -1,1 +1,242 @@
-[{\"team\":\"ATL\",\"city\":\"Atlanta\",\"mascot\":\"Hawks\",\"conference\":\"e\",\"color1\":\"#C8102E\",\"color2\":\"#C4D600\"},{\"team\":\"BKN\",\"city\":\"Brooklyn\",\"mascot\":\"Nets\",\"conference\":\"e\",\"color1\":\"#010101\",\"color2\":\"#FFFFFF\"},{\"team\":\"BOS\",\"city\":\"Boston\",\"mascot\":\"Celtics\",\"conference\":\"e\",\"color1\":\"#007A33\",\"color2\":\"#000000\"},{\"team\":\"CHI\",\"city\":\"Chicago\",\"mascot\":\"Bulls\",\"conference\":\"e\",\"color1\":\"#BA0C2F\",\"color2\":\"#000000\"},{\"team\":\"CHO\",\"city\":\"Charlotte\",\"mascot\":\"Hornets\",\"conference\":\"e\",\"color1\":\"#201747\",\"color2\":\"#00778B\"},{\"team\":\"CLE\",\"city\":\"Cleveland\",\"mascot\":\"Cavaliers\",\"conference\":\"e\",\"color1\":\"#6F263D\",\"color2\":\"#FFB81C\"},{\"team\":\"DAL\",\"city\":\"Dallas\",\"mascot\":\"Mavericks\",\"conference\":\"w\",\"color1\":\"#0050B5\",\"color2\":\"#8D9093\"},{\"team\":\"DEN\",\"city\":\"Denver\",\"mascot\":\"Nuggets\",\"conference\":\"w\",\"color1\":\"#418FDE\",\"color2\":\"#418FDE\"},{\"team\":\"DET\",\"city\":\"Detroit\",\"mascot\":\"Pistons\",\"conference\":\"e\",\"color1\":\"#003DA5\",\"color2\":\"#D50032\"},{\"team\":\"GSW\",\"city\":\"Golden State\",\"mascot\":\"Warriors\",\"conference\":\"w\",\"color1\":\"#003DA5\",\"color2\":\"#FFC72D\"},{\"team\":\"HOU\",\"city\":\"Houston\",\"mascot\":\"Rockets\",\"conference\":\"w\",\"color1\":\"#BA0C2F\",\"color2\":\"#8D9093\"},{\"team\":\"IND\",\"city\":\"Indiana\",\"mascot\":\"Pacers\",\"conference\":\"e\",\"color1\":\"#041E42\",\"color2\":\"#FFB81C\"},{\"team\":\"LAC\",\"city\":\"Los Angeles\",\"mascot\":\"Clippers\",\"conference\":\"w\",\"color1\":\"#D50032\",\"color2\":\"#003DA5\"},{\"team\":\"LAL\",\"city\":\"Los Angeles\",\"mascot\":\"Lakers\",\"conference\":\"w\",\"color1\":\"#702F8A\",\"color2\":\"#FFC72C\"},{\"team\":\"MEM\",\"city\":\"Memphis\",\"mascot\":\"Grizzlies\",\"conference\":\"w\",\"color1\":\"#23375B\",\"color2\":\"#6189B9\"},{\"team\":\"MIA\",\"city\":\"Miami\",\"mascot\":\"Heat\",\"conference\":\"e\",\"color1\":\"#862633\",\"color2\":\"#FFA300\"},{\"team\":\"MIL\",\"city\":\"Milwaukee\",\"mascot\":\"Bucks\",\"conference\":\"e\",\"color1\":\"#2C5234\",\"color2\":\"#DDCBA4\"},{\"team\":\"MIN\",\"city\":\"Minnesota\",\"mascot\":\"Timberwolves\",\"conference\":\"w\",\"color1\":\"#002B5C\",\"color2\":\"#C6CFD4\"},{\"team\":\"NOP\",\"city\":\"New Orleans\",\"mascot\":\"Pelicans\",\"conference\":\"w\",\"color1\":\"#002B5C\",\"color2\":\"#B4975A\"},{\"team\":\"NYK\",\"city\":\"New York\",\"mascot\":\"Knicks\",\"conference\":\"e\",\"color1\":\"#003DA5\",\"color2\":\"#FF671F\"},{\"team\":\"OKC\",\"city\":\"Oklahoma City\",\"mascot\":\"Thunder\",\"conference\":\"w\",\"color1\":\"#007DC3\",\"color2\":\"#F05133\"},{\"team\":\"ORL\",\"city\":\"Orlando\",\"mascot\":\"Magic\",\"conference\":\"e\",\"color1\":\"#007DC5\",\"color2\":\"#C4CED3\"},{\"team\":\"PHI\",\"city\":\"Philadelphia\",\"mascot\":\"76ers\",\"conference\":\"e\",\"color1\":\"#006BB6\",\"color2\":\"#ED174C\"},{\"team\":\"PHX\",\"city\":\"Phoenix\",\"mascot\":\"Suns\",\"conference\":\"w\",\"color1\":\"#E56020\",\"color2\":\"#1D1160\"},{\"team\":\"POR\",\"city\":\"Portland\",\"mascot\":\"Trailblazers\",\"conference\":\"w\",\"color1\":\"#F0163A\",\"color2\":\"#B6BRBF\"},{\"team\":\"SAC\",\"city\":\"Sacramento\",\"mascot\":\"Kings\",\"conference\":\"w\",\"color1\":\"#724C9F\",\"color2\":\"#8E9090\"},{\"team\":\"SAS\",\"city\":\"San Antonio\",\"mascot\":\"Spurs\",\"conference\":\"w\",\"color1\":\"#B6BFBF\",\"color2\":\"#FFFFFF\"},{\"team\":\"TOR\",\"city\":\"Toronto\",\"mascot\":\"Raptors\",\"conference\":\"e\",\"color1\":\"#CE1141\",\"color2\":\"#C4CED3\"},{\"team\":\"UTA\",\"city\":\"Utah\",\"mascot\":\"Jazz\",\"conference\":\"w\",\"color1\":\"#002B5C\",\"color2\":\"#F9A01B\"},{\"team\":\"WSH\",\"city\":\"Washington\",\"mascot\":\"Wizards\",\"conference\":\"e\",\"color1\":\"#0C2340\",\"color2\":\"#C8102E\"}]
+[
+  {
+    "team": "ATL",
+    "city": "Atlanta",
+    "master": "Hawks",
+    "conference": "east",
+    "color1": "#C8102E",
+    "color2": "#C4D600"
+  },
+  {
+    "team": "BKN",
+    "city": "Brooklyn",
+    "master": "Nets",
+    "conference": "east",
+    "color1": "#010101",
+    "color2": "#FFFFFF"
+  },
+  {
+    "team": "BOS",
+    "city": "Boston",
+    "master": "Celtics",
+    "conference": "east",
+    "color1": "#007A33",
+    "color2": "#000000"
+  },
+  {
+    "team": "CHI",
+    "city": "Chicago",
+    "master": "Bulls",
+    "conference": "east",
+    "color1": "#BA0C2F",
+    "color2": "#000000"
+  },
+  {
+    "team": "CHO",
+    "city": "Charlotte",
+    "master": "Hornets",
+    "conference": "east",
+    "color1": "#201747",
+    "color2": "#00778B"
+  },
+  {
+    "team": "CLE",
+    "city": "Cleveland",
+    "master": "Cavaliers",
+    "conference": "east",
+    "color1": "#6F263D",
+    "color2": "#FFB81C"
+  },
+  {
+    "team": "DAL",
+    "city": "Dallas",
+    "master": "Mavericks",
+    "conference": "west",
+    "color1": "#0050B5",
+    "color2": "#8D9093"
+  },
+  {
+    "team": "DEN",
+    "city": "Denver",
+    "master": "Nuggets",
+    "conference": "west",
+    "color1": "#418FDE",
+    "color2": "#418FDE"
+  },
+  {
+    "team": "DET",
+    "city": "Detroit",
+    "master": "Pistons",
+    "conference": "east",
+    "color1": "#003DA5",
+    "color2": "#D50032"
+  },
+  {
+    "team": "GSW",
+    "city": "Golden State",
+    "master": "Warriors",
+    "conference": "west",
+    "color1": "#003DA5",
+    "color2": "#FFC72D"
+  },
+  {
+    "team": "HOU",
+    "city": "Houston",
+    "master": "Rockets",
+    "conference": "west",
+    "color1": "#BA0C2F",
+    "color2": "#8D9093"
+  },
+  {
+    "team": "IND",
+    "city": "Indiana",
+    "master": "Pacers",
+    "conference": "east",
+    "color1": "#041E42",
+    "color2": "#FFB81C"
+  },
+  {
+    "team": "LAC",
+    "city": "Los Angeles",
+    "master": "Clippers",
+    "conference": "west",
+    "color1": "#D50032",
+    "color2": "#003DA5"
+  },
+  {
+    "team": "LAL",
+    "city": "Los Angeles",
+    "master": "Lakers",
+    "conference": "west",
+    "color1": "#702F8A",
+    "color2": "#FFC72C"
+  },
+  {
+    "team": "MEM",
+    "city": "Memphis",
+    "master": "Grizzlies",
+    "conference": "west",
+    "color1": "#23375B",
+    "color2": "#6189B9"
+  },
+  {
+    "team": "MIA",
+    "city": "Miami",
+    "master": "Heat",
+    "conference": "east",
+    "color1": "#862633",
+    "color2": "#FFA300"
+  },
+  {
+    "team": "MIL",
+    "city": "Milwaukee",
+    "master": "Bucks",
+    "conference": "east",
+    "color1": "#2C5234",
+    "color2": "#DDCBA4"
+  },
+  {
+    "team": "MIN",
+    "city": "Minnesota",
+    "master": "Timberwolves",
+    "conference": "west",
+    "color1": "#002B5C",
+    "color2": "#C6CFD4"
+  },
+  {
+    "team": "NOP",
+    "city": "New Orleans",
+    "master": "Pelicans",
+    "conference": "west",
+    "color1": "#002B5C",
+    "color2": "#B4975A"
+  },
+  {
+    "team": "NYK",
+    "city": "New York",
+    "master": "Knicks",
+    "conference": "east",
+    "color1": "#003DA5",
+    "color2": "#FF671F"
+  },
+  {
+    "team": "OKC",
+    "city": "Oklahoma City",
+    "master": "Thunder",
+    "conference": "west",
+    "color1": "#007DC3",
+    "color2": "#F05133"
+  },
+  {
+    "team": "ORL",
+    "city": "Orlando",
+    "master": "Magic",
+    "conference": "east",
+    "color1": "#007DC5",
+    "color2": "#C4CED3"
+  },
+  {
+    "team": "PHI",
+    "city": "Philadelphia",
+    "master": "76ers",
+    "conference": "east",
+    "color1": "#006BB6",
+    "color2": "#ED174C"
+  },
+  {
+    "team": "PHX",
+    "city": "Phoenix",
+    "master": "Suns",
+    "conference": "west",
+    "color1": "#E56020",
+    "color2": "#1D1160"
+  },
+  {
+    "team": "POR",
+    "city": "Portland",
+    "master": "Trailblazers",
+    "conference": "west",
+    "color1": "#F0163A",
+    "color2": "#B6BRBF"
+  },
+  {
+    "team": "SAC",
+    "city": "Sacramento",
+    "master": "Kings",
+    "conference": "west",
+    "color1": "#724C9F",
+    "color2": "#8E9090"
+  },
+  {
+    "team": "SAS",
+    "city": "San Antonio",
+    "master": "Spurs",
+    "conference": "west",
+    "color1": "#B6BFBF",
+    "color2": "#FFFFFF"
+  },
+  {
+    "team": "TOR",
+    "city": "Toronto",
+    "master": "Raptors",
+    "conference": "east",
+    "color1": "#CE1141",
+    "color2": "#C4CED3"
+  },
+  {
+    "team": "UTA",
+    "city": "Utah",
+    "master": "Jazz",
+    "conference": "west",
+    "color1": "#002B5C",
+    "color2": "#F9A01B"
+  },
+  {
+    "team": "WSH",
+    "city": "Washington",
+    "master": "Wizards",
+    "conference": "east",
+    "color1": "#0C2340",
+    "color2": "#C8102E"
+  }
+]

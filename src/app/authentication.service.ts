@@ -10,7 +10,7 @@ export class AuthenticationService {
 
   constructor(private http: HttpClient) { }
   //baseUrl: string = 'http://localhost:3000';
-  baseUrl: string = '';
+  baseUrl: string = '/api/v1';
 
   getUsers() {
   	return this.http.get<User[]>(this.baseUrl + '/user');

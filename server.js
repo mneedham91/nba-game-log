@@ -45,7 +45,7 @@ var strategy = new JwtStrategy(jwtOptions, function(jwt_payload, done) {
 passport.use(strategy);
 app.use(passport.initialize());
 
-app.post('/login', function(req, res) {
+app.post('/api/v1/login', function(req, res) {
 	var password = req.body.password;
 	var promise = factory.login(req.body.email);
 	promise.then(function(result) {
@@ -61,35 +61,35 @@ app.post('/login', function(req, res) {
 	});
 });
 
-app.get('/entry', passport.authenticate('jwt', {session: false}), function(req, res) {
+app.get('/api/v1/entry', passport.authenticate('jwt', {session: false}), function(req, res) {
 	var resp = factory.getEntries({},res);
 });
 
-app.get('/entry/:id', function(req, res) {
+app.get('/api/v1/entry/:id', function(req, res) {
 	var resp = factory.getEntry(req.params.id,res);
 });
 
-app.post('/user', function(req, res) {
+app.post('/api/v1/user', function(req, res) {
 	var resp = factory.createUser(req.body, res);
 });
 
-app.get('/user', function(req, res) {
+app.get('/api/v1/user', function(req, res) {
 	var resp = factory.getUsers({},res);
 });
 
-app.get('/user/:id', function(req, res) {
+app.get('/api/v1/user/:id', function(req, res) {
 	var resp = factory.getUser(req.params.id,res);
 });
 
-app.post('/entry', passport.authenticate('jwt', {session: false}), function(req, res) {
+app.post('/api/v1/entry', passport.authenticate('jwt', {session: false}), function(req, res) {
 	var resp = factory.createEntry(req.body, res);
 });
 
-app.put('/entry/:id', passport.authenticate('jwt', {session: false}), function(req, res) {
+app.put('/api/v1/entry/:id', passport.authenticate('jwt', {session: false}), function(req, res) {
 	var resp = factory.updateEntry(req.body, res);
 });
 
-app.delete('/entry/:id', passport.authenticate('jwt', {session: false}), function(req,res) {
+app.delete('/api/v1/entry/:id', passport.authenticate('jwt', {session: false}), function(req,res) {
 	var resp = factory.deleteEntry(req.params.id,res);
 });
 

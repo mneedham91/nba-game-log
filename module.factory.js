@@ -75,6 +75,17 @@ var Factory = function(Schema,mongoose) {
 			return res.json(output);
 		});
 	}
+
+	this.updateUser = function(params,res) {
+		this.Entry.findOneAndUpdate({_id: params._id}, {
+			email: params.home,
+			username: params.username,
+			first_name: params.first_name,
+			last_name: params.last_name
+		}, function(error, output) {
+			return res.json(output);
+		});
+	}
 	
 	this.getUsers = function(query,res) {
 		this.User.find({}, function(error,output) {

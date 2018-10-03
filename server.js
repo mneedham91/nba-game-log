@@ -73,6 +73,10 @@ app.post('/api/v1/user', function(req, res) {
 	var resp = factory.createUser(req.body, res);
 });
 
+app.put('/api/v1/user/:id', passport.authenticate('jwt', {session: false}), function(req, res) {
+	var resp = factory.updateUser(req.body, res);
+});
+
 app.get('/api/v1/user', function(req, res) {
 	var resp = factory.getUsers({},res);
 });

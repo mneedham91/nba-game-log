@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from './user';
+import { LocalStorage } from '@ngx-pwa/local-storage';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { User } from './user';
 
 export class AuthenticationService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, protected localStorage: LocalStorage) { }
   //baseUrl: string = 'http://localhost:3000';
   baseUrl: string = '';
 
@@ -21,7 +22,9 @@ export class AuthenticationService {
   }
 
   login(email: String, password: string) {
-    return this.http.post(this.baseUrl + '/login', {email, password});
+    let p = this.http.post(this.baseUrl + '/login', {email, password});
+    this.localStorage.setItem('token', p['token']).subscribe(() => {});
+    return p;
   }
 
   isLoggedIn() {

@@ -57,9 +57,7 @@ export class EditEntryComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.editForm.value);
   	this.entriesService.updateEntry(this.editForm.value)
-  	  //.pipe(first())
   	  .subscribe(
   	  	data => {
   	  		this.router.navigate(['detail-entry', this.id]);

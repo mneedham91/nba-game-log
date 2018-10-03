@@ -18,6 +18,7 @@ import { DetailEntryComponent } from './detail-entry/detail-entry.component';
 import { RegisterComponent } from './register/register.component';
 import { FooterComponent } from './footer/footer.component';
 import { DetailUserComponent } from './detail-user/detail-user.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { DetailUserComponent } from './detail-user/detail-user.component';
     DetailEntryComponent,
     RegisterComponent,
     FooterComponent,
-    DetailUserComponent
+    DetailUserComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

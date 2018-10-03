@@ -6,8 +6,12 @@
     <div class="pure-u-1">
       <form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="pure-form">  
         <div class="pure-u-1-2">
-          <input type="text" formControlName="home" name="home" class="pure-input-1-8" id="home">
-          <input type="text" formControlName="away" name="away" class="pure-input-1-8" id="away">
+          <select formControlName="home" formControlName="home" name="home" class="pure-input-1-8" id="home">
+            <option *ngFor="let x of teams" value="{{x.team}}">{{x.team}}</option>
+          </select>
+          <select formControlName="away" name="away" class="pure-input-1-8" id="away">
+            <option *ngFor="let x of teams" value="{{x.team}}">{{x.team}}</option>
+          </select>
         </div>
         <div class="pure-u-1-2">
           <p>Roughly how many quarters of the game did you watch?</p>

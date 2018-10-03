@@ -30,7 +30,7 @@ export class AddEntryComponent implements OnInit {
     const currentDate = new Date().toISOString().substring(0, 10);
     this.teamsService.getJSON()
       .subscribe(result => {
-        this.teams = result.json() as Team[];
+        this.teams = result as Team[];
       }, error => console.error(error));
 
   	this.addForm = this.formBuilder.group({

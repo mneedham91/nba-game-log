@@ -11,15 +11,7 @@ export class FooterComponent implements OnInit {
   loggedIn: boolean;
   token: string;
 
-  constructor(private router: Router, private authService: AuthenticationService) {
-    localStorage.getItem('token').subscribe((token) => {
-      if (token) {
-        this.loggedIn = true;
-      } else {
-        this.loggedIn = false;
-      }
-    });
-  }
+  constructor(private router: Router, private authService: AuthenticationService) { }
 
   onLogOutClick() {
     localStorage.removeItem('token');

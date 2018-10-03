@@ -17,6 +17,7 @@ var Factory = function(Schema,mongoose) {
 		UserSchema = new this.Schema({
 			email: String,
 			password: String,
+			username: String,
 			first_name: String,
 			last_name: String,
 		}, { timestamps: {createdAt: 'created_at', updatedAt: 'updated_at'} });
@@ -57,7 +58,8 @@ var Factory = function(Schema,mongoose) {
 			away: params.away,
 			notes: params.notes,
 			date: params.date,
-			length: params.length
+			length: params.length,
+			userid: params.userid
 		});
 		newEntry.save(function(error,output) {
 			return res.json(output);

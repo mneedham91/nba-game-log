@@ -54,7 +54,7 @@ app.post('/login', function(req, res) {
 		} else if (result.password === password) {
 			var payload = {id: result._id};
 			var token = jwt.sign(payload, jwtOptions.secretOrKey);
-			res.json({success: true, token: token, expiresIn: 120 });
+			res.json({success: true, token: token, userid: result._id, expiresIn: 120 });
 		} else {
 			res.status(401).json({message: 'invalid password'});
 		}
@@ -93,7 +93,6 @@ app.delete('/entry/:id', passport.authenticate('jwt', {session: false}), functio
 	var resp = factory.deleteEntry(req.params.id,res);
 });
 
-//app.listen(3000);
 app.listen(process.env.PORT || 8080);
 
 db.on('error', function callback() {

@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
       .subscribe( 
         data => {
           localStorage.setItem('token', data['token']);
+		  localStorage.setItem('userid', data['userid']);
           this.router.navigate(['entries']);
         },
         error => {

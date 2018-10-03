@@ -93,6 +93,10 @@ app.delete('/api/v1/entry/:id', passport.authenticate('jwt', {session: false}), 
 	var resp = factory.deleteEntry(req.params.id,res);
 });
 
+app.use('/*',function(req, res) {
+    res.sendfile(__dirname + '/dist/index.html');
+});
+
 app.listen(process.env.PORT || 8080);
 
 db.on('error', function callback() {

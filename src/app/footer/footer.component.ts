@@ -18,12 +18,6 @@ export class FooterComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  ngOnInit() {
-  	if (this.authService.isLoggedIn()) {
-  		this.loggedIn = true;
-  	} else {
-  		this.loggedIn = false;
-  	}
-  }
+  ngOnInit() { }
 
 }

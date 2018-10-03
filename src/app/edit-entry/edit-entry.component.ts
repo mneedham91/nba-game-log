@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Entry } from '../entry';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import { Team } from '../team';
+import { TeamsService } from '../teams.service';
 
 @Component({
   selector: 'app-edit-entry',
@@ -16,12 +18,14 @@ export class EditEntryComponent implements OnInit {
   entry: Entry;
   editForm: FormGroup;
   lengthOptions: Array<number>;
+  public teams: Team[];
 
   constructor(
     private route: ActivatedRoute, 
     private formBuilder: FormBuilder, 
     private router: Router, 
-    private entriesService: EntriesService
+    private entriesService: EntriesService,
+    private teamsService: TeamsService
   ) { 
     this.lengthOptions = [0, 1, 2, 3, 4];
   }
@@ -30,6 +34,10 @@ export class EditEntryComponent implements OnInit {
   	this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
     });
+    this.teamsService.getJSON()
+      .subscribe(result => {
+        this.teams = result as Team[];
+      }, error => console.error(error));
   	this.editForm = this.formBuilder.group({
       _id: [''],
   		home: ['', Validators.required],

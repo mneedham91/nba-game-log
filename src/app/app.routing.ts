@@ -1,6 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 import { AddEntryComponent } from './add-entry/add-entry.component';
-import { Admin } from './admin/admin.component';
+import { AdminComponent } from './admin/admin.component';
 import { EditEntryComponent } from './edit-entry/edit-entry.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { EntriesComponent } from './entries/entries.component';

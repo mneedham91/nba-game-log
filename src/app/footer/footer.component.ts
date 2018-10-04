@@ -11,10 +11,15 @@ export class FooterComponent implements OnInit {
   loggedIn: boolean;
   token: string;
 
-  constructor(private router: Router, private authService: AuthenticationService) { }
+  constructor(private router: Router, private authService: AuthenticationService) {
+	  this.authService.isLoggedIn.subscribe( value => {
+		  this.loggedIn = value;
+	  });
+  }
 
   onLogOutClick() {
-    localStorage.removeItem('token');
+    //localStorage.clear();
+	this.authService.logout();
     this.router.navigate(['']);
   }
 

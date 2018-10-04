@@ -19,10 +19,12 @@ export class AuthenticationService {
 	    this.isLoggedIn.next(true);
 	    localStorage.setItem('token', data['token']);
 	    localStorage.setItem('userid', data['userid']);
+		console.log('this worked I promise');
 	    return true;
 	  },
 	  error => {
 	    return false;
+		console.log('pysch!');
 	  });
 	/*
 	this.isLoggedIn.next(true);

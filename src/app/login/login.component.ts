@@ -23,7 +23,9 @@ export class LoginComponent implements OnInit {
   	if (this.loginForm.invalid) {
   		return;
   	}
-    if (this.authService.login(this.loginForm.controls.email.value, this.loginForm.controls.password.value)) {
+	let resp: boolean = this.authService.login(this.loginForm.controls.email.value, this.loginForm.controls.password.value);
+	console.log(resp);
+    if (resp) {
 		this.router.navigate(['entries']);
 	} else {
 		this.invalidLogin = true;

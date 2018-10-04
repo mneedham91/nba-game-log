@@ -16,8 +16,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder, 
     private router: Router, 
-    private authService: AuthenticationService,
-	private globalService: GlobalService) { }
+    private authService: AuthenticationService) { }
 
   onSubmit() {
   	this.submitted = true;

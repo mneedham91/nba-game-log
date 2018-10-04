@@ -24,6 +24,6 @@ export class AuthenticationService {
 	return this.http.post(this.baseUrl + '/login', {email, password});
   }
 
-  public isLoggedIn(): BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  public isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
 }

@@ -3,6 +3,8 @@
     <div class = "pure-u-1">
       <h2 class="text-center">Edit User</h2>
     </div>
+    <p>{{user}}</p>
+    <p>{{user?.username}}</p>
     <div class="pure-u-1">
       <form [formGroup]="editUserForm" (ngSubmit)="onSubmit()" class="pure-form pure-form-aligned">
       	<fieldset>

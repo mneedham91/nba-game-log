@@ -43,7 +43,6 @@ export class EditUserComponent implements OnInit {
         console.log('getUserById ', data);
   	  	this.editUserForm.setValue(data);
         this.user = data;
-        this.editUserForm.controls['_id'].setValue(this.id);
   	  });
   }
 

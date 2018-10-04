@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from './user';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,16 +14,16 @@ export class AuthenticationService {
   baseUrl: string = '/api/v1';
 
   login(email: String, password: string) {
-    return this.http.post(this.baseUrl + '/login', {email, password});
+	/*
+	return this.http.post(this.baseUrl + '/login', {email, password}).subscribe(hero => {
+		this.isLoggedIn.next(true);
+	}
+    return resp;
+	*/
+	this.isLoggedIn.next(true);
+	return this.http.post(this.baseUrl + '/login', {email, password});
   }
 
-  isLoggedIn() {
-    let a = localStorage.getItem('token');
-    if (a) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+  public isLoggedIn(): BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
 }

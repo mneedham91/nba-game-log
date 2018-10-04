@@ -1,5 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 import { AddEntryComponent } from './add-entry/add-entry.component';
+import { Admin } from './admin/admin.component';
 import { EditEntryComponent } from './edit-entry/edit-entry.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { EntriesComponent } from './entries/entries.component';
@@ -11,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'add-entry', component: AddEntryComponent },
+  { path: 'admin', component: Admin },
   { path: 'entries', component: EntriesComponent },
   { path: 'edit-entry/:id', component: EditEntryComponent },
   { path: 'detail-entry/:id', component: DetailEntryComponent},

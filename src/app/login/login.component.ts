@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
+import { GlobalService } from '../global.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder, 
     private router: Router, 
-    private authService: AuthenticationService) { }
+    private authService: AuthenticationService,
+	private globalService: GlobalService) { }
 
   onSubmit() {
   	this.submitted = true;
@@ -26,8 +28,9 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginForm.controls.email.value, this.loginForm.controls.password.value)
       .subscribe( 
         data => {
-          localStorage.setItem('token', data['token']);
-		  localStorage.setItem('userid', data['userid']);
+          //localStorage.setItem('token', data['token']);
+		  //localStorage.setItem('userid', data['userid']);
+		  this.globalService.theItem = data['token'];
           this.router.navigate(['entries']);
         },
         error => {

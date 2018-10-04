@@ -28,12 +28,12 @@ export class EditUserComponent implements OnInit {
       this.id = params['id'];
     });
   	this.editUserForm = this.formBuilder.group({
-  	  _id: [],
-  	  email: [],
+  	  _id: [''],
+  	  email: [''],
   	  password: [],
-  	  username: [],
-  	  first_name: [],
-  	  last_name: [],
+  	  username: [''],
+  	  first_name: [''],
+  	  last_name: [''],
   	  created_at: [],
   	  updated_at: [],
   	  __v: [],

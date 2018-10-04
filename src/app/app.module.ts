@@ -19,6 +19,7 @@ import { RegisterComponent } from './register/register.component';
 import { FooterComponent } from './footer/footer.component';
 import { DetailUserComponent } from './detail-user/detail-user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     RegisterComponent,
     FooterComponent,
     DetailUserComponent,
-    EditUserComponent
+    EditUserComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

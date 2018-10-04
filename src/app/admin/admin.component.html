@@ -18,11 +18,11 @@
         </thead>
         <tbody>
         <tr *ngFor="let user of users">
-          <td>{{ user?.home }}</td>
-          <td>{{ user?.away }}</td>
-          <td>{{ user?.date }}</td>
-          <td>{{ user?.first_name }}</td>
-          <td>{{ user?.last_name }}</td>
+          <td>{{ user.home }}</td>
+          <td>{{ user.away }}</td>
+          <td>{{ user.date }}</td>
+          <td>{{ user.first_name }}</td>
+          <td>{{ user.last_name }}</td>
           <td class="pure-button-group" role="group">
             <button class="pure-button" (click)="viewUser(user)">View</button>
             <button class="pure-button" (click)="editUser(user)">Edit</button>

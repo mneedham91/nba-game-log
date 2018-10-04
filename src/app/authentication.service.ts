@@ -13,7 +13,7 @@ export class AuthenticationService {
   //baseUrl: string = 'http://localhost:3000';
   baseUrl: string = '/api/v1';
 
-  login(email: String, password: string) {
+  public login(email: String, password: string) {
 	/*
 	return this.http.post(this.baseUrl + '/login', {email, password}).subscribe(hero => {
 		this.isLoggedIn.next(true);
@@ -22,6 +22,11 @@ export class AuthenticationService {
 	*/
 	this.isLoggedIn.next(true);
 	return this.http.post(this.baseUrl + '/login', {email, password});
+  }
+  
+  public logout() {
+	localStorage.clear();
+	this.isLoggedIn.next(false);
   }
 
   public isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);

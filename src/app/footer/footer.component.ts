@@ -18,7 +18,8 @@ export class FooterComponent implements OnInit {
   }
 
   onLogOutClick() {
-    localStorage.removeItem('token');
+    //localStorage.clear();
+	this.authService.logout();
     this.router.navigate(['']);
   }
 

@@ -12,7 +12,7 @@ import { RegisterComponent } from './register/register.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'add-entry', component: AddEntryComponent },
-  { path: 'admin', component: Admin },
+  { path: 'admin', component: AdminComponent },
   { path: 'entries', component: EntriesComponent },
   { path: 'edit-entry/:id', component: EditEntryComponent },
   { path: 'detail-entry/:id', component: DetailEntryComponent},

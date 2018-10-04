@@ -14,7 +14,7 @@ export class FooterComponent implements OnInit {
   constructor(private router: Router, private authService: AuthenticationService) {
 	  this.authService.isLoggedIn.subscribe( value => {
 		  this.loggedIn = value;
-	  }
+	  });
   }
 
   onLogOutClick() {

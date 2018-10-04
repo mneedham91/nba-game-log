@@ -14,7 +14,7 @@ export class EntriesService {
 
   constructor(private http: HttpClient, private globalService: GlobalService) {
 	  globalService.itemValue.subscribe((nextValue) => {
-		  this.token = nextValue;
+		  //this.token = nextValue;
 		  this.headers = new HttpHeaders({'Authorization': 'Bearer ' + nextValue});
 		  this.options = { headers: this.headers };
 	  })

@@ -13,8 +13,8 @@ export class AuthenticationService {
   //baseUrl: string = 'http://localhost:3000';
   baseUrl: string = '/api/v1';
 
-  public login(email: String, password: string): boolean {
-	this.http.post(this.baseUrl + '/login', {email, password}).subscribe(
+  public login(email: String, password: string): Observable<boolean> {
+	return this.http.post(this.baseUrl + '/login', {email, password}).subscribe(
 	  data => {
 	    this.isLoggedIn.next(true);
 	    localStorage.setItem('token', data['token']);
@@ -23,8 +23,8 @@ export class AuthenticationService {
 	    return true;
 	  },
 	  error => {
-	    return false;
 		console.log('pysch!');
+		return false;
 	  });
 	/*
 	this.isLoggedIn.next(true);

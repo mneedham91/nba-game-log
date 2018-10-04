@@ -14,14 +14,13 @@ export class AuthenticationService {
   baseUrl: string = '/api/v1';
 
   public login(email: String, password: string) {
-	/*
-	return this.http.post(this.baseUrl + '/login', {email, password}).subscribe(hero => {
+	return this.http.post(this.baseUrl + '/login', {email, password}).subscribe(data => {
 		this.isLoggedIn.next(true);
 	}
-    return resp;
-	*/
+	/*
 	this.isLoggedIn.next(true);
 	return this.http.post(this.baseUrl + '/login', {email, password});
+	*/
   }
   
   public logout() {

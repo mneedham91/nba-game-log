@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UsersService } from '../users.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-admin',
@@ -6,10 +9,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
+  users: User[];
 
-  constructor() { }
+  constructor(private router: Router, private usersService: UsersService) { }
 
   ngOnInit() {
+    this.usersService.getUsers()
+      .subscribe( data => {
+        this.users = data;
+      });
   }
 
+  deleteUser(user: User): void {
+    if (confirm('Are you sure you want to delete this user?')) {
+      this.usersService.deleteUser(user._id)
+        .subscribe( data => {
+          this.users = this.users.filter(u => u !== user);
+        })
+    }
+  };
+
+  editUser(user: User): void {
+    this.router.navigate(['edit-user', user._id]);
+  };
+
+  viewEntry(user: User): void {
+    this.router.navigate(['detail-user', user._id])
+  }
+  
 }

@@ -1,3 +1,35 @@
-<p>
-  admin works!
-</p>
+<div class="pure-g">
+  <div class="pure-u-1 text-center">
+    <div class="pure-u-1 text-center">
+      <h2>Admin Panel</h2>
+    </div>
+    <div class="pure-u-1"></div>
+    <div class="pure-u-1">
+      <table class="pure-table table-center">
+        <thead class="text-center">
+        <tr>
+          <th>ID</th>
+          <th>Email</th>
+          <th>Username</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Options</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user?.home }}</td>
+          <td>{{ user?.away }}</td>
+          <td>{{ user?.date }}</td>
+          <td>{{ user?.first_name }}</td>
+          <td>{{ user?.last_name }}</td>
+          <td class="pure-button-group" role="group">
+            <button class="pure-button" (click)="viewUser(user)">View</button>
+            <button class="pure-button" (click)="editUser(user)">Edit</button>
+            <button class="button-error pure-button" (click)="deleteUser(user)">Delete</button>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

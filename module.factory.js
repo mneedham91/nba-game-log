@@ -69,7 +69,10 @@ var Factory = function(Schema,mongoose) {
 	this.createUser = function(params,res) {
 		var newUser = new this.User({
 			email: params.email,
-			password: params.password
+			password: params.password,
+			username: '',
+			first_name: '',
+			last_name: ''
 		});
 		newUser.save(function(error,output) {
 			return res.json(output);

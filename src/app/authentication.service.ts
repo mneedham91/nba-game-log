@@ -16,7 +16,7 @@ export class AuthenticationService {
   public login(email: String, password: string) {
 	return this.http.post(this.baseUrl + '/login', {email, password}).subscribe(data => {
 		this.isLoggedIn.next(true);
-	}
+	});
 	/*
 	this.isLoggedIn.next(true);
 	return this.http.post(this.baseUrl + '/login', {email, password});

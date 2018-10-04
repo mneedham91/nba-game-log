@@ -13,23 +13,9 @@ export class AuthenticationService {
   //baseUrl: string = 'http://localhost:3000';
   baseUrl: string = '/api/v1';
 
-  public login(email: String, password: string): Observable<boolean> {
-	return this.http.post(this.baseUrl + '/login', {email, password}).subscribe(
-	  data => {
-	    this.isLoggedIn.next(true);
-	    localStorage.setItem('token', data['token']);
-	    localStorage.setItem('userid', data['userid']);
-		console.log('this worked I promise');
-	    return true;
-	  },
-	  error => {
-		console.log('pysch!');
-		return false;
-	  });
-	/*
+  public login(email: String, password: string) {
 	this.isLoggedIn.next(true);
 	return this.http.post(this.baseUrl + '/login', {email, password});
-	*/
   }
   
   public logout() {

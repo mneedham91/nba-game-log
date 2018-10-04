@@ -14,18 +14,16 @@ export class AuthenticationService {
   baseUrl: string = '/api/v1';
 
   public login(email: String, password: string) {
-	let resp: boolean;
 	this.http.post(this.baseUrl + '/login', {email, password}).subscribe(
-	data => {
-		this.isLoggedIn.next(true);
-		localStorage.setItem('token', data['token']);
-		localStorage.setItem('userid', data['userid']);
-		resp = true;
-	},
-	error => {
-		resp = false;
-	});
-	return resp;
+	  data => {
+	    this.isLoggedIn.next(true);
+	    localStorage.setItem('token', data['token']);
+	    localStorage.setItem('userid', data['userid']);
+	    return true;
+	  },
+	  error => {
+	    return false;
+	  });
 	/*
 	this.isLoggedIn.next(true);
 	return this.http.post(this.baseUrl + '/login', {email, password});

@@ -18,7 +18,7 @@ export class EntriesService {
 		  this.headers = new HttpHeaders({'Authorization': 'Bearer ' + nextValue});
 		  this.options = { headers: this.headers };
 		  console.log('headers',this.headers);
-		  console.log('options'),this.options);
+		  console.log('options',this.options);
 	  })
   }
   //baseUrl: string = 'http://localhost:3000';

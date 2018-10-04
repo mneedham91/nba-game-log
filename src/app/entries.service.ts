@@ -16,7 +16,7 @@ export class EntriesService {
 	  globalService.itemValue.subscribe((nextValue) => {
 		  this.token = nextValue;
 		  this.headers = new HttpHeaders({'Authorization': 'Bearer ' + nextValue});
-		  this.options = = { headers: this.headers };
+		  this.options = { headers: this.headers };
 	  })
   }
   //baseUrl: string = 'http://localhost:3000';

@@ -23,8 +23,12 @@ export class LoginComponent implements OnInit {
   	if (this.loginForm.invalid) {
   		return;
   	}
-    this.authService.login(this.loginForm.controls.email.value, this.loginForm.controls.password.value)
-      .subscribe( 
+    if (this.authService.login(this.loginForm.controls.email.value, this.loginForm.controls.password.value)) {
+		this.router.navigate(['entries']);
+	} else {
+		this.invalidLogin = true;
+	}
+      /*.subscribe( 
         data => {
           localStorage.setItem('token', data['token']);
 		  localStorage.setItem('userid', data['userid']);
@@ -32,7 +36,7 @@ export class LoginComponent implements OnInit {
         },
         error => {
           this.invalidLogin = true;
-        });
+        });*/
   }
 
   ngOnInit() {

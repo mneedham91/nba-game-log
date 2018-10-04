@@ -13,7 +13,7 @@ import { first } from 'rxjs/operators';
 export class EditUserComponent implements OnInit {
   id: string;
   private sub: any;
-  user: User;
+  user: User = new User();
   editUserForm: FormGroup;
 
   constructor(

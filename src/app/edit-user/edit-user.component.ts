@@ -40,6 +40,7 @@ export class EditUserComponent implements OnInit {
   	});
   	this.usersService.getUserById(this.id)
   	  .subscribe( data => {
+        console.log('getUserById ', data);
   	  	this.editUserForm.setValue(data);
         this.editUserForm.controls['_id'].setValue(this.id);
   	  });

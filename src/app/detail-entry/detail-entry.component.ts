@@ -4,8 +4,6 @@ import { EntriesService } from '../entries.service';
 import { UsersService } from '../users.service';
 import { Entry } from '../entry';
 import { User } from '../user';
-import { of } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-detail-entry',
@@ -29,15 +27,13 @@ export class DetailEntryComponent implements OnInit {
       this.id = params['id'];
     });
     this.entriesService.getEntryById(this.id)
-      .mergeMap(e => {
-        this.entry = e;
-        return of(e);
-      })
-      .mergeMap(e => this.usersService.getUserById(this.entry.userid))
-      .map(u => {
-        this.entry_user = u;
-      })
-      .subscribe(); 
+      .subscribe( data => {
+        this.entry = data;
+        this.usersService.getUserById(this.entry.userid)
+          .subscribe( data => {
+            this.entry_user = data;
+          });
+    });
     /*
   	this.entriesService.getEntryById(this.id)
       .subscribe( data => {

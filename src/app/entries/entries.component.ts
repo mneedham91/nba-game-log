@@ -30,8 +30,6 @@ export class EntriesComponent implements OnInit {
   };
 
   editEntry(entry: Entry): void {
-    localStorage.removeItem('editEntryId');
-    localStorage.setItem('editEntryId', entry._id);
     this.router.navigate(['edit-entry', entry._id]);
   };
 

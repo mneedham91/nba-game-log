@@ -40,31 +40,19 @@ var Factory = function(Schema,mongoose) {
 		var query = this.User.findOne({_id: id}).exec();
 		return query;
 	}
-	
-	this.getUser = function(id,res) {
-		this.User.findById(id, function(error,output) {
-			res.json(output);
-		});
-	}
-	
+
 	this.getEntry = function(id,res) {
 		this.Entry.findById(id, function(error,output) {
 			res.json(output);
 		});
 	}
 
-	this.getTag = function(id,res) {
-		this.Tag.findById(id, function(error,output) {
-			res.json(output);
-		});
-	}
-	
 	this.getEntries = function(query,res) {
 		this.Entry.find({}, function(error,output) {
 			res.json(output);
 		});
 	}
-	
+
 	this.createEntry = function(params,res) {
 		var newEntry = new this.Entry({
 			home: params.home,
@@ -76,6 +64,36 @@ var Factory = function(Schema,mongoose) {
 		});
 		newEntry.save(function(error,output) {
 			return res.json(output);
+		});
+	}
+
+	this.updateEntry = function(params,res) {
+		this.Entry.findOneAndUpdate({_id: params._id}, {
+			home: params.home,
+			away: params.away,
+			notes: params.notes,
+			date: params.date,
+			length: params.length
+		}, function(error, output) {
+			return res.json(output);
+		});
+	}
+
+	this.deleteEntry = function(id,res) {
+		this.Entry.findOneAndDelete({_id: id}, function(error, output) {
+			return res.json((output));
+		});
+	}
+	
+	this.getUser = function(id,res) {
+		this.User.findById(id, function(error,output) {
+			res.json(output);
+		});
+	}
+
+	this.getUsers = function(query,res) {
+		this.User.find({}, function(error,output) {
+			res.json(output);
 		});
 	}
 	
@@ -92,6 +110,35 @@ var Factory = function(Schema,mongoose) {
 		});
 	}
 
+	this.updateUser = function(params,res) {
+		this.User.findOneAndUpdate({_id: params._id}, {
+			email: params.email,
+			username: params.username,
+			first_name: params.first_name,
+			last_name: params.last_name
+		}, function(error, output) {
+			return res.json(output);
+		});
+	}
+
+	this.deleteUser = function(id,res) {
+		this.User.findOneAndDelete({_id: id}, function(error, output) {
+			return res.json((output));
+		});
+	}
+
+	this.getTag = function(id,res) {
+		this.Tag.findById(id, function(error,output) {
+			res.json(output);
+		});
+	}
+
+	this.getTags = function(query,res) {
+		this.Tag.find({}, function(error,output) {
+			res.json(output);
+		});
+	}
+	
 	this.createTag = function(params,res) {
 		var newTag = new this.Tag({
 			entryid: params.entryid,
@@ -104,59 +151,12 @@ var Factory = function(Schema,mongoose) {
 		});
 	}
 
-	this.updateUser = function(params,res) {
-		this.User.findOneAndUpdate({_id: params._id}, {
-			email: params.email,
-			username: params.username,
-			first_name: params.first_name,
-			last_name: params.last_name
-		}, function(error, output) {
-			return res.json(output);
-		});
-	}
-
 	this.updateTag = function(params,res) {
 		this.Tag.findOneAndUpdate({_id: params._id}, {
 			playerid: params.playerid,
 			team: params.team
 		}, function(error, output) {
 			return res.json(output);
-		});
-	}
-	
-	this.getUsers = function(query,res) {
-		this.User.find({}, function(error,output) {
-			res.json(output);
-		});
-	}
-
-	this.getTags = function(query,res) {
-		this.Tag.find({}, function(error,output) {
-			res.json(output);
-		});
-	}
-	
-	this.updateEntry = function(params,res) {
-		this.Entry.findOneAndUpdate({_id: params._id}, {
-			home: params.home,
-			away: params.away,
-			notes: params.notes,
-			date: params.date,
-			length: params.length
-		}, function(error, output) {
-			return res.json(output);
-		});
-	}
-	
-	this.deleteEntry = function(id,res) {
-		this.Entry.findOneAndDelete({_id: id}, function(error, output) {
-			return res.json((output));
-		});
-	}
-
-	this.deleteUser = function(id,res) {
-		this.User.findOneAndDelete({_id: id}, function(error, output) {
-			return res.json((output));
 		});
 	}
 

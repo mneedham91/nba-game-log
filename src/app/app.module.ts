@@ -10,7 +10,6 @@ import { LoginComponent } from './login/login.component';
 import { routing } from './app.routing';
 import { AuthenticationService } from './authentication.service';
 import { EntriesService } from './entries.service';
-import { GlobalService } from './global.service';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';

@@ -23,7 +23,9 @@ export class AdminComponent implements OnInit {
   deleteUser(user: User): void {
     if (confirm('Are you sure you want to delete this user?')) {
       this.usersService.deleteUser(user._id)
-        .subscribe( data => { });
+        .subscribe( data => {
+          this.users = this.users.filter(u => u !== user);
+        });
     }
   };
 

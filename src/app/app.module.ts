@@ -40,7 +40,7 @@ import { AdminComponent } from './admin/admin.component';
     routing,
     ReactiveFormsModule
   ],
-  providers: [AuthenticationService, EntriesService, GlobalService],
+  providers: [AuthenticationService, EntriesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -80,7 +80,7 @@ var Factory = function(Schema,mongoose) {
 	}
 
 	this.updateUser = function(params,res) {
-		this.Entry.findOneAndUpdate({_id: params._id}, {
+		this.User.findOneAndUpdate({_id: params._id}, {
 			email: params.email,
 			username: params.username,
 			first_name: params.first_name,

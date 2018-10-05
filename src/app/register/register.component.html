@@ -7,22 +7,22 @@
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="pure-form">
         <div class="pure-u-1">
           <div class="pure-u-1-2 text-center">
-            <input type="email" class="form-control pure-input-1" formControlName="email" id="email" placeholder="email" email>
-            <div *ngIf="submitted && loginForm.controls.email.errors">
-              <div *ngIf="loginForm.controls.email.errors.required">Email is required</div>
+            <input type="email" class="form-control pure-input-1" formControlName="email" id="email" placeholder="email">
+            <div *ngIf="submitted && registerForm.controls.email.errors">
+              <div *ngIf="registerForm.controls.email.errors.required">Email is required</div>
             </div>
           </div>
           <div class="pure-u-1-2 text-center">
             <input type="password" class="form-control pure-input-1-1" formControlName="password" id="pwd" placeholder="password">
-            <div *ngIf="submitted && loginForm.controls.password.errors">
-              <div *ngIf="loginForm.controls.password.errors.required">Password is required</div>
+            <div *ngIf="submitted && registerForm.controls.password.errors">
+              <div *ngIf="registerForm.controls.password.errors.required">Password is required</div>
             </div>
           </div>
         </div>
         <div class="pure-u-1 text-center">
           <button class="pure-button pure-input-1-16 pure-button-primary">Register</button>
-          <div *ngIf="invalidLogin" class="error">
-            <div>Invalid credentials.</div>
+          <div *ngIf="invalid" class="error">
+            <div>Invalid input</div>
           </div>
         </div>
       </form>

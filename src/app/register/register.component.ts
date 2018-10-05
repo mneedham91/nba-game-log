@@ -10,16 +10,19 @@ import { UsersService } from '../users.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  invalidLogin: boolean = false;
+  invalid: boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private usersService: UsersService) { }
+  constructor(
+    private formBuilder: FormBuilder, 
+    private router: Router, 
+    private usersService: UsersService) { }
 
   registerForm: FormGroup;
 
   ngOnInit() {
 
   	this.registerForm = this.formBuilder.group({
-  		email: ['', Validators.required],
+  		email: ['', [Validators.required, Validators.email]],
   		password: ['', Validators.required]
   	})
   }

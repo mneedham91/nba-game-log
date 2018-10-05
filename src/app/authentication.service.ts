@@ -25,6 +25,7 @@ export class AuthenticationService {
 
   public setUsername(username) {
     localStorage.setItem('username', username);
+    console.log('username received', username)
     this.username.next(username);
   }
 

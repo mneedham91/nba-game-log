@@ -118,11 +118,15 @@ app.put('/api/v1/tag/:id', passport.authenticate('jwt', {session: false}), funct
 });
 
 app.delete('/api/v1/tag/:id', passport.authenticate('jwt', {session: false}), function(req,res) {
-	var resp = factory.deleteTag(req.params.id,res);
+	var resp = factory.deleteTag(req.params.id, res);
 });
 
 app.get('/api/v1/player', function(req, res) {
-	var resp = factory.getPlayers(req.params,res);
+	var resp = factory.getPlayers(res);
+});
+
+app.get('/api/v1/team/:team', function(req, res) {
+	var resp = factory.getTeam(req.params.team, res);
 });
 
 app.use('/*',function(req, res) {

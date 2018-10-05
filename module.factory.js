@@ -173,8 +173,14 @@ var Factory = function(Schema,mongoose) {
 		});
 	}
 
-	this.getPlayers = function(query,res) {
-		this.Player.find(query, function(error,output) {
+	this.getPlayers = function(res) {
+		this.Player.find({}, function(error,output) {
+			res.json(output);
+		});
+	}
+
+	this.getTeam = function(qteam, res) {
+		this.Player.find({team: qteam}, function(error,output) {
 			res.json(output);
 		});
 	}

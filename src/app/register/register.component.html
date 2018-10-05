@@ -19,6 +19,13 @@
               <div *ngIf="registerForm.controls.password.errors.required">Password is required</div>
             </div>
           </div>
+          <div class="pure-u-1-2 text-center">
+            <input type="password" class="form-control pure-input-1-1" formControlName="confirmpassword" id="confirmpwd" placeholder="password">
+            <div *ngIf="submitted && registerForm.controls.password.errors">
+              <div *ngIf="registerForm.controls.password.errors.required">Please confirm your password</div>
+              <div *ngIf="registerForm.controls.confirmpassword.errors?.MatchPassword">Passwords do not match</div>
+            </div>
+          </div>
         </div>
         <div class="pure-u-1 text-center">
           <button class="pure-button pure-input-1-16 pure-button-primary">Register</button>

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { UsersService } from '../users.service';
+import { PasswordValidation } from './password-validation';
 
 @Component({
   selector: 'app-register',
@@ -24,8 +25,11 @@ export class RegisterComponent implements OnInit {
 
   	this.registerForm = this.formBuilder.group({
   		email: ['', [Validators.required, Validators.email]],
-  		password: ['', Validators.required]
-  	})
+  		password: ['', Validators.required],
+      confirmpassword: ['', Validators.required]
+  	}, {
+      validator: PasswordValidation.MatchPassword
+    })
   }
 
   onSubmit() {

@@ -14,13 +14,13 @@ export class AuthenticationService {
   baseUrl: string = '/api/v1';
 
   public login(email: String, password: string) {
-	this.isLoggedIn.next(true);
-	return this.http.post(this.baseUrl + '/login', {email, password});
+	  this.isLoggedIn.next(true);
+	  return this.http.post(this.baseUrl + '/login', {email, password});
   }
   
   public logout() {
-	localStorage.clear();
-	this.isLoggedIn.next(false);
+	  localStorage.clear();
+	  this.isLoggedIn.next(false);
   }
 
   public isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);

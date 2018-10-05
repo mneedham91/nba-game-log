@@ -10,6 +10,7 @@ import { UsersService } from '../users.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  invalidLogin: boolean = false;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private usersService: UsersService) { }
 
@@ -24,6 +25,9 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.registerForm.invalid) {
+      return;
+    }
   	this.usersService.createUser(this.registerForm.value)
   	  .subscribe( data => {
   	  	this.router.navigate(['login']);

@@ -9,10 +9,10 @@ import { AuthenticationService } from '../authentication.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
   loginForm: FormGroup;
   submitted: boolean = false;
   invalidLogin: boolean = false;
+  
   constructor(
     private formBuilder: FormBuilder, 
     private router: Router, 
@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    localStorage.clear();
   	this.loginForm = this.formBuilder.group({
   		email: ['', Validators.required],
   		password: ['', Validators.required]

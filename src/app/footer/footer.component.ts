@@ -18,8 +18,7 @@ export class FooterComponent implements OnInit {
   }
 
   onLogOutClick() {
-    //localStorage.clear();
-	this.authService.logout();
+	  this.authService.logout();
     this.router.navigate(['']);
   }
 

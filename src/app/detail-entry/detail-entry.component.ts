@@ -12,7 +12,7 @@ import { User } from '../user';
 })
 export class DetailEntryComponent implements OnInit {
   id: string;
-  username: string;
+  entry_user: User;
   private sub: any;
   entry: Entry;
 
@@ -32,7 +32,7 @@ export class DetailEntryComponent implements OnInit {
     });
     this.usersService.getUserById(this.entry.userid)
       .subscribe( data => {
-        this.username = data['username'];
+        this.entry_user = data;
       })
   }
 

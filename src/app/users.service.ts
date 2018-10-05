@@ -10,6 +10,8 @@ export class UsersService {
   constructor(private http: HttpClient) { }
   //baseUrl: string = 'http://localhost:3000';
   baseUrl: string = '/api/v1';
+  headers = new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('token')});
+  options: {} = { headers: this.headers };
 
   getUsers() {
   	return this.http.get<User[]>(this.baseUrl + '/user');
@@ -24,7 +26,7 @@ export class UsersService {
   }
 
   updateUser(user: User) {
-  	return this.http.put(this.baseUrl + '/user/' + user._id, user);
+  	return this.http.put(this.baseUrl + '/user/' + user._id, user, this.options);
   }
 
   deleteUser(_id: string) {

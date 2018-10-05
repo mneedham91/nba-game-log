@@ -23,12 +23,11 @@ export class EntriesService {
   }
 
   createEntry(entry: Entry) {
-	entry.userid = localStorage.getItem('userid');
+	  entry.userid = localStorage.getItem('userid');
   	return this.http.post(this.baseUrl + '/entry', entry, this.options);
   }
 
   updateEntry(entry: Entry) {
-    console.log(entry);
   	return this.http.put(this.baseUrl + '/entry/' + entry._id, entry, this.options);
   }
 

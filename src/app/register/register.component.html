@@ -7,7 +7,7 @@
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="pure-form">
         <div class="pure-u-1">
           <div class="pure-u-1-2 text-center">
-            <input type="email" class="form-control pure-input-1" formControlName="email" id="email" placeholder="email">
+            <input type="email" class="form-control pure-input-1" formControlName="email" id="email" placeholder="email" email>
             <div *ngIf="submitted && loginForm.controls.email.errors">
               <div *ngIf="loginForm.controls.email.errors.required">Email is required</div>
             </div>

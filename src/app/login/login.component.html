@@ -9,21 +9,21 @@
           <div class="pure-control-group">
             <label for="email">Email</label>
             <input type="email" formControlName="email" id="email" placeholder="email">
-            <div *ngIf="submitted && loginForm.controls.email.errors">
+            <div *ngIf="submitted && loginForm.controls.email.errors" class="pure-form-message-inline">
               <div *ngIf="loginForm.controls.email.errors.required">Email is required</div>
             </div>
           </div>
           <div class="pure-control-group">
             <label for="pwd">Password</label>
             <input type="password" formControlName="password" id="pwd" placeholder="password">
-            <div *ngIf="submitted && loginForm.controls.password.errors">
+            <div *ngIf="submitted && loginForm.controls.password.errors" class="pure-form-message-inline">
               <div *ngIf="loginForm.controls.password.errors.required">Password is required</div>
             </div>
           </div>
           <div class="pure-u-1"></div>
           <div class="pure-u-1 text-center">
             <button class="pure-button pure-input-1-16 pure-button-primary">Login</button>
-            <div *ngIf="invalidLogin" class="error">
+            <div *ngIf="invalidLogin" class="pure-form-message-inline">
               <div>Invalid credentials.</div>
             </div>
           </div>

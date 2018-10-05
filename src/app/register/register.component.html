@@ -9,7 +9,7 @@
           <div class="pure-control-group">
             <label for="email">Email</label>
             <input type="email" formControlName="email" id="email" placeholder="Email">
-            <div *ngIf="submitted && registerForm.controls.email.errors">
+            <div *ngIf="submitted && registerForm.controls.email.errors" class="pure-form-message-inline">
               <div *ngIf="registerForm.controls.email.errors.required">Email is required</div>
               <div *ngIf="registerForm.controls.email.errors.email">Email format not recognized</div>
             </div>
@@ -17,21 +17,21 @@
           <div class="pure-control-group">
             <label for="pwd">Password</label>
             <input type="password" class="form-control pure-input-1-1" formControlName="password" id="pwd" placeholder="Password">
-            <div *ngIf="submitted && registerForm.controls.password.errors">
+            <div *ngIf="submitted && registerForm.controls.password.errors" class="pure-form-message-inline">
               <div *ngIf="registerForm.controls.password.errors.required">Password is required</div>
             </div>
           </div>
           <div class="pure-control-group">
             <label for="confirmpwd">Confirm Password</label>
             <input type="password" class="form-control pure-input-1-1" formControlName="confirmpassword" id="confirmpwd" placeholder="Confirm Password">
-            <div *ngIf="submitted && registerForm.controls.confirmpassword.errors">
+            <div *ngIf="submitted && registerForm.controls.confirmpassword.errors" class="pure-form-message-inline">
               <div *ngIf="registerForm.controls.confirmpassword.errors.required">Please confirm your password</div>
               <div *ngIf="registerForm.controls.confirmpassword.errors?.MatchPassword">Passwords do not match</div>
             </div>
           </div>
           <div class="pure-u-1 text-center">
             <button class="pure-button pure-input-1-16 pure-button-primary">Register</button>
-            <div *ngIf="invalid" class="error">
+            <div *ngIf="invalid" class="pure-form-message-inline">
               <div>Invalid input</div>
             </div>
           </div>

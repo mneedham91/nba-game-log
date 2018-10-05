@@ -13,15 +13,22 @@ var Factory = function(Schema,mongoose) {
 			length: Number,
 			privacy: String
 		}, { timestamps: {createdAt: 'created_at', updatedAt: 'updated_at'} });
-		this.Entry = mongoose.model('Entry',EntrySchema);
+		this.Entry = mongoose.model('Entry', EntrySchema);
 		UserSchema = new this.Schema({
 			email: String,
 			password: String,
 			username: String,
 			first_name: String,
-			last_name: String,
+			last_name: String
 		}, { timestamps: {createdAt: 'created_at', updatedAt: 'updated_at'} });
-		this.User = mongoose.model('User',UserSchema);
+		this.User = mongoose.model('User', UserSchema);
+		TagSchema = new this.Schema({
+			entryid: Schema.ObjectId,
+			playerid: String,
+			userid: Schema.ObjectId,
+			team: String
+		}, { timestamps: {createdAt: 'created_at', updatedAt: 'updated_at'} });
+		this.Tag = mongoose.model('Tag', TagSchema);
 	}
 	
 	this.login = function(qemail) {
@@ -42,6 +49,12 @@ var Factory = function(Schema,mongoose) {
 	
 	this.getEntry = function(id,res) {
 		this.Entry.findById(id, function(error,output) {
+			res.json(output);
+		});
+	}
+
+	this.getTag = function(id,res) {
+		this.Tag.findById(id, function(error,output) {
 			res.json(output);
 		});
 	}
@@ -79,6 +92,18 @@ var Factory = function(Schema,mongoose) {
 		});
 	}
 
+	this.createTag = function(params,res) {
+		var newTag = new this.Tag({
+			entryid: params.entryid,
+			playerid: params.playerid,
+			userid: params.userid,
+			team: params.team
+		});
+		newTag.save(function(error,output) {
+			return res.json(output);
+		});
+	}
+
 	this.updateUser = function(params,res) {
 		this.User.findOneAndUpdate({_id: params._id}, {
 			email: params.email,
@@ -89,9 +114,24 @@ var Factory = function(Schema,mongoose) {
 			return res.json(output);
 		});
 	}
+
+	this.updateTag = function(params,res) {
+		this.Tag.findOneAndUpdate({_id: params._id}, {
+			playerid: params.playerid,
+			team: params.team
+		}, function(error, output) {
+			return res.json(output);
+		});
+	}
 	
 	this.getUsers = function(query,res) {
 		this.User.find({}, function(error,output) {
+			res.json(output);
+		});
+	}
+
+	this.getTags = function(query,res) {
+		this.Tag.find({}, function(error,output) {
 			res.json(output);
 		});
 	}
@@ -116,6 +156,12 @@ var Factory = function(Schema,mongoose) {
 
 	this.deleteUser = function(id,res) {
 		this.User.findOneAndDelete({_id: id}, function(error, output) {
+			return res.json((output));
+		});
+	}
+
+	this.deleteTag = function(id,res) {
+		this.Tag.findOneAndDelete({_id: id}, function(error, output) {
 			return res.json((output));
 		});
 	}

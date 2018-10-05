@@ -54,7 +54,7 @@ app.post('/api/v1/login', function(req, res) {
 		} else if (result.password === password) {
 			var payload = {id: result._id};
 			var token = jwt.sign(payload, jwtOptions.secretOrKey);
-			res.json({success: true, token: token, userid: result._id, expiresIn: 120 });
+			res.json({success: true, token: token, user: result, expiresIn: 120 });
 		} else {
 			res.status(401).json({message: 'invalid password'});
 		}

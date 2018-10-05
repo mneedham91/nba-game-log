@@ -7,20 +7,20 @@
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="pure-form">
         <div class="pure-u-1">
           <div class="pure-u-1-3 text-center">
-            <input type="email" class="form-control pure-input-1" formControlName="email" id="email" placeholder="email">
+            <input type="email" class="form-control pure-input-1" formControlName="email" id="email" placeholder="Email">
             <div *ngIf="submitted && registerForm.controls.email.errors">
               <div *ngIf="registerForm.controls.email.errors.required">Email is required</div>
               <div *ngIf="registerForm.controls.email.errors.email">Email format not recognized</div>
             </div>
           </div>
           <div class="pure-u-1-3 text-center">
-            <input type="password" class="form-control pure-input-1-1" formControlName="password" id="pwd" placeholder="password">
+            <input type="password" class="form-control pure-input-1-1" formControlName="password" id="pwd" placeholder="Password">
             <div *ngIf="submitted && registerForm.controls.password.errors">
               <div *ngIf="registerForm.controls.password.errors.required">Password is required</div>
             </div>
           </div>
           <div class="pure-u-1-3 text-center">
-            <input type="password" class="form-control pure-input-1-1" formControlName="confirmpassword" id="confirmpwd" placeholder="password">
+            <input type="password" class="form-control pure-input-1-1" formControlName="confirmpassword" id="confirmpwd" placeholder="Confirm Password">
             <div *ngIf="submitted && registerForm.controls.confirmpassword.errors">
               <div *ngIf="registerForm.controls.confirmpassword.errors.required">Please confirm your password</div>
               <div *ngIf="registerForm.controls.confirmpassword.errors?.MatchPassword">Passwords do not match</div>

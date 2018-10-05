@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from './user';
 
 @Injectable({
@@ -30,6 +30,6 @@ export class UsersService {
   }
 
   deleteUser(_id: string) {
-  	return this.http.delete(this.baseUrl + '/user/' + _id);
+  	return this.http.delete(this.baseUrl + '/user/' + _id, this.options);
   }  
 }

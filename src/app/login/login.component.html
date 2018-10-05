@@ -8,14 +8,14 @@
         <fieldset>
           <div class="pure-control-group">
             <label for="email">Email</label>
-            <input type="email" class="pure-input-1" formControlName="email" id="email" placeholder="email">
+            <input type="email" formControlName="email" id="email" placeholder="email">
             <div *ngIf="submitted && loginForm.controls.email.errors">
               <div *ngIf="loginForm.controls.email.errors.required">Email is required</div>
             </div>
           </div>
           <div class="pure-control-group">
             <label for="pwd">Password</label>
-            <input type="password" class="pure-input-1" formControlName="password" id="pwd" placeholder="password">
+            <input type="password" formControlName="password" id="pwd" placeholder="password">
             <div *ngIf="submitted && loginForm.controls.password.errors">
               <div *ngIf="loginForm.controls.password.errors.required">Password is required</div>
             </div>

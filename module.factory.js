@@ -70,7 +70,7 @@ var Factory = function(Schema,mongoose) {
 		var newUser = new this.User({
 			email: params.email,
 			password: params.password,
-			username: '',
+			username: params.email,
 			first_name: '',
 			last_name: ''
 		});

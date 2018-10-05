@@ -121,6 +121,10 @@ app.delete('/api/v1/tag/:id', passport.authenticate('jwt', {session: false}), fu
 	var resp = factory.deleteTag(req.params.id,res);
 });
 
+app.get('/api/v1/player', function(req, res) {
+	var resp = factory.getTag(req.params,res);
+});
+
 app.use('/*',function(req, res) {
     res.sendfile(__dirname + '/dist/index.html');
 });

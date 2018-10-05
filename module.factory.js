@@ -29,6 +29,13 @@ var Factory = function(Schema,mongoose) {
 			team: String
 		}, { timestamps: {createdAt: 'created_at', updatedAt: 'updated_at'} });
 		this.Tag = mongoose.model('Tag', TagSchema);
+		PlayerSchema = new this.Schema({
+			nba_id: Number,
+			first_name: String,
+			last_name: String,
+			team: String
+		});
+		this.Player = mongoose.model('Player', PlayerSchema);
 	}
 	
 	this.login = function(qemail) {
@@ -163,6 +170,12 @@ var Factory = function(Schema,mongoose) {
 	this.deleteTag = function(id,res) {
 		this.Tag.findOneAndDelete({_id: id}, function(error, output) {
 			return res.json((output));
+		});
+	}
+
+	this.getPlayers = function(query,res) {
+		this.Player.find(query, function(error,output) {
+			res.json(output);
 		});
 	}
 }

@@ -29,13 +29,13 @@
               <div *ngIf="registerForm.controls.confirmpassword.errors?.MatchPassword">Passwords do not match</div>
             </div>
           </div>
-        </div>
-        <div class="pure-u-1 text-center">
-          <button class="pure-button pure-input-1-16 pure-button-primary">Register</button>
-          <div *ngIf="invalid" class="error">
-            <div>Invalid input</div>
+          <div class="pure-u-1 text-center">
+            <button class="pure-button pure-input-1-16 pure-button-primary">Register</button>
+            <div *ngIf="invalid" class="error">
+              <div>Invalid input</div>
+            </div>
           </div>
-        </div>
+        </fieldset>
       </form>
     </div>
   </div>

@@ -32,7 +32,7 @@ export class DetailEntryComponent implements OnInit {
     });
     this.usersService.getUserById(this.entry.userid)
       .subscribe( data => {
-        this.username = data.username;
+        this.username = data['username'];
       })
   }
 

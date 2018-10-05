@@ -97,6 +97,10 @@ app.delete('/api/v1/entry/:id', passport.authenticate('jwt', {session: false}), 
 	var resp = factory.deleteEntry(req.params.id,res);
 });
 
+app.delete('/api/v1/user/:id', passport.authenticate('jwt', {session: false}), function(req,res) {
+	var resp = factory.deleteUser(req.params.id,res);
+});
+
 app.use('/*',function(req, res) {
     res.sendfile(__dirname + '/dist/index.html');
 });

@@ -113,6 +113,12 @@ var Factory = function(Schema,mongoose) {
 			return res.json((output));
 		});
 	}
+
+	this.deleteUser = function(id,res) {
+		this.User.findOneAndDelete({_id: id}, function(error, output) {
+			return res.json((output));
+		});
+	}
 }
 
 module.exports = Factory;

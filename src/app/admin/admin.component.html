@@ -19,9 +19,9 @@
         </thead>
         <tbody>
         <tr *ngFor="let user of users">
-          <td>{{ user.home }}</td>
-          <td>{{ user.away }}</td>
-          <td>{{ user.date }}</td>
+          <td>{{ user._id }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.username }}</td>
           <td>{{ user.first_name }}</td>
           <td>{{ user.last_name }}</td>
           <td class="pure-button-group" role="group">

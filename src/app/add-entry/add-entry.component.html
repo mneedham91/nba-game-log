@@ -15,7 +15,7 @@
           <input type="date" formControlName="date" placeholder="Date" name="date" class="pure-input-1-8" id="date">
         </div>
         <div class="pure-u-1-2 text-center">
-          <p>Roughly how many quarters of the game did you watch?</p>
+          <div>Roughly how many quarters of the game did you watch?</div>
           <select formControlName="length" name="length" class="pure-input-1-8" id="length">
             <option *ngFor="let x of lengthOptions" value="{{x}}">{{x}}</option>
           </select>

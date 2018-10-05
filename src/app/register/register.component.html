@@ -10,6 +10,7 @@
             <input type="email" class="form-control pure-input-1" formControlName="email" id="email" placeholder="email">
             <div *ngIf="submitted && registerForm.controls.email.errors">
               <div *ngIf="registerForm.controls.email.errors.required">Email is required</div>
+              <div *ngIf="registerForm.controls.email.errors.email">Email format not recognized</div>
             </div>
           </div>
           <div class="pure-u-1-2 text-center">

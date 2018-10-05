@@ -19,6 +19,7 @@ import { FooterComponent } from './footer/footer.component';
 import { DetailUserComponent } from './detail-user/detail-user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { AdminComponent } from './admin/admin.component';
+import { PlayerSelectComponent } from './player-select/player-select.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { AdminComponent } from './admin/admin.component';
     FooterComponent,
     DetailUserComponent,
     EditUserComponent,
-    AdminComponent
+    AdminComponent,
+    PlayerSelectComponent
   ],
   imports: [
     BrowserModule,

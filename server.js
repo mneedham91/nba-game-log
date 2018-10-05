@@ -101,6 +101,26 @@ app.delete('/api/v1/user/:id', passport.authenticate('jwt', {session: false}), f
 	var resp = factory.deleteUser(req.params.id,res);
 });
 
+app.get('/api/v1/tag/:id', function(req, res) {
+	var resp = factory.getTag(req.params.id,res);
+});
+
+app.get('/api/v1/tag', function(req, res) {
+	var resp = factory.getTag({},res);
+});
+
+app.post('/api/v1/tag', function(req, res) {
+	var resp = factory.createTag(req.body, res);
+});
+
+app.put('/api/v1/tag/:id', passport.authenticate('jwt', {session: false}), function(req, res) {
+	var resp = factory.updateTag(req.body, res);
+});
+
+app.delete('/api/v1/tag/:id', passport.authenticate('jwt', {session: false}), function(req,res) {
+	var resp = factory.deleteTag(req.params.id,res);
+});
+
 app.use('/*',function(req, res) {
     res.sendfile(__dirname + '/dist/index.html');
 });

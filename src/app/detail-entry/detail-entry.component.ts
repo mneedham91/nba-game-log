@@ -34,16 +34,6 @@ export class DetailEntryComponent implements OnInit {
             this.entry_user = data;
           });
     });
-    /*
-  	this.entriesService.getEntryById(this.id)
-      .subscribe( data => {
-        this.entry = data;
-    });
-    this.usersService.getUserById(this.entry.userid)
-      .subscribe( data => {
-        this.entry_user = data;
-      })
-    */
   }
 
 }

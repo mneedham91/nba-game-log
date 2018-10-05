@@ -2,12 +2,12 @@
   <div class="pure-u-1-1">
     <h2 class="text-center">View Entry</h2>
     <div class="pure-u-1-1">
-		<div><p><b>Entry by </b>{{ entry_user?.username }}</p></div>
-    	<div><p><b>Home team: </b>{{ entry?.home }}</p></div>
-    	<div><p><b>Away team: </b>{{ entry?.away }}</p></div>
-      <div><p><b>Date: </b>{{ entry?.date | date:'shortDate' }}</p></div>
-      <div><p><b>Viewing length: </b>{{ entry?.length }} quarters</p></div>
-    	<div><p><b>Notes: </b>{{ entry?.notes }}</p></div>
-    </div>
+  		<div><p><b>Entry by </b><a [routerLink]="['/detail-user/:entry_user._id']">{{ entry_user?.username }}</a></p></div>
+      	<div><p><b>Home team: </b>{{ entry?.home }}</p></div>
+      	<div><p><b>Away team: </b>{{ entry?.away }}</p></div>
+        <div><p><b>Date: </b>{{ entry?.date | date:'shortDate' }}</p></div>
+        <div><p><b>Viewing length: </b>{{ entry?.length }} quarters</p></div>
+      	<div><p><b>Notes: </b>{{ entry?.notes }}</p></div>
+      </div>
   </div>
 </div>

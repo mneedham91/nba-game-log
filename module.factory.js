@@ -174,7 +174,7 @@ var Factory = function(Schema,mongoose) {
 	}
 
 	this.getPlayers = function(query,res) {
-		this.Player.find({query}, function(error,output) {
+		this.Player.find(query, function(error,output) {
 			res.json(output);
 		});
 	}

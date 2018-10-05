@@ -61,28 +61,12 @@ app.post('/api/v1/login', function(req, res) {
 	});
 });
 
-app.get('/api/v1/entry', passport.authenticate('jwt', {session: false}), function(req, res) {
-	var resp = factory.getEntries({},res);
-});
-
 app.get('/api/v1/entry/:id', function(req, res) {
 	var resp = factory.getEntry(req.params.id,res);
 });
 
-app.post('/api/v1/user', function(req, res) {
-	var resp = factory.createUser(req.body, res);
-});
-
-app.put('/api/v1/user/:id', passport.authenticate('jwt', {session: false}), function(req, res) {
-	var resp = factory.updateUser(req.body, res);
-});
-
-app.get('/api/v1/user', function(req, res) {
-	var resp = factory.getUsers({},res);
-});
-
-app.get('/api/v1/user/:id', function(req, res) {
-	var resp = factory.getUser(req.params.id,res);
+app.get('/api/v1/entry', passport.authenticate('jwt', {session: false}), function(req, res) {
+	var resp = factory.getEntries({},res);
 });
 
 app.post('/api/v1/entry', passport.authenticate('jwt', {session: false}), function(req, res) {
@@ -95,6 +79,22 @@ app.put('/api/v1/entry/:id', passport.authenticate('jwt', {session: false}), fun
 
 app.delete('/api/v1/entry/:id', passport.authenticate('jwt', {session: false}), function(req,res) {
 	var resp = factory.deleteEntry(req.params.id,res);
+});
+
+app.get('/api/v1/user/:id', function(req, res) {
+	var resp = factory.getUser(req.params.id,res);
+});
+
+app.get('/api/v1/user', function(req, res) {
+	var resp = factory.getUsers({},res);
+});
+
+app.post('/api/v1/user', function(req, res) {
+	var resp = factory.createUser(req.body, res);
+});
+
+app.put('/api/v1/user/:id', passport.authenticate('jwt', {session: false}), function(req, res) {
+	var resp = factory.updateUser(req.body, res);
 });
 
 app.delete('/api/v1/user/:id', passport.authenticate('jwt', {session: false}), function(req,res) {

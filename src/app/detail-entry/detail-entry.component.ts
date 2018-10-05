@@ -4,6 +4,7 @@ import { EntriesService } from '../entries.service';
 import { UsersService } from '../users.service';
 import { Entry } from '../entry';
 import { User } from '../user';
+import { of } from "rxjs";
 
 @Component({
   selector: 'app-detail-entry',
@@ -26,6 +27,17 @@ export class DetailEntryComponent implements OnInit {
   	this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
     });
+    this.entriesService.getEntryById(this.id)
+      .flatMap(e => {
+        this.entry = e;
+        return of(e);
+      })
+      .flatMap(e => this.usersService.getUserById(this.entry.userid))
+      .map(u => {
+        this.entry_user = u;
+      })
+      .subscribe(); 
+    /*
   	this.entriesService.getEntryById(this.id)
       .subscribe( data => {
         this.entry = data;
@@ -34,6 +46,7 @@ export class DetailEntryComponent implements OnInit {
       .subscribe( data => {
         this.entry_user = data;
       })
+    */
   }
 
 }

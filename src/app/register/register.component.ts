@@ -11,6 +11,7 @@ import { UsersService } from '../users.service';
 })
 export class RegisterComponent implements OnInit {
   invalid: boolean = false;
+  submitted: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder, 
@@ -28,6 +29,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
+    this.submitted = true;
     if (this.registerForm.invalid) {
       return;
     }

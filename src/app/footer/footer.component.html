@@ -5,10 +5,13 @@
 		<div class="pure-u-1">
 			<!-- if logged IN -->
 			<div *ngIf="loggedIn" class="pure-u-1-1">
-				<div class="pure-u-1-2 text-center">
+				<div class="pure-u-1-3 text-center">
 					<button routerLink="/entries" class="pure-button">Home</button>
 				</div>
-				<div class="pure-u-1-2 text-center">
+				<div class="pure-u-1-3 text-center">
+					You are logged in as {{ username }}
+				</div>
+				<div class="pure-u-1-3 text-center">
 					<button *ngIf="loggedIn" (click)="onLogOutClick()" class="pure-button">Logout</button>
 				</div>
 			</div>

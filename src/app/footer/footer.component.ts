@@ -10,11 +10,15 @@ import { AuthenticationService } from '../authentication.service';
 export class FooterComponent implements OnInit {
   loggedIn: boolean;
   token: string;
+  username: string;
 
   constructor(private router: Router, private authService: AuthenticationService) {
 	  this.authService.isLoggedIn.subscribe( value => {
 		  this.loggedIn = value;
 	  });
+    this.authService.username.subscribe( value => {
+      this.username = value;
+    });
   }
 
   onLogOutClick() {

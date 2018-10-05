@@ -23,6 +23,13 @@ export class AuthenticationService {
 	  this.isLoggedIn.next(false);
   }
 
+  public setUsername(username) {
+    localStorage.setItem('username', username);
+    this.username.next(username);
+  }
+
   public isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
+  public username: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
 }

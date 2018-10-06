@@ -1,6 +1,6 @@
 <div class="pure-u-1">
-	<div *ngFor="let player of roster" class="pure-u-1">
-		{{ player.last_name}}, {{ player.first_name }}
+	<div *ngFor="let player of roster" class="pure-u-1" ng-click="onClick(player._id)">
+		<b *ngIf="player.selected">{{ player.last_name}}, {{ player.first_name }}</b>
 	</div>
 </div>
 <div class="pure-u-1"><hr /></div>

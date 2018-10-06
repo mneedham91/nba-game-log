@@ -15,10 +15,14 @@ export class PlayerSelectComponent implements OnChanges {
   constructor(private playersService: PlayersService) { }
 
   ngOnChanges(changes: SimpleChanges) {
-  	console.log(changes);
   	this.playersService.getTeam(this.team).subscribe( data => {
   		this.roster = data;
   	});
+  }
+
+  onClick(pId) {
+  	let pickedPlayerIndex = this.roster.findIndex(p => p._id == pId);
+  	this.roster[pickedPlayerIndex].selected = true;
   }
 
 }

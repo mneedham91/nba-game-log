@@ -26,6 +26,7 @@ export class PlayerSelectComponent implements OnChanges {
   onClick(pId) {
   	let pickedPlayerIndex = this.roster.findIndex(p => p._id == pId);
   	this.roster[pickedPlayerIndex].selected = !this.roster[pickedPlayerIndex].selected;
+  	console.log('to_emit',this.roster[pickedPlayerIndex]._id)
   	this.notify.emit(this.roster[pickedPlayerIndex]._id);
   }
 

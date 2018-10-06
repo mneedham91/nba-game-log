@@ -2,4 +2,10 @@
   player-select works!
 </div>
 {{ team }}
+<ul>
+	<li *ngFor="let player of roster">
+		{{ player }}
+		{{ player.last_name}}, {{ player.first_name }}
+	</li>
+</ul>
 <div><hr /></div>

@@ -8,6 +8,9 @@ import { Player } from '../player';
   styleUrls: ['./player-select.component.css']
 })
 export class PlayerSelectComponent implements OnInit {
+  @Input() homeTeam: string;
+  @Input() awayTeam: string;
+/*
   @Input() 
   set homeTeam(homeTeam: string) {
   	this.homeTeam = homeTeam;
@@ -17,7 +20,9 @@ export class PlayerSelectComponent implements OnInit {
   set awayTeam(awayTeam: string) {
   	this.awayTeam = awayTeam;
   }
-  get awayTeam(): string { return this.awayTeam}
+  get awayTeam(): string { return this.awayTeam }
+*/
+
   homeRoster: Player[];
   awayRoster: Player[];
 

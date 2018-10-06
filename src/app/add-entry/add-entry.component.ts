@@ -14,6 +14,8 @@ import { TeamsService } from '../teams.service';
 export class AddEntryComponent implements OnInit {
   lengthOptions: Array<number>;
   public teams: Team[];
+  home: string;
+  away: string;
 
   constructor(
     private formBuilder: FormBuilder, 

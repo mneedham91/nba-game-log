@@ -46,6 +46,8 @@ export class AddEntryComponent implements OnInit {
   onSubmit() {
   	this.entriesService.createEntry(this.addForm.value)
   	  .subscribe( data => {
+        console.log('entry created',data);
+        console.log('entry created ID',data['_id']);
   	  	this.router.navigate(['entries']);
   	  });
   }

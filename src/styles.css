@@ -28,6 +28,10 @@ body {
 	text-align: center;
 }
 
+.selected {
+	background-color: #229387;
+}
+
 .l-box {
 	padding: 2em;
 }

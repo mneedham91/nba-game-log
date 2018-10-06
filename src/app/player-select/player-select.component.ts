@@ -1,4 +1,4 @@
-import { Component, OnChanges, Input, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, Input, Output, SimpleChanges, EventEmitter } from '@angular/core';
 import { PlayersService } from '../players.service';
 import { Player } from '../player';
 import { FormGroup, ControlContainer } from '@angular/forms';
@@ -10,6 +10,7 @@ import { FormGroup, ControlContainer } from '@angular/forms';
 })
 export class PlayerSelectComponent implements OnChanges {
   @Input() team: string;
+  @Output() notify: EventEmitter<string> = new EventEmitter<string>();
   roster: Player[];
 
   constructor(private playersService: PlayersService) { }
@@ -23,9 +24,9 @@ export class PlayerSelectComponent implements OnChanges {
   }
 
   onClick(pId) {
-  	console.log('clicked',pId);
   	let pickedPlayerIndex = this.roster.findIndex(p => p._id == pId);
   	this.roster[pickedPlayerIndex].selected = !this.roster[pickedPlayerIndex].selected;
+  	this.notify.emit(this.roster[pickedPlayerIndex]._id);
   }
 
 }

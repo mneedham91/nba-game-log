@@ -6,6 +6,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { Team } from '../team';
 import { TeamsService } from '../teams.service';
+import { TagsService } from '../tags.service';
+import { Tag } from '../tag';
 
 @Component({
   selector: 'app-edit-entry',
@@ -19,13 +21,15 @@ export class EditEntryComponent implements OnInit {
   editForm: FormGroup;
   lengthOptions: Array<number>;
   public teams: Team[];
+  players: string[] = [];
 
   constructor(
     private route: ActivatedRoute, 
     private formBuilder: FormBuilder, 
     private router: Router, 
     private entriesService: EntriesService,
-    private teamsService: TeamsService
+    private teamsService: TeamsService,
+    private tagsService: TagsService
   ) { 
     this.lengthOptions = [0, 1, 2, 3, 4];
   }
@@ -54,6 +58,15 @@ export class EditEntryComponent implements OnInit {
   	  	this.editForm.setValue(data);
         this.editForm.controls['_id'].setValue(this.id);
   	  });
+      /*
+    this.tagsService.getTagsByEntry(this.id)
+      .subscribe( data => {
+        let tags: Tag[] = data;
+        for (let i = 0; i < tags.length; i++) {
+          this.players.push(tags[i].playerid)
+        }
+      });
+      */
   }
 
   onSubmit() {
@@ -65,6 +78,17 @@ export class EditEntryComponent implements OnInit {
   	  	error => {
   	  		alert(error);
   	  	});
+  }
+
+  onNotifyAdd(message: string) {
+    this.players.push(message);
+    console.log('players',this.players);
+  }
+
+  onNotifyRemove(message: string) {
+    let index = this.players.indexOf(message);
+    if (index > -1) { this.players.splice(index, 1); }
+    console.log('players',this.players);
   }
 
 }

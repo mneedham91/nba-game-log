@@ -1,0 +1,6 @@
+<div class="pure-u-1">
+	<div [ngClass]="{'selected': player.selected}" *ngFor="let player of roster" class="pure-u-1" (click)="onClick(player._id)">
+		{{ player.last_name}}, {{ player.first_name }}
+	</div>
+</div>
+<div class="pure-u-1"><hr /></div>

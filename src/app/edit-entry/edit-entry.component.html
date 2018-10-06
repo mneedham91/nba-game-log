@@ -23,8 +23,16 @@
         <div class="pure-u-1">
           <div></div>
         </div>
-        <div class="pure-u-1">
-          <textarea formControlName="notes" name="notes" class="pure-input-1" id="notes"></textarea>
+        <div class="pure-u-2-3">
+          <textarea formControlName="notes" placeholder="Notes" name="notes" class="pure-input-1" id="notes"></textarea>
+        </div>
+        <div class="pure-u-1-3">
+          <div class="pure-u-1-24"></div>
+          <div class="pure-u-11-12">
+            <app-player-select-edit (notifyAdd)='onNotifyAdd($event)' (notifyRemove)='onNotifyRemove($event)' home="true"></app-player-select>
+            <app-player-select-edit (notifyAdd)='onNotifyAdd($event)' (notifyRemove)='onNotifyRemove($event)' home="false"></app-player-select>
+          </div>
+          <div class="pure-u-1-24"></div>
         </div>
       </form>
     </div>

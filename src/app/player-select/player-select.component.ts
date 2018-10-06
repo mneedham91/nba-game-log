@@ -15,9 +15,11 @@ export class PlayerSelectComponent implements OnChanges {
   constructor(private playersService: PlayersService) { }
 
   ngOnChanges(changes: SimpleChanges) {
-  	this.playersService.getTeam(this.team).subscribe( data => {
-  		this.roster = data;
-  	});
+  	if (this.team) {
+  	  this.playersService.getTeam(this.team).subscribe( data => {
+  	    this.roster = data;
+  	  });
+  	}
   }
 
   onClick(pId) {

@@ -1,6 +1,6 @@
 <div class="pure-u-1">
 	<div [ngStyle]="'font-weight':player.selected ? 'bold' : 'normal'" *ngFor="let player of roster" class="pure-u-1" ng-click="onClick(player._id)">
-		<div *ngIf="player.selected">{{ player.last_name}}, {{ player.first_name }}</b>
+		{{ player.last_name}}, {{ player.first_name }}
 	</div>
 </div>
 <div class="pure-u-1"><hr /></div>

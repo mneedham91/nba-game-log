@@ -50,7 +50,7 @@ export class AddEntryComponent implements OnInit {
   	  });
   }
 
-  onNotify(message: string):void {
+  onNotify(message: string) {
     console.log('message', message);
     this.players.push(message);
     console.log('players',this.players);

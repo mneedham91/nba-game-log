@@ -16,6 +16,10 @@ export class TagsService {
   	return this.http.get<Tag[]>(this.baseUrl + '/tag', this.options);
   }
 
+  getTagsByEntry(_id: string) {
+    return this.http.get<Tag[]>(this.baseUrl + '/tag/entry/' + _id, this.options);
+  }
+
   getTagById(_id: string) {
   	return this.http.get<Tag>(this.baseUrl + '/tag/'+ _id);
   }

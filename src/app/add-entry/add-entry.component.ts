@@ -14,7 +14,7 @@ import { TeamsService } from '../teams.service';
 export class AddEntryComponent implements OnInit {
   lengthOptions: Array<number>;
   public teams: Team[];
-  public players: String[];
+  players: String[];
 
   constructor(
     private formBuilder: FormBuilder, 
@@ -52,7 +52,7 @@ export class AddEntryComponent implements OnInit {
 
   onNotify(message: string) {
     console.log('message', message);
-    //this.players.push(message);
+    this.players.push(message);
     //console.log('players',this.players);
   }
 

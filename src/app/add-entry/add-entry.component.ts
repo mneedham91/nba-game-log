@@ -50,9 +50,14 @@ export class AddEntryComponent implements OnInit {
   	  });
   }
 
-  onNotify(message: string) {
-    console.log('message', message);
+  onNotifyAdd(message: string) {
     this.players.push(message);
+    console.log('players',this.players);
+  }
+
+  onNotifyRemove(message: string) {
+    let index = this.players.indexOf(message);
+    if (index > -1) { this.players.splice(index, 1); }
     console.log('players',this.players);
   }
 

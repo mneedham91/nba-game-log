@@ -10,7 +10,8 @@ import { FormGroup, ControlContainer } from '@angular/forms';
 })
 export class PlayerSelectComponent implements OnChanges {
   @Input() team: string;
-  @Output() notify: EventEmitter<string> = new EventEmitter<string>();
+  @Output() notifyAdd: EventEmitter<string> = new EventEmitter<string>();
+  @Output() notifyRemove: EventEmitter<string> = new EventEmitter<string>();
   roster: Player[];
 
   constructor(private playersService: PlayersService) { }
@@ -26,7 +27,11 @@ export class PlayerSelectComponent implements OnChanges {
   onClick(pId) {
   	let pickedPlayerIndex = this.roster.findIndex(p => p._id == pId);
   	this.roster[pickedPlayerIndex].selected = !this.roster[pickedPlayerIndex].selected;
-  	this.notify.emit(this.roster[pickedPlayerIndex]._id);
+  	if (this.roster[pickedPlayerIndex].selected) {
+  		this.notifyAdd.emit(this.roster[pickedPlayerIndex]._id);
+  	} else {
+  		this.notifyRemove.emit(this.roster[pickedPlayerIndex]._id);
+  	}
   }
 
 }

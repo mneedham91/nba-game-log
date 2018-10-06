@@ -106,7 +106,7 @@ app.get('/api/v1/tag/:id', function(req, res) {
 });
 
 app.get('/api/v1/tag', function(req, res) {
-	var resp = factory.getTag({},res);
+	var resp = factory.getTags({},res);
 });
 
 app.post('/api/v1/tag', function(req, res) {

@@ -5,6 +5,7 @@ import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Team } from '../team';
 import { TeamsService } from '../teams.service';
+import { TagsService } from '../tags.service';
 
 @Component({
   selector: 'app-add-entry',
@@ -20,7 +21,8 @@ export class AddEntryComponent implements OnInit {
     private formBuilder: FormBuilder, 
     private router: Router, 
     private entriesService: EntriesService,
-    private teamsService: TeamsService) 
+    private teamsService: TeamsService,
+    private tagsService: TagsService) 
   {
     this.lengthOptions = [0, 1, 2, 3, 4];
   }

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Entry } from './entry';
+import { User } from './user';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +10,7 @@ import { Entry } from './entry';
 
 export class EntriesService {
 	
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private authService: AuthenticationService) { }
   //baseUrl: string = 'http://localhost:3000';
   baseUrl: string = '/api/v1';
   headers = new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('token')});

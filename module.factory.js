@@ -145,6 +145,12 @@ var Factory = function(Schema,mongoose) {
 			res.json(output);
 		});
 	}
+
+	this.getTagsByEntry = function(entryId,res) {
+		this.Tag.find({entryid: entryId}, function(error,output) {
+			res.json(output);
+		});
+	}
 	
 	this.createTag = function(params,res) {
 		var newTag = new this.Tag({

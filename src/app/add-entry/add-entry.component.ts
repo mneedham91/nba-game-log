@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EntriesService } from '../entries.service';
 import { first } from 'rxjs/operators';
@@ -14,8 +14,6 @@ import { TeamsService } from '../teams.service';
 export class AddEntryComponent implements OnInit {
   lengthOptions: Array<number>;
   public teams: Team[];
-  home: string;
-  away: string;
 
   constructor(
     private formBuilder: FormBuilder, 

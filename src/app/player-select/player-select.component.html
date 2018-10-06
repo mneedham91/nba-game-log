@@ -1,11 +1,6 @@
-<div>
-  player-select works!
-</div>
-{{ team }}
-<ul>
-	<li *ngFor="let player of roster">
-		{{ player }}
+<div class="pure-u-1">
+	<div *ngFor="let player of roster" class="pure-u-1">
 		{{ player.last_name}}, {{ player.first_name }}
-	</li>
-</ul>
-<div><hr /></div>
+	</div>
+</div>
+<div class="pure-u-1"><hr /></div>

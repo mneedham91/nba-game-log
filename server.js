@@ -65,7 +65,7 @@ app.get('/api/v1/entry/:id', function(req, res) {
 	var resp = factory.getEntry(req.params.id,res);
 });
 
-app.get('/api/v1/entry', passport.authenticate('jwt', {session: false}), function(req, res) {
+app.get('/api/v1/entry', function(req, res) {
 	var resp = factory.getEntries({},res);
 });
 

@@ -129,6 +129,10 @@ app.get('/api/v1/player', function(req, res) {
 	var resp = factory.getPlayers(res);
 });
 
+app.get('/api/v1/player/:id', function(req, res) {
+	var resp = factory.getPlayer(req.params.id,res);
+});
+
 app.get('/api/v1/team/:team', function(req, res) {
 	var resp = factory.getTeam(req.params.team, res);
 });

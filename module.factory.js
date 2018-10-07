@@ -173,9 +173,15 @@ var Factory = function(Schema,mongoose) {
 		});
 	}
 
-	this.deleteTag = function(id,res) {
+	this.deleteTag = function(id, res) {
 		this.Tag.findOneAndDelete({_id: id}, function(error, output) {
 			return res.json((output));
+		});
+	}
+
+	this.getPlayer = function(id, res) {
+		this.Player.findById(id, function(error,output) {
+			res.json(output);
 		});
 	}
 

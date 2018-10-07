@@ -12,7 +12,7 @@
       <div class="pure-u-1"><p><b>Date: </b>{{ entry?.date | date:'shortDate' }}</p></div>
       <div class="pure-u-1"><p><b>Viewing length: </b>{{ entry?.length }} quarters</p></div>
       <div class="pure-u-1"><p><b>Notes: </b>{{ entry?.notes }}</p></div>
-      <div class="pure-u-1"><p><b>Players tagged: </b><div *ngFor="let player of players">{{ player?.last_name }}, {{ player?.first_name }}</div></p></div>
+      <div class="pure-u-1"><b>Players tagged: </b><div *ngFor="let player of players">{{ player?.last_name }}, {{ player?.first_name }}</div></div>
     </div>
   </div>
 </div>

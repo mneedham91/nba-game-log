@@ -98,7 +98,7 @@ var Factory = function(Schema,mongoose) {
 		});
 	}
 
-	this.getQuartersCount = function(id,res) {
+	this.getQuartersSum = function(id,res) {
 		this.Entry.aggregate( [ { $match: {userid: id} }, { $group: { _id: null, total: {$sum: "$length"} } } ], 
 			function(error, output) {
 				return res.json(output);

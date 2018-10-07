@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from './user';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class AuthenticationService {
 
   constructor(private http: HttpClient) { }
-  //baseUrl: string = 'http://localhost:3000';
-  baseUrl: string = '/api/v1';
+  baseUrl: string = environment.baseUrl;
 
   public login(email: String, password: string) {
 	  this.isLoggedIn.next(true);

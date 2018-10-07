@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Entry } from './entry';
 import { User } from './user';
 import { AuthenticationService } from './authentication.service';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,7 @@ import { AuthenticationService } from './authentication.service';
 export class EntriesService {
 	
   constructor(private http: HttpClient, private authService: AuthenticationService) { }
-  //baseUrl: string = 'http://localhost:3000';
-  baseUrl: string = '/api/v1';
+  baseUrl: string = environment.baseUrl;
   headers = new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('token')});
   options: {} = { headers: this.headers };
 

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Tag } from './tag';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import { Tag } from './tag';
 export class TagsService {
 
   constructor(private http: HttpClient) { }
-  baseUrl: string = '/api/v1';
+  baseUrl: string = environment.baseUrl;
   headers = new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('token')});
   options: {} = { headers: this.headers };
 

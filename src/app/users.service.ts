@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from './user';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +9,7 @@ import { User } from './user';
 export class UsersService {
 
   constructor(private http: HttpClient) { }
-  //baseUrl: string = 'http://localhost:3000';
-  baseUrl: string = '/api/v1';
+  baseUrl: string = environment.baseUrl;
   headers = new HttpHeaders({'Authorization': 'Bearer ' + localStorage.getItem('token')});
   options: {} = { headers: this.headers };
 

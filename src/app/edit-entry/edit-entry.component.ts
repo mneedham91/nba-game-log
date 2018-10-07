@@ -69,6 +69,7 @@ export class EditEntryComponent implements OnInit {
   	this.entriesService.updateEntry(this.editForm.value)
   	  .subscribe(
   	  	data => {
+          this.tagsService.updateTags(this.id, this.players);
   	  		this.router.navigate(['detail-entry', this.id]);
   	  	},
   	  	error => {

@@ -93,7 +93,7 @@ var Factory = function(Schema,mongoose) {
 	}
 
 	this.getGamesCount = function(id,res) {
-		this.count({userid: id}, function(error, output) {
+		this.Entry.count({userid: id}, function(error, output) {
 			return res.json(output);
 		});
 	}

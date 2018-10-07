@@ -33,7 +33,7 @@ export class PlayerSelectEditComponent implements OnInit {
       	let tags: Tag[] = data;
         if (tags) {
           for (let i = 0; i < tags.length; i++) {
-            this.selectedPlayers.push(tags[i].playerid)
+            this.selectedPlayers.push(tags[i].playerid);
           }
         }
         this.playersService.getTeam(this.team).subscribe( data => {

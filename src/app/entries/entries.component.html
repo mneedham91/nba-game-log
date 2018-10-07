@@ -24,8 +24,8 @@
           <td>{{ entry.date | date:'shortDate' }}</td>
           <td class="pure-button-group" role="group">
             <button class="pure-button" (click)="viewEntry(entry)">View</button>
-            <button class="pure-button" (click)="editEntry(entry)">Edit</button>
-            <button class="button-error pure-button" (click)="deleteEntry(entry)">Delete</button>
+            <button *ngIf="loggedIn" class="pure-button" (click)="editEntry(entry)">Edit</button>
+            <button *ngIf="loggedIn" class="button-error pure-button" (click)="deleteEntry(entry)">Delete</button>
         </tr>
         </tbody>
       </table>

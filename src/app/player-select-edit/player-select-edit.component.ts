@@ -19,7 +19,7 @@ export class PlayerSelectEditComponent implements OnInit {
   public home: boolean;
   id: string;
   private sub: any;
-  team: string;
+  public team: string;
 
   constructor(
   	private playersService: PlayersService, 
@@ -37,37 +37,19 @@ export class PlayerSelectEditComponent implements OnInit {
             this.selectedPlayers.push(tags[i].playerid)
           }
         }
+        this.playersService.getTeam(this.team).subscribe( data => {
+          this.roster = data;
+          for (let i = 0; i < this.roster.length; i++) {
+            for (let z = 0; i < this.selectedPlayers.length; z++) {
+              if (this.roster[i]._id == this.selectedPlayers[z]) {
+                this.roster[i].selected = true;
+              }
+            }
+          }
+        });
       });
-      this.entriesService.getEntryById(this.id).subscribe( data => {
-      	if (this.home) {
-      	  this.team = data.home;
-      	  this.playersService.getTeam(this.team).subscribe( data => {
-  	        this.roster = data;
-  	        for (let i = 0; i < this.roster.length; i++) {
-  	          for (let z = 0; i < this.selectedPlayers.length; z++) {
-  	          	if (this.roster[i]._id == this.selectedPlayers[z]) {
-  	          		this.roster[i].selected = true;
-  	          	}
-  	          }
-  	        }
-  	      });
-      	} else {
-      	  this.team = data.away;
-      	  this.playersService.getTeam(this.team).subscribe( data => {
-  	        this.roster = data;
-  	        for (let i = 0; i < this.roster.length; i++) {
-  	          for (let z = 0; i < this.selectedPlayers.length; z++) {
-  	          	if (this.roster[i]._id == this.selectedPlayers[z]) {
-  	          		this.roster[i].selected = true;
-  	          	}
-  	          }
-  	        }
-  	  	  });
-      	}
-      });
+      
     });
-
-    
   }
 
   onClick(pId) {

@@ -29,8 +29,8 @@
         <div class="pure-u-1-3">
           <div class="pure-u-1-24"></div>
           <div class="pure-u-11-12">
-            <app-player-select-edit (notifyAdd)='onNotifyAdd($event)' (notifyRemove)='onNotifyRemove($event)' [team]="entry.home"></app-player-select-edit>
-            <app-player-select-edit (notifyAdd)='onNotifyAdd($event)' (notifyRemove)='onNotifyRemove($event)' [team]="entry.away"></app-player-select-edit>
+            <app-player-select-edit (notifyAdd)='onNotifyAdd($event)' (notifyRemove)='onNotifyRemove($event)' [team]="entry?.home"></app-player-select-edit>
+            <app-player-select-edit (notifyAdd)='onNotifyAdd($event)' (notifyRemove)='onNotifyRemove($event)' [team]="entry?.away"></app-player-select-edit>
           </div>
           <div class="pure-u-1-24"></div>
         </div>

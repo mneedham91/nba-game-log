@@ -53,6 +53,13 @@ export class PlayerSelectEditComponent implements OnInit {
       	  this.team = data.away;
       	  this.playersService.getTeam(this.team).subscribe( data => {
   	        this.roster = data;
+  	        for (let i = 0; i < this.roster.length; i++) {
+  	          for (let z = 0; i < this.selectedPlayers.length; z++) {
+  	          	if (this.roster[i]._id == this.selectedPlayers[z]) {
+  	          		this.roster[i].selected = true;
+  	          	}
+  	          }
+  	        }
   	  	  });
       	}
       });

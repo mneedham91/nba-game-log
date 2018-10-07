@@ -21,6 +21,7 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { AdminComponent } from './admin/admin.component';
 import { PlayerSelectComponent } from './player-select/player-select.component';
 import { PlayerSelectEditComponent } from './player-select-edit/player-select-edit.component';
+import { DashboardTeamComponent } from './dashboard-team/dashboard-team.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { PlayerSelectEditComponent } from './player-select-edit/player-select-ed
     EditUserComponent,
     AdminComponent,
     PlayerSelectComponent,
-    PlayerSelectEditComponent
+    PlayerSelectEditComponent,
+    DashboardTeamComponent
   ],
   imports: [
     BrowserModule,

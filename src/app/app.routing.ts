@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent},
   { path: 'detail-user/:id', component: DetailUserComponent},
   { path: 'edit-user/:id', component: EditUserComponent},
-  { path: '', component: LoginComponent}
+  { path: '', component: EntriesComponent}
 ];
 
 export const routing = RouterModule.forRoot(routes);

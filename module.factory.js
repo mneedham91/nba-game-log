@@ -93,17 +93,17 @@ var Factory = function(Schema,mongoose) {
 	}
 
 	this.getGamesCount = function(id,res) {
+		this.count({userid: id}, function(error, output) {
+			return res.json(output);
+		});
+	}
+
+	this.getQuartersCount = function(id,res) {
 		this.Entry.aggregate( [ { $match: {userid: id} }, { $group: { _id: null, count: {$sum: 1} } } ], 
 			function(error, output) {
 				return res.json(output);
 			}
 		);
-	}
-
-	this.getQuartersCount = function(id,res) {
-		this.Entry.find({_id: id}, function(error,output) {
-			res.json(output);
-		});
 	}
 	
 	this.getUser = function(id,res) {

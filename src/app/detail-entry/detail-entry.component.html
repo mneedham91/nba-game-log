@@ -2,11 +2,7 @@
   <div class="pure-u-1-1">
     <h2 class="text-center">View Entry</h2>
     <div class="pure-u-1">
-  		<div class="pure-u-1">
-        <p>
-          <b>Entry by </b><a [routerLink]="['/detail-user', entry_user?._id]">{{ entry_user?.username }}</a>
-        </p>
-      </div>
+  		<div class="pure-u-1"><b>Entry by </b><a [routerLink]="['/detail-user', entry_user?._id]">{{ entry_user?.username }}</a></div>
       <div class="pure-u-1"></div>
       <div class="pure-u-1"><b>Home team: </b>{{ entry?.home }}</div>
       <div class="pure-u-1"></div>

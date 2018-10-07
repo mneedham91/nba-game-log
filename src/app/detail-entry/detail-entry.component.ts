@@ -39,6 +39,7 @@ export class DetailEntryComponent implements OnInit {
         this.tagsService.getTagsByEntry(this.id)
           .subscribe( data => {
             let tags: Tag[] = data;
+            console.log('tags', tags);
             for (let i = 0; i < tags.length; i++) {
               this.playersService.getPlayerById(tags[i].playerid)
                 .subscribe( data => {

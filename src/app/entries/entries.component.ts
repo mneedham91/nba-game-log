@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EntriesService } from '../entries.service';
 import { Entry } from '../entry';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-entries',
@@ -10,10 +11,14 @@ import { Entry } from '../entry';
 })
 export class EntriesComponent implements OnInit {
 	entries: Entry[];
+  loggedIn: boolean;
 
-  constructor(private router: Router, private entriesService: EntriesService) { }
+  constructor(private router: Router, private entriesService: EntriesService, private authService: AuthenticationService) { }
 
   ngOnInit() {
+    this.authService.isLoggedIn.subscribe( value => {
+      this.loggedIn = value;
+    });
     this.entriesService.getEntries()
       .subscribe( data => {
         this.entries = data;

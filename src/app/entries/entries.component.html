@@ -4,7 +4,7 @@
       <h2>Game Log Entries</h2>
     </div>
     <div class="pure-u-1">
-      <button class="pure-button pure-button-primary" (click)="addEntry()">Add Entry</button>
+      <button *ngIf="loggedIn" class="pure-button pure-button-primary" (click)="addEntry()">Add Entry</button>
     </div>
     <div class="pure-u-1"></div>
     <div class="pure-u-1">

@@ -47,6 +47,7 @@ export class TagsService {
     this.getTagsByEntry(postId).subscribe(
       data => { 
         let existingTags: Tag[] = data;
+        console.log('beginning updateTags',existingTags,newTagsList);
         // Go through existingTags
         for (let i = 0; i < existingTags.length; i++) {
           // Check if player is in updated tags list
@@ -55,7 +56,10 @@ export class TagsService {
             if (existingTags[i].playerid == newTagsList[z]) { found = true; } 
           }
           // if not in list, delete the tag
-          if (!found) { this.deleteTag(existingTags[i]._id); }
+          if (!found) { 
+            console.log('calling deleteTag', existingTags[i]._id);
+            this.deleteTag(existingTags[i]._id); 
+          }
         }
         // Go through newTagsList
         for (let z = 0; z < newTagsList.length; z++) {
@@ -70,6 +74,7 @@ export class TagsService {
             tag.playerid = newTagsList[z];
             tag.entryid = postId;
             tag.userid = localStorage.getItem('userid');
+            console.log('calling createTag',tag);
             this.createTag(tag);
         } 
       }

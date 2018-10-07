@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { Player } from '../player';
 import { Tag } from '../tag';
 import { PlayersService } from '../players.service';
@@ -16,10 +16,9 @@ export class PlayerSelectEditComponent implements OnInit {
   @Output() notifyRemove: EventEmitter<string> = new EventEmitter<string>();
   roster: Player[];
   selectedPlayers: string[];
-  public home: boolean;
   id: string;
   private sub: any;
-  public team: string;
+  @Input() public team: string;
 
   constructor(
   	private playersService: PlayersService, 

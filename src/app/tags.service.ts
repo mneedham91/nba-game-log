@@ -58,7 +58,7 @@ export class TagsService {
           // if not in list, delete the tag
           if (!found) { 
             console.log('calling deleteTag', existingTags[i]._id);
-            this.deleteTag(existingTags[i]._id); 
+            this.deleteTag(existingTags[i]._id).subscribe(); 
           }
         }
         // Go through newTagsList
@@ -75,7 +75,7 @@ export class TagsService {
             tag.entryid = postId;
             tag.userid = localStorage.getItem('userid');
             console.log('calling createTag',tag);
-            this.createTag(tag);
+            this.createTag(tag).subscribe();
         } 
       }
     });

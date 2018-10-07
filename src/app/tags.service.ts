@@ -73,7 +73,7 @@ export class TagsService {
             this.createTag(tag);
         } 
       }
-    );
+    });
   }
 
   deleteTag(_id: string) {

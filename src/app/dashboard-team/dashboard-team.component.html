@@ -1,3 +1,26 @@
-<p>
-  dashboard-team works!
-</p>
+<div class="pure-g">
+  <div class="pure-u-1 text-center">
+    <div class="pure-u-1 text-center">
+      <h2>Your League Dashboard</h2>
+    </div>
+    <div class="pure-u-1"></div>
+    <div class="pure-u-1">
+      <table class="pure-table table-center">
+        <thead class="text-center">
+        <tr>
+          <th>Team</th>
+          <th>Games Logged</th>
+          <th>Quarters Watched</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let team of teams">
+          <td>{{ team?.team }}</td>
+          <td>{{ team?.games_logged }}</td>
+          <td>{{ team?.quarters_watched }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

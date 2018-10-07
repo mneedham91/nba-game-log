@@ -35,7 +35,6 @@ export class AddEntryComponent implements OnInit {
       .subscribe(result => {
         this.teams = result as Team[];
       }, error => console.error(error));
-
   	this.addForm = this.formBuilder.group({
   	  home: ['', Validators.required],
   	  away: ['', Validators.required],

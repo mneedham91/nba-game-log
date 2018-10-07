@@ -36,4 +36,12 @@ export class EntriesService {
   deleteEntry(_id: string) {
   	return this.http.delete(this.baseUrl + '/entry/' + _id, this.options);
   }
+
+  queryGamesLogged(user_id: string) {
+    return this.http.get(this.baseUrl + '/entry/user/' + user_id + '/games');
+  }
+
+  queryQuartersWatched(user_id: string) {
+    return this.http.get(this.baseUrl + '/entry/user/' + user_id + '/quarters');
+  }
 }

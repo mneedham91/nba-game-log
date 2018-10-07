@@ -88,7 +88,21 @@ var Factory = function(Schema,mongoose) {
 
 	this.deleteEntry = function(id,res) {
 		this.Entry.findOneAndDelete({_id: id}, function(error, output) {
-			return res.json((output));
+			return res.json(output);
+		});
+	}
+
+	this.getGamesCount = function(id,res) {
+		this.Entry.aggregate( [{ $match: {userid: id} }, {total: {$sum: "$amount"}}], 
+			function(error, output) {
+				return res.json(output);
+			}
+		);
+	}
+
+	this.getQuartersCount = function(id,res) {
+		this.Entry.find({_id: id}, function(error,output) {
+			res.json(output);
 		});
 	}
 	

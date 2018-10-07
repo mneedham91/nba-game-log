@@ -62,6 +62,13 @@ export class EditEntryComponent implements OnInit {
         this.editForm.controls['_id'].setValue(this.id);
         this.home = data['home'];
         this.away = data['away'];
+        this.tagsService.getTagsByEntry(this.id)
+          .subscribe( data => {
+            let tags: Tag[] = data;
+            for (let i = 0; i < tags.length; i++) {
+              this.players.push(tags[i].playerid);
+            }
+          });
   	  });
   }
 

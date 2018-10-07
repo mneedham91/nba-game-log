@@ -53,6 +53,7 @@ export class EditEntryComponent implements OnInit {
       created_at: [],
       updated_at: [],
       __v: [],
+      userid: [],
   		notes: ['', Validators.required]
   	});
   	this.entriesService.getEntryById(this.id)

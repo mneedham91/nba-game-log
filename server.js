@@ -137,7 +137,8 @@ app.use('/*',function(req, res) {
     res.sendfile(__dirname + '/dist/index.html');
 });
 
-app.listen(process.env.PORT || 8080);
+//app.listen(process.env.PORT || 8080);
+app.listen(process.env.PORT || 3000);
 
 db.on('error', function callback() {
 	console.log('Connection Error');

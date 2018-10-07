@@ -93,7 +93,7 @@ var Factory = function(Schema,mongoose) {
 	}
 
 	this.getGamesCount = function(id,res) {
-		this.Entry.aggregate( [ { $match: {userid: id} }, { $group: {$sum: 1}}], 
+		this.Entry.aggregate( [ { $match: {userid: id} }, { $group: { _id: null, count: {$sum: 1} } } ], 
 			function(error, output) {
 				return res.json(output);
 			}

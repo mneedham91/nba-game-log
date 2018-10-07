@@ -32,7 +32,10 @@ export class PlayerSelectEditComponent implements OnInit {
       this.tagsService.getTagsByEntry(this.id).subscribe( data => {
       	let tags: Tag[] = data;
         if (tags) {
+          console.log('tags', tags);
           for (let i = 0; i < tags.length; i++) {
+            console.log('tag item', tags[i]);
+            console.log('tag item playerid', tags[i].playerid);
             this.selectedPlayers.push(tags[i].playerid);
           }
         }

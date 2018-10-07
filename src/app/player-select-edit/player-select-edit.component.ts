@@ -15,7 +15,7 @@ export class PlayerSelectEditComponent implements OnInit {
   @Output() notifyAdd: EventEmitter<string> = new EventEmitter<string>();
   @Output() notifyRemove: EventEmitter<string> = new EventEmitter<string>();
   roster: Player[];
-  selectedPlayers: string[];
+  selectedPlayers: string[] = [];
   id: string;
   private sub: any;
   @Input() public team: string;

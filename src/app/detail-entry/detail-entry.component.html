@@ -7,11 +7,11 @@
           <b>Entry by </b><a [routerLink]="['/detail-user', entry_user?._id]">{{ entry_user?.username }}</a>
         </p>
       </div>
-      <div class="pure-u-1"><p><b>Home team: </b>{{ entry?.home }}</p></div>
-      <div class="pure-u-1"><p><b>Away team: </b>{{ entry?.away }}</p></div>
-      <div class="pure-u-1"><p><b>Date: </b>{{ entry?.date | date:'shortDate' }}</p></div>
-      <div class="pure-u-1"><p><b>Viewing length: </b>{{ entry?.length }} quarters</p></div>
-      <div class="pure-u-1"><p><b>Notes: </b>{{ entry?.notes }}</p></div>
+      <div class="pure-u-1"><b>Home team: </b>{{ entry?.home }}</div>
+      <div class="pure-u-1"><b>Away team: </b>{{ entry?.away }}</div>
+      <div class="pure-u-1"><b>Date: </b>{{ entry?.date | date:'shortDate' }}</div>
+      <div class="pure-u-1"><b>Viewing length: </b>{{ entry?.length }} quarters</div>
+      <div class="pure-u-1"><b>Notes: </b>{{ entry?.notes }}</div>
       <div class="pure-u-1"><b>Players tagged: </b><div *ngFor="let player of players">{{ player?.last_name }}, {{ player?.first_name }}</div></div>
     </div>
   </div>

@@ -1,4 +1,4 @@
-var teams = require('src/assets/nba_teams.json');
+var teams = require('nba_teams.json');
 var Factory = function(Schema,mongoose) {
 	this.Schema = Schema;
 	this.mongoose = mongoose;

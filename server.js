@@ -86,7 +86,7 @@ app.get('/api/v1/entry/user/:id/games/:team', function(req, res) {
 });
 
 app.get('/api/v1/entry/user/:id/quarters/:team', function(req, res) {
-	var resp = factory.getQuartersSum(req.params.id, req.params.team res);
+	var resp = factory.getQuartersSum(req.params.id, req.params.team, res);
 });
 
 app.get('/api/v1/user/:id', function(req, res) {

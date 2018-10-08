@@ -112,7 +112,8 @@ var Factory = function(Schema,mongoose) {
 					if (error) {
 						console.log('error', err);
 					}
-					console.log(team,output);
+					console.log(team,output[0]);
+					console.log(team,output[0]['total']);
 					if (output.length > 0) {
 						out[team] = output[0]['total'];
 					} else {

@@ -45,8 +45,8 @@ export class DashboardTeamComponent implements OnInit {
 
   sortTeamDescending() {
     return this.teams.sort(function(a, b){
-      var x = a.type.toLowerCase();
-      var y = b.type.toLowerCase();
+      var x = a.team.toLowerCase();
+      var y = b.team.toLowerCase();
       if (x < y) {return 1;}
       if (x > y) {return -1;}
       return 0;
@@ -55,8 +55,8 @@ export class DashboardTeamComponent implements OnInit {
 
   sortTeamAscending() {
     return this.teams.sort(function(a, b){
-      var x = a.type.toLowerCase();
-      var y = b.type.toLowerCase();
+      var x = a.team.toLowerCase();
+      var y = b.team.toLowerCase();
       if (x < y) {return -1;}
       if (x > y) {return 1;}
       return 0;

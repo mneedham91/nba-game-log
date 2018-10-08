@@ -27,13 +27,13 @@ export class DashboardTeamComponent implements OnInit {
   	this.teamsService.getJSON()
       .subscribe(result => {
         this.teams = result as Team[];
-        this.entriesService.queryGamesLogged(this.username)
+        this.entriesService.queryGamesLogged(this.username, 'CHI')
           .subscribe( data => {
           	for (let i = 0; i < this.teams.length; i++) {
           	  this.teams[i].games_logged = data[this.teams[i].team];
           	}
           });
-        this.entriesService.queryQuartersWatched(this.username)
+        this.entriesService.queryQuartersWatched(this.username, 'CHI')
           .subscribe( data => {
           	for (let i = 0; i < this.teams.length; i++) {
           	  this.teams[i].quarters_watched = data[this.teams[i].team];

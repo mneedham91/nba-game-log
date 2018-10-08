@@ -1,4 +1,4 @@
-let fs = require('fs');
+var teams = require('./teams.json');
 var Factory = function(Schema,mongoose) {
 	this.Schema = Schema;
 	this.mongoose = mongoose;
@@ -101,14 +101,6 @@ var Factory = function(Schema,mongoose) {
 
 	this.getQuartersSum = function(id,res) {
 		var out = {};
-		fs.readFile('./teams.json', 'utf8', function (err, data) {
-			if (err) {
-				console.log(err)
-			} else {
-				var parsed = JSON.parse(data);
-				var teams = parsed['teams'];
-			}
-		})
 		for (var i = 0; i < teams.length; i++) {
 			console.log(teams[i].team);
 			this.Entry.aggregate([

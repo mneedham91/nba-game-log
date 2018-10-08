@@ -23,21 +23,21 @@ export class DashboardTeamComponent implements OnInit {
   ngOnInit() {
   	this.authService.userid.subscribe( value => {
       this.userid = value;
-      this.teamsService.getJSON()
-        .subscribe(result => {
-          this.teams = result as Team[];
-          for (let t = 0; t < this.teams.length; t++) {
-            this.entriesService.queryGamesLogged(this.userid, this.teams[t].team)
-              .subscribe( data => {
-                this.teams[t].games_logged = data['games'];
-            }, error => console.error(error));
-            this.entriesService.queryQuartersWatched(this.userid, this.teams[t].team)
-              .subscribe( data => {
-                this.teams[t].quarters_watched = data['quarters'];
-            }, error => console.error(error));   
-          }
-        });
+    });
+  	this.teamsService.getJSON()
+      .subscribe(result => {
+        this.teams = result as Team[];
+        for (let t = 0; t < this.teams.length; t++) {
+          console.log(this.userid);
+          this.entriesService.queryGamesLogged(localStorage.getItem('userid'), this.teams[t].team)
+            .subscribe( data => {
+              this.teams[t].games_logged = data['games'];
+          }, error => console.error(error));
+          this.entriesService.queryQuartersWatched(localStorage.getItem('userid'), this.teams[t].team)
+            .subscribe( data => {
+              this.teams[t].quarters_watched = data['quarters'];
+          }, error => console.error(error));   
+        }
       });
-
     }
   }

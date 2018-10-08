@@ -38,6 +38,7 @@ export class EntriesService {
   }
 
   queryGamesLogged(user_id: string, team: string) {
+    console.log(this.baseUrl + '/entry/user/' + user_id + 'quarters/' + team);
     return this.http.get(this.baseUrl + '/entry/user/' + user_id + 'games/' + team);
   }
 

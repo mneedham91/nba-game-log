@@ -102,6 +102,7 @@ var Factory = function(Schema,mongoose) {
 	this.getQuartersSum = function(id,res) {
 		var out = {};
 		for (var i = 0; i < teams.length; i++) {
+			console.log(teams[i].team);
 			this.Entry.aggregate([
 				{$match: {$and: [{userid: new this.mongoose.Types.ObjectId(id)},{$or:[{home: teams[i].team},{away: teams[i].team}] }]}}, 
 				{ $group: {_id: null, total: {$sum: "$length"} } } ], 

@@ -80,7 +80,7 @@ app.post('/api/v1/login', function(req, res) {
 				}
 			});
 		}});
-}
+});
 
 
 app.get('/api/v1/entry/:id', function(req, res) {

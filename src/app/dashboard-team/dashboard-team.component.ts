@@ -33,7 +33,7 @@ export class DashboardTeamComponent implements OnInit {
             .subscribe( data => {
               this.teams[t].games_logged = data['games'];
           }, error => console.error(error));
-          this.entriesService.queryQuartersWatched(this.userid, this.teams[t].team)
+          this.entriesService.queryQuartersWatched(localStorage.getItem('userid'), this.teams[t].team)
             .subscribe( data => {
               this.teams[t].quarters_watched = data['quarters'];
           }, error => console.error(error));   

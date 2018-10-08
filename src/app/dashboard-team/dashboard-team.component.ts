@@ -43,37 +43,7 @@ export class DashboardTeamComponent implements OnInit {
       });
   }
 
-  sort(sortMethod: string): void {
-    if (sortMethod == this.existingSortMethod) {
-      this.descending = !this.descending;
-    }
-    switch (sortMethod) {
-      case 'team':
-        if (this.descending) {
-          this.teams = this.sortTeamDescending();
-        } else {
-          this.teams = this.sortTeamAscending();
-        }
-        break;
-      case 'games':
-        if (this.descending) {
-          this.teams = this.sortGamesDescending();
-        } else {
-          this.teams = this.sortGamesAscending();
-        }
-        break;
-      case 'quarters':
-        if (this.descending) {
-          this.teams = this.sortQuartersDescending();
-        } else {
-          this.teams = this.sortQuartersAscending();
-        }
-        break;
-    this.existingSortMethod = sortMethod;
-    }
-  }
-
-  sortTeamDescending(): Team[] {
+  sortTeamDescending() {
     return this.teams.sort(function(a, b){
       var x = a.type.toLowerCase();
       var y = b.type.toLowerCase();
@@ -83,7 +53,7 @@ export class DashboardTeamComponent implements OnInit {
     });
   }
 
-  sortTeamAscending(): Team[] {
+  sortTeamAscending() {
     return this.teams.sort(function(a, b){
       var x = a.type.toLowerCase();
       var y = b.type.toLowerCase();
@@ -93,20 +63,46 @@ export class DashboardTeamComponent implements OnInit {
     });
   }
 
-  sortQuartersDescending(): Team[] {
+  sortQuartersDescending() {
     return this.teams.sort(function(a, b){return a.quarters_watched - b.quarters_watched});
   }
 
-  sortQuartersAscending(): Team[] {
+  sortQuartersAscending() {
     return this.teams.sort(function(a, b){return b.quarters_watched - a.quarters_watched});
   }
 
-  sortGamesDescending(): Team[] {
+  sortGamesDescending() {
     return this.teams.sort(function(a, b){return b.games_logged - a.games_logged});
   }
 
-  sortGamesAscending(): Team[] {
+  sortGamesAscending() {
     return this.teams.sort(function(a, b){return a.games_logged - b.games_logged});
+  }
+
+  sort(sortMethod) {
+    if (sortMethod == this.existingSortMethod) {
+      this.descending = !this.descending;
+    }
+    if (sortMethod == 'team') {
+      if (this.descending) {
+        this.teams = this.sortTeamDescending();
+      } else {
+        this.teams = this.sortTeamAscending();
+      }
+    } else if (sortMethod == 'games') {
+      if (this.descending) {
+        this.teams = this.sortGamesDescending();
+      } else {
+        this.teams = this.sortGamesAscending();
+      }
+    } else if (sortMethod == 'quarters') {
+      if (this.descending) {
+        this.teams = this.sortQuartersDescending();
+      } else {
+        this.teams = this.sortQuartersAscending();
+      }
+    }
+    this.existingSortMethod = sortMethod;
   }
 }
 

@@ -23,13 +23,17 @@ export class AuthenticationService {
 	  this.isLoggedIn.next(false);
   }
 
-  public setUsername(username) {
+  public setUsername(username, userid) {
     localStorage.setItem('username', username);
+    localStorage.setItem('userid', userid);
     this.username.next(username);
+    this.userid.next(userid);
   }
 
   public isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   public username: BehaviorSubject<string> = new BehaviorSubject<string>('');
+
+  public userid: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
 }

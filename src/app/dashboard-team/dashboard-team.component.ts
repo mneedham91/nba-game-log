@@ -12,7 +12,7 @@ import { AuthenticationService } from '../authentication.service';
 })
 export class DashboardTeamComponent implements OnInit {
   teams: Team[];
-  username: string;
+  userid: string;
 
   constructor(
   	private teamsService: TeamsService,
@@ -21,19 +21,19 @@ export class DashboardTeamComponent implements OnInit {
   	) { }
 
   ngOnInit() {
-  	this.authService.username.subscribe( value => {
-      this.username = value;
+  	this.authService.userid.subscribe( value => {
+      this.userid = value;
     });
   	this.teamsService.getJSON()
       .subscribe(result => {
         this.teams = result as Team[];
         for (let t = 0; t < this.teams.length; t++) {
-          this.entriesService.queryGamesLogged(this.username, this.teams[t].team)
+          this.entriesService.queryGamesLogged(this.userid, this.teams[t].team)
             .subscribe( data => {
               console.log(data);
               this.teams[t].games_logged = data['games'];
           }, error => console.error(error));
-          this.entriesService.queryQuartersWatched(this.username, this.teams[t].team)
+          this.entriesService.queryQuartersWatched(this.userid, this.teams[t].team)
             .subscribe( data => {
               this.teams[t].quarters_watched = data['quarters'];
           }, error => console.error(error));   

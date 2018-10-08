@@ -16,6 +16,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
 var passport = require('passport');
 var passportJWT = require('passport-jwt');
@@ -23,7 +24,7 @@ var ExtractJwt = passportJWT.ExtractJwt;
 var JwtStrategy = passportJWT.Strategy;
 var jwtOptions = {}
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('Bearer');
-jwtOptions.secretOrKey = '43';
+jwtOptions.secretOrKey = crypto.randomBytes(32).toString('hex');
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;

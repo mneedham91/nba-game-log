@@ -17,6 +17,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 var crypto = require('crypto');
+var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 var passport = require('passport');
 var passportJWT = require('passport-jwt');
@@ -46,7 +47,7 @@ var strategy = new JwtStrategy(jwtOptions, function(jwt_payload, done) {
 passport.use(strategy);
 app.use(passport.initialize());
 
-app.post('/api/v1/login', function(req, res) {
+/*app.post('/api/v1/login', function(req, res) {
 	var password = req.body.password;
 	var promise = factory.login(req.body.email);
 	promise.then(function(result) {
@@ -60,7 +61,27 @@ app.post('/api/v1/login', function(req, res) {
 			res.status(401).json({message: 'invalid password'});
 		}
 	});
-});
+});*/
+
+app.post('/api/v1/login', function(req, res) {
+	var password = req.body.password;
+	var promise = factory.login(req.body.email);
+	promise.then(function(result) {
+		if (!result) {
+			res.status(401).json({message: 'login failure'});
+		} else {
+			bcrypt.compare(password, result.hash, function(err, res) {
+				if (res) {
+					var payload = {id: result._id};
+					var token = jwt.sign(payload, jwtOptions.secretOrKey);
+					res.json({success: true, token: token, user: result, expiresIn: 120 });
+				} else {
+					res.status(401).json({message: 'invalid password'});
+				}
+			});
+		}});
+}
+
 
 app.get('/api/v1/entry/:id', function(req, res) {
 	var resp = factory.getEntry(req.params.id,res);

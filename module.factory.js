@@ -1,5 +1,5 @@
 var teams = require('./teams.json');
-var async = require('async');
+var bcrypt = require('bcrypt');
 var Factory = function(Schema,mongoose) {
 	this.Schema = Schema;
 	this.mongoose = mongoose;
@@ -19,6 +19,7 @@ var Factory = function(Schema,mongoose) {
 		UserSchema = new this.Schema({
 			email: String,
 			password: String,
+			hash: String,
 			username: String,
 			first_name: String,
 			last_name: String
@@ -128,8 +129,23 @@ var Factory = function(Schema,mongoose) {
 			res.json(output);
 		});
 	}
-	
+
 	this.createUser = function(params,res) {
+		bcrypt.hash(params.password, 10, function(err, hash) {
+			var newUser = new this.User({
+				email: params.email,
+				hash: hash,
+				username: params.email,
+				first_name: '',
+				last_name: ''
+			});
+			newUser.save(function(error,output) {
+				return res.json(output);
+			});
+		});
+	}
+	
+/*	this.createUser = function(params,res) {
 		var newUser = new this.User({
 			email: params.email,
 			password: params.password,
@@ -140,7 +156,7 @@ var Factory = function(Schema,mongoose) {
 		newUser.save(function(error,output) {
 			return res.json(output);
 		});
-	}
+	}*/
 
 	this.updateUser = function(params,res) {
 		this.User.findOneAndUpdate({_id: params._id}, {

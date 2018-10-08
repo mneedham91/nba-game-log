@@ -1,3 +1,4 @@
+var teams = require('src/assets/nba_teams.json');
 var Factory = function(Schema,mongoose) {
 	this.Schema = Schema;
 	this.mongoose = mongoose;
@@ -99,11 +100,17 @@ var Factory = function(Schema,mongoose) {
 	}
 
 	this.getQuartersSum = function(id,res) {
-		this.Entry.aggregate( [ { $match: {userid: new this.mongoose.Types.ObjectId(id)} }, { $group: { _id: null, total: {$sum: "$length"} } } ], 
-			function(error, output) {
-				return res.json(output[0]['total']);
-			}
-		);
+		var out = {};
+		for (var i = 0; i < teams.length; i++) {
+			this.Entry.aggregate([
+				{$match: {$and: [{userid: new this.mongoose.Types.ObjectId(id)},{$or:[{home: teams[i].team},{away: teams[i].team}] }]}}, 
+				{ $group: {_id: null, total: {$sum: "$length"} } } ], 
+				function(error, output) {
+					out[teams[i].team] = (output);
+				}
+			);
+		}
+		res.json(out);
 	}
 	
 	this.getUser = function(id,res) {

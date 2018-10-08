@@ -5,6 +5,6 @@ export class Team {
 	conference: string;
 	color1: string;
 	color2: string;
-	games_logged: number;
-	quarters_watched: number;
+	games_logged: number = 0;
+	quarters_watched: number = 0;
 }

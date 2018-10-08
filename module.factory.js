@@ -116,14 +116,12 @@ var Factory = function(Schema,mongoose) {
 						console.log(team,output[0]);
 						console.log(team,output[0]['total']);
 						out[team] = output[0]['total'];
-					} else {
-						out[team] = 0;
 					}
 				}
 			);
 		}
-		console.log(out);
-		res.json(out);
+		console.log('out',out);
+		return res.json(out);
 	}
 	
 	this.getUser = function(id,res) {

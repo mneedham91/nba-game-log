@@ -103,13 +103,16 @@ var Factory = function(Schema,mongoose) {
 		var out = {};
 		for (var i = 0; i < teams.length; i++) {
 			let team = teams[i].team
-			console.log(team);
 			this.Entry.aggregate([
 				{$match: {$and: [{userid: new this.mongoose.Types.ObjectId(id)},{$or:[{home: team},{away: team}] }]}}, 
 				{ $group: {_id: null, total: {$sum: "$length"} } } ], 
 				function(error, output) {
 					console.log(team,output);
-					out[team] = output;
+					try {
+						out[team] = output[0]['total'];
+					} catch(err) {
+						out[team] = 0;
+					}
 				}
 			);
 		}

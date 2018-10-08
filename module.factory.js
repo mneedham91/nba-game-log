@@ -96,7 +96,7 @@ var Factory = function(Schema,mongoose) {
 
 	this.getGamesCount = function(id,team,res) {
 		this.Entry.find({$and: [{userid: id},{$or: [{away: team},{home: team}]}]}, function(error, output) {
-			return res.json(output.length);
+			return res.json({'games': output.length});
 		});
 	}
 
@@ -109,9 +109,9 @@ var Factory = function(Schema,mongoose) {
 						console.log('error', err);
 					}
 					if (output.length > 0) {
-						return res.json(output[0]['total']);
+						return res.json({'quarters': output[0]['total']});
 					} else {
-						return res.json(0);
+						return res.json({'quarters': 0});
 					}
 				}
 		);

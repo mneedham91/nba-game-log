@@ -27,18 +27,16 @@ export class DashboardTeamComponent implements OnInit {
   	this.teamsService.getJSON()
       .subscribe(result => {
         this.teams = result as Team[];
-        this.entriesService.queryGamesLogged(this.username, 'CHI')
-          .subscribe( data => {
-          	for (let i = 0; i < this.teams.length; i++) {
-          	  this.teams[i].games_logged = data[this.teams[i].team];
-          	}
-          });
-        this.entriesService.queryQuartersWatched(this.username, 'CHI')
-          .subscribe( data => {
-          	for (let i = 0; i < this.teams.length; i++) {
-          	  this.teams[i].quarters_watched = data[this.teams[i].team];
-          	}
-          });	 
-      }, error => console.error(error));
-  }
+        for (let t = 0; t < this.teams.length; t++) {
+          this.entriesService.queryGamesLogged(this.username, this.teams[t].team)
+            .subscribe( data => {
+              console.log(data);
+              this.teams[t].games_logged = data['games'];
+          }, error => console.error(error));
+          this.entriesService.queryQuartersWatched(this.username, this.teams[t].team)
+            .subscribe( data => {
+              this.teams[t].quarters_watched = data['quarters'];
+          }, error => console.error(error));   
+        }
+      });
 }

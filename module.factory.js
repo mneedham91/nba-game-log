@@ -1,4 +1,5 @@
 var teams = require('./teams.json');
+var async = require('async');
 var Factory = function(Schema,mongoose) {
 	this.Schema = Schema;
 	this.mongoose = mongoose;
@@ -93,43 +94,27 @@ var Factory = function(Schema,mongoose) {
 		});
 	}
 
-	this.getGamesCount = function(id,res) {
-		this.Entry.count({userid: id}, function(error, output) {
-			return res.json(output);
+	this.getGamesCount = function(id,team,res) {
+		this.Entry.find({$and: [{userid: id},{$or: [{away: team},{home: team}]}]}, function(error, output) {
+			return res.json(output.length);
 		});
 	}
 
-	this.getQuartersSum = function(id,res) {
-		var out = [];
-		var onComplete = function() {
-			return res.json(out);
-		}
-		var tasksToGo = teams.length;
-		if (tasksToGo === 0) {
-			onComplete;
-		} else {
-			teams.forEach(function(thisTeam) {
-				let team = thisTeam.team;
-				this.Entry.aggregate([
-					{$match: {$and: [{userid: new this.mongoose.Types.ObjectId(id)},{$or:[{home: team},{away: team}] }]}}, 
-					{ $group: {_id: null, total: {$sum: "$length"} } } ], 
-					function(error, output) {
-						if (error) {
-							console.log('error', err);
-						}
-						if (output.length > 0) {
-							out.push({team: output[0]['total']});
-							console.log(out);
-						} else {
-							out.push({team: 0});
-						}
-						if (--tasksToGo === 0) {
-							onComplete;
-						}
+	this.getQuartersSum = function(id,team,res) {
+		this.Entry.aggregate([
+			{$match: {$and: [{userid: new this.mongoose.Types.ObjectId(id)},{$or:[{home: team},{away: team}] }]}}, 
+			{ $group: {_id: null, total: {$sum: "$length"} } } ], 
+				function(error, output) {
+					if (error) {
+						console.log('error', err);
 					}
-				);
-			});
-		}
+					if (output.length > 0) {
+						return res.json(output[0]['total']);
+					} else {
+						return res.json(0);
+					}
+				}
+		);
 	}
 	
 	this.getUser = function(id,res) {

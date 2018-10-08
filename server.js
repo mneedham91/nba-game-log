@@ -81,12 +81,12 @@ app.delete('/api/v1/entry/:id', passport.authenticate('jwt', {session: false}), 
 	var resp = factory.deleteEntry(req.params.id,res);
 });
 
-app.get('/api/v1/entry/user/:id/games', function(req, res) {
-	var resp = factory.getGamesCount(req.params.id, res);
+app.get('/api/v1/entry/user/:id/games/:team', function(req, res) {
+	var resp = factory.getGamesCount(req.params.id, req.params.team, res);
 });
 
-app.get('/api/v1/entry/user/:id/quarters', function(req, res) {
-	var resp = factory.getQuartersSum(req.params.id, res);
+app.get('/api/v1/entry/user/:id/quarters/:team', function(req, res) {
+	var resp = factory.getQuartersSum(req.params.id, req.params.team res);
 });
 
 app.get('/api/v1/user/:id', function(req, res) {

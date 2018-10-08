@@ -107,15 +107,15 @@ var Factory = function(Schema,mongoose) {
 				{$match: {$and: [{userid: new this.mongoose.Types.ObjectId(id)},{$or:[{home: team},{away: team}] }]}}, 
 				{ $group: {_id: null, total: {$sum: "$length"} } } ], 
 				function(error, output) {
-					console.log(team,output);
-					try {
+					if (output.length > 0) {
 						out[team] = output[0]['total'];
-					} catch(err) {
+					} else {
 						out[team] = 0;
 					}
 				}
 			);
 		}
+		console.log(out);
 		res.json(out);
 	}
 	

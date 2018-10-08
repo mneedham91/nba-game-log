@@ -39,4 +39,5 @@ export class DashboardTeamComponent implements OnInit {
           }, error => console.error(error));   
         }
       });
-}
+    }
+  }

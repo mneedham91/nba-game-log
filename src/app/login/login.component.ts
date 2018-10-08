@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   	if (this.loginForm.invalid) {
   		return;
   	}
-	this.authService.login(this.loginForm.controls.email.value, this.loginForm.controls.password.value).subscribe( 
+	  this.authService.login(this.loginForm.controls.email.value, this.loginForm.controls.password.value).subscribe( 
         data => {
           localStorage.setItem('token', data['token']);
           this.authService.setUsername(data['user'].username, data['user']._id);

@@ -37,11 +37,11 @@ export class EntriesService {
   	return this.http.delete(this.baseUrl + '/entry/' + _id, this.options);
   }
 
-  queryGamesLogged(user_id: string) {
-    return this.http.get(this.baseUrl + '/entry/user/' + user_id + '/games');
+  queryGamesLogged(user_id: string, team: string) {
+    return this.http.get(this.baseUrl + '/entry/user/' + user_id + '/games/' + team);
   }
 
-  queryQuartersWatched(user_id: string) {
-    return this.http.get(this.baseUrl + '/entry/user/' + user_id + '/quarters');
+  queryQuartersWatched(user_id: string, team: string) {
+    return this.http.get(this.baseUrl + '/entry/user/' + user_id + '/quarters/' + team);
   }
 }

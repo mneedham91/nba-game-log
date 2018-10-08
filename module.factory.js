@@ -100,27 +100,36 @@ var Factory = function(Schema,mongoose) {
 	}
 
 	this.getQuartersSum = function(id,res) {
-		var out = {};
-		for (var i = 0; i < teams.length; i++) {
-			let team = teams[i].team
-			this.Entry.aggregate([
-				{$match: {$and: [{userid: new this.mongoose.Types.ObjectId(id)},{$or:[{home: team},{away: team}] }]}}, 
-				{ $group: {_id: null, total: {$sum: "$length"} } } ], 
-				function(error, output) {
-					if (error) {
-						console.log('error', err);
-					}
-					if (output.length > 0) {
-						out[team] = output[0]['total'];
-						console.log(out);
-					} else {
-						out[team] = 0;
-					}
-				}
-			);
+		var out = [];
+		var onComplete = function() {
+			return res.json(out);
 		}
-		console.log('out',out);
-		return res.json(out);
+		var tasksToGo = teams.length;
+		if (tasksToGo === 0) {
+			onComplete;
+		} else {
+			teams.forEach(function(thisTeam) {
+				let team = thisTeam.team;
+				this.Entry.aggregate([
+					{$match: {$and: [{userid: new this.mongoose.Types.ObjectId(id)},{$or:[{home: team},{away: team}] }]}}, 
+					{ $group: {_id: null, total: {$sum: "$length"} } } ], 
+					function(error, output) {
+						if (error) {
+							console.log('error', err);
+						}
+						if (output.length > 0) {
+							out.push({team: output[0]['total']});
+							console.log(out);
+						} else {
+							out.push({team: 0});
+						}
+						if (--tasksToGo === 0) {
+							onComplete;
+						}
+					}
+				);
+			});
+		}
 	}
 	
 	this.getUser = function(id,res) {

@@ -25,7 +25,7 @@ var ExtractJwt = passportJWT.ExtractJwt;
 var JwtStrategy = passportJWT.Strategy;
 var jwtOptions = {}
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('Bearer');
-jwtOptions.secretOrKey = crypto.randomBytes(32).toString('hex');
+//jwtOptions.secretOrKey = 'crypto.randomBytes(32).toString('hex')';
 
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;

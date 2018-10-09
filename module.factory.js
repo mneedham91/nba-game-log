@@ -1,5 +1,10 @@
 var teams = require('./teams.json');
 var bcrypt = require('bcrypt');
+var jwt = require('jsonwebtoken');
+var jwtOptions = {}
+jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('Bearer');
+jwtOptions.secretOrKey = 'crypto.randomBytes(32).toString('hex')';
+
 var Factory = function(Schema,mongoose) {
 	this.Schema = Schema;
 	this.mongoose = mongoose;
@@ -273,6 +278,10 @@ var Factory = function(Schema,mongoose) {
 		this.Player.find({team: qteam}, function(error,output) {
 			res.json(output);
 		});
+	}
+
+	this.secretOrKey = function() {
+		return jwtOptions.secretOrKey;
 	}
 }
 

@@ -64,14 +64,7 @@ app.use(passport.initialize());
 });*/
 
 app.post('/api/v1/login', function(req, res) {
-	var user = factory.login(req.body.email, req.body.password)
-	console.log('user',user);
-	if (user == 'Password error') {
-		res.status(401).json({message: 'invalid password'});
-	} else {
-		var token = jwt.sign({id: user._id}, jwtOptions.secretOrKey);
-		res.json({success: true, token: token, user: user, expiresIn: 120 });
-	}
+	var resp = factory.login(req.body.email, req.body.password,res);
 });
 
 app.get('/api/v1/entry/:id', function(req, res) {

@@ -68,15 +68,16 @@ var Factory = function(Schema,mongoose) {
 		return query;
 	}*/
 
-	this.login = function(email, password) {
+	this.login = function(email, password, res) {
 		this.User.findOne({ email: email }, function(err, user) {
 			if (err) throw err;
 			user.comparePassword(password, function(err, isMatch) {
 				if (err) throw err;
 				if (isMatch) {
-					return user._id;
+					var token = jwt.sign({id: user._id}, jwtOptions.secretOrKey);
+					return res.json({success: true, token: token, user: user, expiresIn: 120 });
 				} else {
-					return 'Password error';
+					return res.status(401).json({message: 'invalid password'});
 				}
 			});
 		});

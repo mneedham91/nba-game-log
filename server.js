@@ -36,7 +36,6 @@ var ExtractJwt = passportJWT.ExtractJwt;
 var JwtStrategy = passportJWT.Strategy;
 var jwtOptions = {}
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('Bearer');
-//jwtOptions.secretOrKey = 'crypto.randomBytes(32).toString('hex')';
 jwtOptions.secretOrKey = factory.secretOrKey();
 
 var strategy = new JwtStrategy(jwtOptions, function(jwt_payload, done) {
@@ -47,22 +46,6 @@ var strategy = new JwtStrategy(jwtOptions, function(jwt_payload, done) {
 });
 passport.use(strategy);
 app.use(passport.initialize());
-
-/*app.post('/api/v1/login', function(req, res) {
-	var password = req.body.password;
-	var promise = factory.login(req.body.email);
-	promise.then(function(result) {
-		if (!result) {
-			res.status(401).json({message: 'login failure'});
-		} else if (result.password === password) {
-			var payload = {id: result._id};
-			var token = jwt.sign(payload, jwtOptions.secretOrKey);
-			res.json({success: true, token: token, user: result, expiresIn: 120 });
-		} else {
-			res.status(401).json({message: 'invalid password'});
-		}
-	});
-});*/
 
 app.post('/api/v1/login', function(req, res) {
 	var resp = factory.login(req.body.email, req.body.password,res);

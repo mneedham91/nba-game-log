@@ -67,11 +67,6 @@ var Factory = function(Schema,mongoose) {
 		});
 		this.Player = mongoose.model('Player', PlayerSchema);
 	}
-	
-/*	this.login = function(qemail) {
-		var query = this.User.findOne({email: qemail}).exec();
-		return query;
-	}*/
 
 	this.login = function(email, password, res) {
 		this.User.findOne({ email: email }, function(err, user) {
@@ -171,21 +166,6 @@ var Factory = function(Schema,mongoose) {
 			res.json(output);
 		});
 	}
-
-/*	this.createUser = function(params,res) {
-		bcrypt.hash(params.password, 10, function(err, hash) {
-			var newUser = new this.User({
-				email: params.email,
-				hash: hash,
-				username: params.email,
-				first_name: '',
-				last_name: ''
-			});
-			newUser.save(function(error,output) {
-				return res.json(output);
-			});
-		});
-	}*/
 	
 	this.createUser = function(params,res) {
 		var newUser = new this.User({

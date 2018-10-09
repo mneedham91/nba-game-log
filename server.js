@@ -70,6 +70,7 @@ app.post('/api/v1/login', function(req, res) {
 		if (!result) {
 			res.status(401).json({message: 'login failure'});
 		} else {
+			factory.login
 			bcrypt.compare(password, result.hash, function(err, res) {
 				if (res) {
 					var payload = {id: result._id};

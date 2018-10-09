@@ -12,6 +12,7 @@ import { AuthenticationService } from '../authentication.service';
 export class EntriesComponent implements OnInit {
 	entries: Entry[];
   loggedIn: boolean;
+  mobile: boolean;
 
   constructor(private router: Router, private entriesService: EntriesService, private authService: AuthenticationService) { }
 
@@ -23,6 +24,9 @@ export class EntriesComponent implements OnInit {
       .subscribe( data => {
         this.entries = data;
       });
+    if (window.screen.width === 360) {
+      this.mobile = true;
+    }
   }
 
   deleteEntry(entry: Entry): void {

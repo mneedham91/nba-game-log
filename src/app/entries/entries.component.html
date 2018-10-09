@@ -13,7 +13,7 @@
         <tr>
           <th>Home</th>
           <th>Away</th>
-          <th>Date</th>
+          <th *ngIf="!mobile">Date</th>
           <th>Options</th>
         </tr>
         </thead>
@@ -21,7 +21,7 @@
         <tr *ngFor="let entry of entries">
           <td>{{ entry.home }}</td>
           <td>{{ entry.away }}</td>
-          <td>{{ entry.date | date:'shortDate' }}</td>
+          <td *ngIf="!mobile">{{ entry.date | date:'shortDate' }}</td>
           <td class="pure-button-group" role="group">
             <button class="pure-button" (click)="viewEntry(entry)">View</button>
             <button *ngIf="loggedIn" class="pure-button" (click)="editEntry(entry)">Edit</button>

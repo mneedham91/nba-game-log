@@ -78,7 +78,7 @@ var Factory = function(Schema,mongoose) {
 				} else {
 					return 'Password error';
 				}
-			}
+			});
 		});
 	}
 	

@@ -64,14 +64,14 @@ app.use(passport.initialize());
 });*/
 
 app.post('/api/v1/login', function(req, res) {
-	if (factory.login(req.body.email, req.body.password) == 'Password error') {
+	var user = factory.login(req.body.email, req.body.password)
+	if (user == 'Password error') {
 		res.status(401).json({message: 'invalid password'});
 	} else {
-		var token = jwt.sign({id: result._id}, jwtOptions.secretOrKey);
-		res.json({success: true, token: token, user: result, expiresIn: 120 });
+		var token = jwt.sign({id: user._id}, jwtOptions.secretOrKey);
+		res.json({success: true, token: token, user: user, expiresIn: 120 });
 	}
 });
-
 
 app.get('/api/v1/entry/:id', function(req, res) {
 	var resp = factory.getEntry(req.params.id,res);

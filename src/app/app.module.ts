@@ -22,6 +22,7 @@ import { AdminComponent } from './admin/admin.component';
 import { PlayerSelectComponent } from './player-select/player-select.component';
 import { PlayerSelectEditComponent } from './player-select-edit/player-select-edit.component';
 import { DashboardTeamComponent } from './dashboard-team/dashboard-team.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DashboardTeamComponent } from './dashboard-team/dashboard-team.componen
     AdminComponent,
     PlayerSelectComponent,
     PlayerSelectEditComponent,
-    DashboardTeamComponent
+    DashboardTeamComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

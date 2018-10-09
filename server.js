@@ -65,6 +65,7 @@ app.use(passport.initialize());
 
 app.post('/api/v1/login', function(req, res) {
 	var user = factory.login(req.body.email, req.body.password)
+	console.log('user',user);
 	if (user == 'Password error') {
 		res.status(401).json({message: 'invalid password'});
 	} else {

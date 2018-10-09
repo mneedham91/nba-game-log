@@ -64,23 +64,12 @@ app.use(passport.initialize());
 });*/
 
 app.post('/api/v1/login', function(req, res) {
-	var password = req.body.password;
-	var promise = factory.login(req.body.email);
-	promise.then(function(result) {
-		if (!result) {
-			res.status(401).json({message: 'login failure'});
-		} else {
-			factory.login
-			bcrypt.compare(password, result.hash, function(err, res) {
-				if (res) {
-					var payload = {id: result._id};
-					var token = jwt.sign(payload, jwtOptions.secretOrKey);
-					res.json({success: true, token: token, user: result, expiresIn: 120 });
-				} else {
-					res.status(401).json({message: 'invalid password'});
-				}
-			});
-		}});
+	if (factory.login(req.body.email, req.body.password) == 'Password error') {
+		res.status(401).json({message: 'invalid password'});
+	} else {
+		var token = jwt.sign({id: result._id}, jwtOptions.secretOrKey);
+		res.json({success: true, token: token, user: result, expiresIn: 120 });
+	}
 });
 
 

@@ -63,9 +63,23 @@ var Factory = function(Schema,mongoose) {
 		this.Player = mongoose.model('Player', PlayerSchema);
 	}
 	
-	this.login = function(qemail) {
+/*	this.login = function(qemail) {
 		var query = this.User.findOne({email: qemail}).exec();
 		return query;
+	}*/
+
+	this.login = function(email, password) {
+		this.User.findOne({ email: email }, function(err, user) {
+			if (err) throw err;
+			user.comparePassword(password, function(err, isMatch) {
+				if (err) throw err;
+				if (isMatch) {
+					return user._id;
+				} else {
+					return 'Password error';
+				}
+			}
+		});
 	}
 	
 	this.lookupUser = function(id) {
@@ -152,7 +166,7 @@ var Factory = function(Schema,mongoose) {
 		});
 	}
 
-	this.createUser = function(params,res) {
+/*	this.createUser = function(params,res) {
 		bcrypt.hash(params.password, 10, function(err, hash) {
 			var newUser = new this.User({
 				email: params.email,
@@ -165,9 +179,9 @@ var Factory = function(Schema,mongoose) {
 				return res.json(output);
 			});
 		});
-	}
+	}*/
 	
-/*	this.createUser = function(params,res) {
+	this.createUser = function(params,res) {
 		var newUser = new this.User({
 			email: params.email,
 			password: params.password,
@@ -178,7 +192,7 @@ var Factory = function(Schema,mongoose) {
 		newUser.save(function(error,output) {
 			return res.json(output);
 		});
-	}*/
+	}
 
 	this.updateUser = function(params,res) {
 		this.User.findOneAndUpdate({_id: params._id}, {

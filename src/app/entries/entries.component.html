@@ -22,10 +22,15 @@
           <td>{{ entry.home }}</td>
           <td>{{ entry.away }}</td>
           <td *ngIf="!mobile">{{ entry.date | date:'shortDate' }}</td>
-          <td class="pure-button-group" role="group">
+          <td *ngIf="!mobile" class="pure-button-group" role="group">
             <button class="pure-button" (click)="viewEntry(entry)">View</button>
             <button *ngIf="loggedIn" class="pure-button" (click)="editEntry(entry)">Edit</button>
             <button *ngIf="loggedIn" class="button-error pure-button" (click)="deleteEntry(entry)">Delete</button>
+          </td>
+          <td *ngIf="mobile" class="pure-button-group" role="group">
+            <button class="pure-button" (click)="viewEntry(entry)">V</button>
+            <button *ngIf="loggedIn" class="pure-button" (click)="editEntry(entry)">E</button>
+            <button *ngIf="loggedIn" class="button-error pure-button" (click)="deleteEntry(entry)">D</button>
           </td>
         </tr>
         </tbody>

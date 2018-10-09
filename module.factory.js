@@ -3,7 +3,7 @@ var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 var jwtOptions = {}
 jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('Bearer');
-jwtOptions.secretOrKey = 'crypto.randomBytes(32).toString('hex')';
+jwtOptions.secretOrKey = crypto.randomBytes(32).toString('hex');
 
 var Factory = function(Schema,mongoose) {
 	this.Schema = Schema;

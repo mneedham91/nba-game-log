@@ -8,7 +8,7 @@ import { DetailEntryComponent } from './detail-entry/detail-entry.component';
 import { DetailUserComponent } from './detail-user/detail-user.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { DashboardComponent } from './dashboard-team/dashboard.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },

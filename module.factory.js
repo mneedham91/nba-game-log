@@ -24,8 +24,7 @@ var Factory = function(Schema,mongoose) {
 			first_name: String,
 			last_name: String
 		}, { timestamps: {createdAt: 'created_at', updatedAt: 'updated_at'} });
-		this.User = mongoose.model('User', UserSchema);
-		this.User.pre('save', function(next) {
+		UserSchema.pre('save', function(next) {
 			var user = this;
 
 			if (!user.isModified('password')) return next();
@@ -41,12 +40,13 @@ var Factory = function(Schema,mongoose) {
 				});
 			});
 		});
-		this.User.methods.comparePassword = function(candidatePassword, cb) {
+		UserSchema.methods.comparePassword = function(candidatePassword, cb) {
 			bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
 				if (err) return cb(err);
 				cb(null, isMatch);
 			});
 		};
+		this.User = mongoose.model('User', UserSchema);
 		TagSchema = new this.Schema({
 			entryid: Schema.ObjectId,
 			playerid: String,

@@ -16,17 +16,6 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-var crypto = require('crypto');
-var bcrypt = require('bcrypt');
-var jwt = require('jsonwebtoken');
-var passport = require('passport');
-var passportJWT = require('passport-jwt');
-var ExtractJwt = passportJWT.ExtractJwt;
-var JwtStrategy = passportJWT.Strategy;
-var jwtOptions = {}
-jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('Bearer');
-//jwtOptions.secretOrKey = 'crypto.randomBytes(32).toString('hex')';
-
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
@@ -37,6 +26,18 @@ var db = mongoose.connection;
 
 var factory = new Factory(Schema,mongoose);
 factory.createSchemas();
+
+var crypto = require('crypto');
+var bcrypt = require('bcrypt');
+var jwt = require('jsonwebtoken');
+var passport = require('passport');
+var passportJWT = require('passport-jwt');
+var ExtractJwt = passportJWT.ExtractJwt;
+var JwtStrategy = passportJWT.Strategy;
+var jwtOptions = {}
+jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('Bearer');
+//jwtOptions.secretOrKey = 'crypto.randomBytes(32).toString('hex')';
+jwtOptions.secretOrKey = factory.secretOrKey();
 
 var strategy = new JwtStrategy(jwtOptions, function(jwt_payload, done) {
 	var promise = factory.lookupUser(jwt_payload.id);

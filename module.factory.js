@@ -254,6 +254,26 @@ var Factory = function(Schema,mongoose) {
 		});
 	}
 
+	this.createPlayer = function(params,res) {
+		var newPlayer = new this.Player({
+			nba_id: params.nba_id,
+			first_name: params.first_name,
+			last_name: params.last_name,
+			team: params.team
+		});
+		newEntry.save(function(error,output) {
+			return res.json(output);
+		});
+	}
+
+	this.updatePlayer = function(params,res) {
+		this.Player.findOneAndUpdate({_id: params._id}, {
+			team: params.team,
+		}, function(error, output) {
+			return res.json(output);
+		});
+	}
+
 	this.getTeam = function(qteam, res) {
 		this.Player.find({team: qteam}, function(error,output) {
 			res.json(output);

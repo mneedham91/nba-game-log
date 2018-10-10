@@ -261,7 +261,7 @@ var Factory = function(Schema,mongoose) {
 			last_name: params.last_name,
 			team: params.team
 		});
-		newEntry.save(function(error,output) {
+		newPlayer.save(function(error,output) {
 			return res.json(output);
 		});
 	}

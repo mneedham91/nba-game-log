@@ -22,7 +22,7 @@ var Factory = function(Schema,mongoose) {
 		}, { timestamps: {createdAt: 'created_at', updatedAt: 'updated_at'} });
 		this.Entry = mongoose.model('Entry', EntrySchema);
 		UserSchema = new this.Schema({
-			email: String,
+			email: { type: String, unique: true },
 			password: String,
 			hash: String,
 			username: String,

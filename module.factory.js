@@ -27,7 +27,8 @@ var Factory = function(Schema,mongoose) {
 			hash: String,
 			username: String,
 			first_name: String,
-			last_name: String
+			last_name: String,
+			role: String
 		}, { timestamps: {createdAt: 'created_at', updatedAt: 'updated_at'} });
 		UserSchema.pre('save', function(next) {
 			var user = this;
@@ -173,7 +174,8 @@ var Factory = function(Schema,mongoose) {
 			password: params.password,
 			username: params.email,
 			first_name: '',
-			last_name: ''
+			last_name: '',
+			role: 'user'
 		});
 		newUser.save(function(error,output) {
 			return res.json(output);

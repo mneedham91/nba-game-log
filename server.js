@@ -31,6 +31,7 @@ var crypto = require('crypto');
 var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 var passport = require('passport');
+var admin_passport = require('passport');
 var passportJWT = require('passport-jwt');
 var ExtractJwt = passportJWT.ExtractJwt;
 var JwtStrategy = passportJWT.Strategy;
@@ -44,7 +45,17 @@ var strategy = new JwtStrategy(jwtOptions, function(jwt_payload, done) {
 		return done(null, result);
 	});
 });
+var admin_strategy = new JwtStrategy(jwtOptions, function(jwt_payload, done) {
+	var promise = factory.lookupUser(jwt_payload.id);
+	promise.then(function(result) {
+		console.log(result);
+		if (result.role == 'admin') {
+			return done(null, result);
+		};
+	});
+});
 passport.use(strategy);
+admin_passport.use(admin_strategy);
 app.use(passport.initialize());
 
 app.post('/api/v1/login', function(req, res) {
@@ -55,7 +66,7 @@ app.get('/api/v1/entry/:id', function(req, res) {
 	var resp = factory.getEntry(req.params.id,res);
 });
 
-app.get('/api/v1/entry', function(req, res) {
+app.get('/api/v1/entry', admin_passport.authenticate('jwt', {session: false}), function(req, res) {
 	var resp = factory.getEntries({},res);
 });
 
@@ -95,7 +106,7 @@ app.put('/api/v1/user/:id', passport.authenticate('jwt', {session: false}), func
 	var resp = factory.updateUser(req.body, res);
 });
 
-app.delete('/api/v1/user/:id', passport.authenticate('jwt', {session: false}), function(req,res) {
+app.delete('/api/v1/user/:id', admin_passport.authenticate('jwt', {session: false}), function(req,res) {
 	var resp = factory.deleteUser(req.params.id,res);
 });
 

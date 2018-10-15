@@ -57,8 +57,7 @@ export class TagsService {
           }
           // if not in list, delete the tag
           if (!found) { 
-            console.log('calling deleteTag', existingTags[i]._id);
-            this.deleteTag(existingTags[i]._id).subscribe(data => { console.log('createresp',data); }); 
+            this.deleteTag(existingTags[i]._id).subscribe(data => {}); 
           }
         }
         // Go through newTagsList
@@ -74,8 +73,7 @@ export class TagsService {
             tag.playerid = newTagsList[z];
             tag.entryid = postId;
             tag.userid = localStorage.getItem('userid');
-            console.log('calling createTag',tag);
-            this.createTag(tag).subscribe(data => { console.log('createresp',data); });
+            this.createTag(tag).subscribe(data => {});
         } 
       }
     });

@@ -30,7 +30,6 @@ export class DashboardTeamComponent implements OnInit {
       .subscribe(result => {
         this.teams = result as Team[];
         for (let t = 0; t < this.teams.length; t++) {
-          console.log(this.userid);
           this.entriesService.queryGamesLogged(localStorage.getItem('userid'), this.teams[t].team)
             .subscribe( data => {
               this.teams[t].games_logged = data['games'];

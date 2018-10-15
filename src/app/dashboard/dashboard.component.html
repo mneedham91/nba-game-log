@@ -1,6 +1,6 @@
 <div class="pure-g">
 	<div class="pure-u-1">
-		<div class="pure-u-1 text-center">
+		<div *ngIf="loggedIn" class="pure-u-1 text-center">
 			<a [routerLink]="['/edit-user', userid]">Edit Profile</a>
 		</div>
 		<div class="pure-u-1">

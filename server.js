@@ -78,7 +78,7 @@ app.put('/api/v1/entry/:id', passport.authenticate('jwt', {session: false}), fun
 	var resp = factory.updateEntry(req.body, res);
 });
 
-app.delete('/api/v1/entry/:id', passport.authenticate('jwt', {session: false}), function(req,res) {
+app.delete('/api/v1/entry/:id', admin_passport.authenticate('jwt', {session: false}), function(req,res) {
 	var resp = factory.deleteEntry(req.params.id,res);
 });
 
@@ -102,7 +102,7 @@ app.post('/api/v1/user', function(req, res) {
 	var resp = factory.createUser(req.body, res);
 });
 
-app.put('/api/v1/user/:id', passport.authenticate('jwt', {session: false}), function(req, res) {
+app.put('/api/v1/user/:id', admin_passport.authenticate('jwt', {session: false}), function(req, res) {
 	var resp = factory.updateUser(req.body, res);
 });
 

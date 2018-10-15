@@ -66,7 +66,7 @@ app.get('/api/v1/entry/:id', function(req, res) {
 	var resp = factory.getEntry(req.params.id,res);
 });
 
-app.get('/api/v1/entry', admin_passport.authenticate('jwt', {session: false}), function(req, res) {
+app.get('/api/v1/entry', function(req, res) {
 	var resp = factory.getEntries({},res);
 });
 
@@ -94,7 +94,7 @@ app.get('/api/v1/user/:id', function(req, res) {
 	var resp = factory.getUser(req.params.id,res);
 });
 
-app.get('/api/v1/user', function(req, res) {
+app.get('/api/v1/user', admin_passport.authenticate('jwt', {session: false}), function(req, res) {
 	var resp = factory.getUsers({},res);
 });
 

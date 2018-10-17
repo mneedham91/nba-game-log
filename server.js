@@ -51,7 +51,9 @@ var admin_strategy = new JwtStrategy(jwtOptions, function(jwt_payload, done) {
 		console.log(result);
 		if (result.role == 'admin') {
 			return done(null, result);
-		};
+		} else {
+			return done(null, false);
+		}
 	});
 });
 passport.use(strategy);

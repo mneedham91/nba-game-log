@@ -31,7 +31,7 @@ var crypto = require('crypto');
 var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 var passport = require('passport');
-var admin_passport = require('passport');
+#var admin_passport = require('passport');
 var passportJWT = require('passport-jwt');
 var ExtractJwt = passportJWT.ExtractJwt;
 var JwtStrategy = passportJWT.Strategy;
@@ -58,8 +58,8 @@ var admin_strategy = new JwtStrategy(jwtOptions, function(jwt_payload, done) {
 		}
 	});
 });
-passport.use(strategy);
-admin_passport.use(admin_strategy);
+passport.use('user-rule', strategy);
+passport.use('admin-rule', admin_strategy);
 app.use(passport.initialize());
 
 app.post('/api/v1/login', function(req, res) {
@@ -74,15 +74,15 @@ app.get('/api/v1/entry', function(req, res) {
 	var resp = factory.getEntries({},res);
 });
 
-app.post('/api/v1/entry', passport.authenticate('jwt', {session: false}), function(req, res) {
+app.post('/api/v1/entry', passport.authenticate('user-rule', {session: false}), function(req, res) {
 	var resp = factory.createEntry(req.body, res);
 });
 
-app.put('/api/v1/entry/:id', passport.authenticate('jwt', {session: false}), function(req, res) {
+app.put('/api/v1/entry/:id', passport.authenticate('user-rule', {session: false}), function(req, res) {
 	var resp = factory.updateEntry(req.body, res);
 });
 
-app.delete('/api/v1/entry/:id', admin_passport.authenticate('jwt', {session: false}), function(req,res) {
+app.delete('/api/v1/entry/:id', passport.authenticate('admin-rule', {session: false}), function(req,res) {
 	var resp = factory.deleteEntry(req.params.id,res);
 });
 
@@ -98,7 +98,7 @@ app.get('/api/v1/user/:id', function(req, res) {
 	var resp = factory.getUser(req.params.id,res);
 });
 
-app.get('/api/v1/user', admin_passport.authenticate('jwt', {session: false}), function(req, res) {
+app.get('/api/v1/user', passport.authenticate('admin-rule', {session: false}), function(req, res) {
 	var resp = factory.getUsers({},res);
 });
 
@@ -106,11 +106,11 @@ app.post('/api/v1/user', function(req, res) {
 	var resp = factory.createUser(req.body, res);
 });
 
-app.put('/api/v1/user/:id', admin_passport.authenticate('jwt', {session: false}), function(req, res) {
+app.put('/api/v1/user/:id', passport.authenticate('admin-rule', {session: false}), function(req, res) {
 	var resp = factory.updateUser(req.body, res);
 });
 
-app.delete('/api/v1/user/:id', admin_passport.authenticate('jwt', {session: false}), function(req,res) {
+app.delete('/api/v1/user/:id', passport.authenticate('admin-rule', {session: false}), function(req,res) {
 	var resp = factory.deleteUser(req.params.id,res);
 });
 
@@ -130,11 +130,11 @@ app.post('/api/v1/tag', function(req, res) {
 	var resp = factory.createTag(req.body, res);
 });
 
-app.put('/api/v1/tag/:id', passport.authenticate('jwt', {session: false}), function(req, res) {
+app.put('/api/v1/tag/:id', passport.authenticate('user-rule', {session: false}), function(req, res) {
 	var resp = factory.updateTag(req.body, res);
 });
 
-app.delete('/api/v1/tag/:id', passport.authenticate('jwt', {session: false}), function(req,res) {
+app.delete('/api/v1/tag/:id', passport.authenticate('user-rule', {session: false}), function(req,res) {
 	var resp = factory.deleteTag(req.params.id, res);
 });
 

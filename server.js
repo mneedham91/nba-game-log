@@ -41,12 +41,14 @@ jwtOptions.secretOrKey = factory.secretOrKey();
 
 var strategy = new JwtStrategy(jwtOptions, function(jwt_payload, done) {
 	var promise = factory.lookupUser(jwt_payload.id);
+	console.log('normal JwtStrategy called');
 	promise.then(function(result) {
 		return done(null, result);
 	});
 });
 var admin_strategy = new JwtStrategy(jwtOptions, function(jwt_payload, done) {
 	var promise = factory.lookupUser(jwt_payload.id);
+	console.log('admin JwtStrategy called');
 	promise.then(function(result) {
 		console.log(result);
 		if (result.role == 'admin') {

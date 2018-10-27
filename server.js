@@ -31,7 +31,6 @@ var crypto = require('crypto');
 var bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 var passport = require('passport');
-//var admin_passport = require('passport');
 var passportJWT = require('passport-jwt');
 var ExtractJwt = passportJWT.ExtractJwt;
 var JwtStrategy = passportJWT.Strategy;

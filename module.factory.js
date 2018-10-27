@@ -96,7 +96,7 @@ var Factory = function(Schema,mongoose) {
 	}
 
 	this.getEntries = function(query,res) {
-		this.Entry.find({}, {sort: {date: -1 }}, function(error,output) {
+		this.Entry.find({}, null, {sort: {date: -1 }}, function(error,output) {
 			res.json(output);
 		});
 	}

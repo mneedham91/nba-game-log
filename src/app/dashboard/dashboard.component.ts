@@ -10,6 +10,7 @@ import { AuthenticationService } from '../authentication.service';
 export class DashboardComponent implements OnInit {
   loggedIn: boolean;
   userid: string;
+  admin: boolean;
 
   constructor(private authService: AuthenticationService) {
   	this.authService.isLoggedIn.subscribe( value => {
@@ -18,7 +19,10 @@ export class DashboardComponent implements OnInit {
     this.authService.userid.subscribe( value => {
       this.userid = value;
     });
-  	}
+    this.authService.admin.subscribe( value => {
+      this.admin = value;
+    });
+  }
 
   ngOnInit() {
   }

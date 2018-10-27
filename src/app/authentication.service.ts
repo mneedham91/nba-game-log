@@ -23,11 +23,14 @@ export class AuthenticationService {
 	  this.isLoggedIn.next(false);
   }
 
-  public setUsername(username, userid) {
+  public setUsername(username, userid, role) {
     localStorage.setItem('username', username);
     localStorage.setItem('userid', userid);
     this.username.next(username);
     this.userid.next(userid);
+    if (role == 'admin') {
+      this.admin.next(true);
+    }
   }
 
   public isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
@@ -35,5 +38,7 @@ export class AuthenticationService {
   public username: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
   public userid: BehaviorSubject<string> = new BehaviorSubject<string>('');
+
+  public admin: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
 }

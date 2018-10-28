@@ -62,111 +62,113 @@ passport.use('user-rule', strategy);
 passport.use('admin-rule', admin_strategy);
 app.use(passport.initialize());
 
-app.post('/api/v1/login', function(req, res) {
+var base_url = '/api/v1/';
+
+app.post(base_url + 'login', function(req, res) {
 	var resp = factory.login(req.body.email, req.body.password,res);
 });
 
-app.get('/api/v1/entry/:id', function(req, res) {
+app.get(base_url + 'entry/:id', function(req, res) {
 	var resp = factory.getEntry(req.params.id,res);
 });
 
-app.get('/api/v1/entry', function(req, res) {
+app.get(base_url + 'entry', function(req, res) {
 	var resp = factory.getEntries({},res);
 });
 
-app.post('/api/v1/entry', passport.authenticate('user-rule', {session: false}), function(req, res) {
+app.post(base_url + 'entry', passport.authenticate('user-rule', {session: false}), function(req, res) {
 	var resp = factory.createEntry(req.body, res);
 });
 
-app.put('/api/v1/entry/:id', passport.authenticate('user-rule', {session: false}), function(req, res) {
+app.put(base_url + 'entry/:id', passport.authenticate('user-rule', {session: false}), function(req, res) {
 	var resp = factory.updateEntry(req.body, res);
 });
 
-app.delete('/api/v1/entry/:id', passport.authenticate('admin-rule', {session: false}), function(req,res) {
+app.delete(base_url + 'entry/:id', passport.authenticate('admin-rule', {session: false}), function(req,res) {
 	var resp = factory.deleteEntry(req.params.id,res);
 });
 
-app.get('/api/v1/entry/user/:id/games/:team', function(req, res) {
+app.get(base_url + 'entry/user/:id/games/:team', function(req, res) {
 	var resp = factory.getGamesCount(req.params.id, req.params.team, res);
 });
 
-app.get('/api/v1/entry/user/:id/quarters/:team', function(req, res) {
+app.get(base_url + 'entry/user/:id/quarters/:team', function(req, res) {
 	var resp = factory.getQuartersSum(req.params.id, req.params.team, res);
 });
 
-app.get('/api/v1/user/:id', function(req, res) {
+app.get(base_url + 'user/:id', function(req, res) {
 	var resp = factory.getUser(req.params.id,res);
 });
 
-app.get('/api/v1/user', passport.authenticate('admin-rule', {session: false}), function(req, res) {
+app.get(base_url + 'user', passport.authenticate('admin-rule', {session: false}), function(req, res) {
 	var resp = factory.getUsers({},res);
 });
 
-app.post('/api/v1/user', function(req, res) {
+app.post(base_url + 'user', function(req, res) {
 	var resp = factory.createUser(req.body, res);
 });
 
-app.put('/api/v1/user/:id', passport.authenticate('admin-rule', {session: false}), function(req, res) {
+app.put(base_url + 'user/:id', passport.authenticate('admin-rule', {session: false}), function(req, res) {
 	var resp = factory.updateUser(req.body, res);
 });
 
-app.delete('/api/v1/user/:id', passport.authenticate('admin-rule', {session: false}), function(req,res) {
+app.delete(base_url + 'user/:id', passport.authenticate('admin-rule', {session: false}), function(req,res) {
 	var resp = factory.deleteUser(req.params.id,res);
 });
 
-app.get('/api/v1/tag/:id', function(req, res) {
+app.get(base_url + 'tag/:id', function(req, res) {
 	var resp = factory.getTag(req.params.id,res);
 });
 
-app.get('/api/v1/tag', function(req, res) {
+app.get(base_url + 'tag', function(req, res) {
 	var resp = factory.getTags({},res);
 });
 
-app.get('/api/v1/tag/entry/:id', function(req, res) {
+app.get(base_url + 'tag/entry/:id', function(req, res) {
 	var resp = factory.getTagsByEntry(req.params.id,res);
 });
 
-app.post('/api/v1/tag', function(req, res) {
+app.post(base_url + 'tag', function(req, res) {
 	var resp = factory.createTag(req.body, res);
 });
 
-app.put('/api/v1/tag/:id', passport.authenticate('user-rule', {session: false}), function(req, res) {
+app.put(base_url + 'tag/:id', passport.authenticate('user-rule', {session: false}), function(req, res) {
 	var resp = factory.updateTag(req.body, res);
 });
 
-app.delete('/api/v1/tag/:id', passport.authenticate('user-rule', {session: false}), function(req,res) {
+app.delete(base_url + 'tag/:id', passport.authenticate('user-rule', {session: false}), function(req,res) {
 	var resp = factory.deleteTag(req.params.id, res);
 });
 
-app.get('/api/v1/player', function(req, res) {
+app.get(base_url + 'player', function(req, res) {
 	var resp = factory.getPlayers(res);
 });
 
-app.get('/api/v1/player/:id', function(req, res) {
+app.get(base_url + 'player/:id', function(req, res) {
 	var resp = factory.getPlayer(req.params.id,res);
 });
 
-app.post('/api/v1/player', function(req, res) {
+app.post(base_url + 'player', function(req, res) {
 	var resp = factory.createPlayer(req.body, res);
 });
 
-app.put('/api/v1/player/:id', function(req, res) {
+app.put(base_url + 'player/:id', function(req, res) {
 	var resp = factory.updatePlayer(req.body, res);
 });
 
-app.get('/api/v1/team/:team', function(req, res) {
+app.get(base_url + 'team/:team', function(req, res) {
 	var resp = factory.getTeam(req.params.team, res);
 });
 
-app.post('/api/v1/passwordreset', function(req, res) {
+app.post(base_url + 'passwordreset', function(req, res) {
 	var resp = factory.requestReset(req.body.email, res);
 });
 
-app.get('/api/v1/reset/:token', function(req, res) {
+app.get(base_url + 'reset/:token', function(req, res) {
 	var resp = factory.checkResetToken(req.params.token, res);
 })
 
-app.post('/api/v1/reset/:token', function(req, res) {
+app.post(base_url + 'reset/:token', function(req, res) {
 	var resp = factory.resetPassword(req.body.password, req.params.token, res);
 })
 

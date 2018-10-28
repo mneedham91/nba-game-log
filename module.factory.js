@@ -170,8 +170,13 @@ var Factory = function(Schema,mongoose) {
 	}
 	
 	this.lookupUser = function(id) {
-		var query = this.User.findOne({_id: id}).exec();
-		return query;
+		this.User.findOne({_id: id}).exec(function(err, user) {
+			if (err) {
+				return err;
+			} else {
+				return user;
+			}
+		});
 	}
 
 	this.getEntry = function(id,res) {

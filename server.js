@@ -40,11 +40,10 @@ jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('Bearer');
 jwtOptions.secretOrKey = factory.secretOrKey();
 
 var strategy = new JwtStrategy(jwtOptions, function(jwt_payload, done) {
-	var promise = factory.lookupUser(jwt_payload.id);
+	var lookup = factory.lookupUser(jwt_payload.id);
 	console.log('normal JwtStrategy called');
-	promise.then(function(result) {
-		return done(null, result);
-	});
+	console.log('return was ' + lookup)
+	return done(null, lookup);
 });
 var admin_strategy = new JwtStrategy(jwtOptions, function(jwt_payload, done) {
 	var promise = factory.lookupUser(jwt_payload.id);

@@ -13,16 +13,14 @@ import { PasswordValidation } from '../password-validation';
 export class RegisterComponent implements OnInit {
   invalid: boolean = false;
   submitted: boolean = false;
+  registerForm: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder, 
     private router: Router, 
     private usersService: UsersService) { }
 
-  registerForm: FormGroup;
-
   ngOnInit() {
-
   	this.registerForm = this.formBuilder.group({
   		email: ['', [Validators.required, Validators.email]],
   		password: ['', Validators.required],

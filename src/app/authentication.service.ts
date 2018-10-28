@@ -37,6 +37,14 @@ export class AuthenticationService {
     return this.http.post(this.baseUrl + '/forgot', {email});
   }
 
+  resetPassword(password, token) {
+    return this.http.post(this.baseUrl + '/reset/' + token, {password});
+  }
+
+  checkToken(token) {
+    return this.http.get(this.baseUrl + '/reset/' + token);
+  }
+
   public isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   public username: BehaviorSubject<string> = new BehaviorSubject<string>('');

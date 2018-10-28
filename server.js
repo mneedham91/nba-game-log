@@ -160,7 +160,7 @@ app.get(base_url + 'team/:team', function(req, res) {
 	var resp = factory.getTeam(req.params.team, res);
 });
 
-app.post(base_url + 'passwordreset', function(req, res) {
+app.post(base_url + 'forgot', function(req, res) {
 	var resp = factory.requestReset(req.body.email, res);
 });
 

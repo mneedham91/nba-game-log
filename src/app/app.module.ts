@@ -24,6 +24,7 @@ import { PlayerSelectEditComponent } from './player-select-edit/player-select-ed
 import { DashboardTeamComponent } from './dashboard-team/dashboard-team.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     PlayerSelectEditComponent,
     DashboardTeamComponent,
     DashboardComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

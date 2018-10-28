@@ -33,6 +33,10 @@ export class AuthenticationService {
     }
   }
 
+  forgotPassword(email) {
+    return this.http.post(this.baseUrl + '/forgot', {email});
+  }
+
   public isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   public username: BehaviorSubject<string> = new BehaviorSubject<string>('');

@@ -114,7 +114,15 @@ var Factory = function(Schema,mongoose) {
 				});
 			},
 			function(token, user, done) {
-				var smtpTransport = nodemailer.createTransport('SMTP', smptpConfig);
+				var smtpTransport = nodemailer.createTransport('SMTP', {
+					host: 'mail.betterdataservices.com',
+					port: 465,
+					secure: false, // upgrade later with STARTTLS
+					auth: {
+						user: 'noreply@betterdataservices.com',
+						pass: process.env.emailPWord
+					}
+				});
 				var mailOptions = {
 					to: email,
 					from: 'noreply@betterdataservices.com',

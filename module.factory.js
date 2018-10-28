@@ -126,7 +126,7 @@ var Factory = function(Schema,mongoose) {
 	}
 
 	this.checkResetToken = function(token, res) {
-		this.User.findOne({ resetPasswordToken: token, resetPasswordExpires: {$ gt: Date.now() } }, function(err, user) {
+		this.User.findOne({ resetPasswordToken: token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
 			if (!user) {
 				res.json('no user found');
 			} else {
@@ -136,7 +136,7 @@ var Factory = function(Schema,mongoose) {
 	}
 
 	this.resetPassword = function(password, token, res) {
-		User.findOne({ resetPasswordToken: token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+		this.User.findOne({ resetPasswordToken: token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
 			if (!user) {
 				res.json('error: no user found');
 			}

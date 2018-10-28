@@ -76,9 +76,13 @@ var Factory = function(Schema,mongoose) {
 
 	this.login = function(email, password, res) {
 		this.User.findOne({ email: email }, function(err, user) {
-			if (err) throw err;
+			if (err) {
+				res.json(err);
+			}
 			user.comparePassword(password, function(err, isMatch) {
-				if (err) throw err;
+				if (err) {
+					res.json(err);
+				}
 				if (isMatch) {
 					var token = jwt.sign({id: user._id}, jwtOptions.secretOrKey);
 					return res.json({success: true, token: token, user: user, expiresIn: 120 });
@@ -99,7 +103,9 @@ var Factory = function(Schema,mongoose) {
 			},
 			function(token, done) {
 				this.User.findOne({ email: email }, function(err, user) {
-					if (err) throw err;
+					if (err) {
+						res.json(err);
+					}
 					user.resetPasswordToken = token;
 					user.resetPasswordExpires = Date.now() + 3600000;
 					user.save(function(err) {

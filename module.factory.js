@@ -76,11 +76,11 @@ var Factory = function(Schema,mongoose) {
 	this.login = function(email, password, res) {
 		this.User.findOne({ email: email }, function(err, user) {
 			if (err) {
-				res.json(err);
+				res.json({err});
 			}
 			user.comparePassword(password, function(err, isMatch) {
 				if (err) {
-					res.json(err);
+					res.json({err});
 				}
 				if (isMatch) {
 					var token = jwt.sign({id: user._id}, jwtOptions.secretOrKey);

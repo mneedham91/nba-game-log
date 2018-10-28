@@ -5,7 +5,6 @@ var jwt = require('jsonwebtoken');
 var jwtOptions = {}
 jwtOptions.secretOrKey = crypto.randomBytes(32).toString('hex');
 var nodemailer = require('nodemailer');
-var smptpConfig = require('smptpConfig.js');
 var teams = require('./teams.json');
 
 var Factory = function(Schema,mongoose) {

@@ -20,6 +20,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
 var Factory = require('./module.factory.js');
+var nodemailer = require('nodemailer');
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/gamelogdb');
 var db = mongoose.connection;
@@ -156,6 +157,18 @@ app.put('/api/v1/player/:id', function(req, res) {
 app.get('/api/v1/team/:team', function(req, res) {
 	var resp = factory.getTeam(req.params.team, res);
 });
+
+app.post('/api/v1/passwordreset', function(req, res) {
+	var resp = factory.requestReset(req.body.email, res);
+});
+
+app.get('/api/v1/reset/:token', function(req, res) {
+	var resp = factory.checkResetToken(req.params.token, res);
+})
+
+app.post('/api/v1/reset/:token', function(req, res) {
+	var resp = factory.resetPassword(req.body.password, req.params.token, res);
+})
 
 app.use('/*',function(req, res) {
     res.sendfile(__dirname + '/dist/index.html');

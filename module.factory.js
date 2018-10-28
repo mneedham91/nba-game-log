@@ -1,9 +1,12 @@
-var teams = require('./teams.json');
-var crypto = require('crypto');
+var async = require('async');
 var bcrypt = require('bcrypt');
+var crypto = require('crypto');
 var jwt = require('jsonwebtoken');
 var jwtOptions = {}
 jwtOptions.secretOrKey = crypto.randomBytes(32).toString('hex');
+var nodemailer = require('nodemailer');
+var smptpConfig = require('smptpConfig.js');
+var teams = require('./teams.json');
 
 var Factory = function(Schema,mongoose) {
 	this.Schema = Schema;
@@ -22,13 +25,15 @@ var Factory = function(Schema,mongoose) {
 		}, { timestamps: {createdAt: 'created_at', updatedAt: 'updated_at'} });
 		this.Entry = mongoose.model('Entry', EntrySchema);
 		UserSchema = new this.Schema({
-			email: { type: String, unique: true },
-			password: String,
+			email: { type: String, required: true, unique: true },
+			password: { type: String, required: true},
 			hash: String,
 			username: String,
 			first_name: String,
 			last_name: String,
-			role: String
+			role: String,
+			resetPasswordToken: String,
+			resetPasswordExpires: Date
 		}, { timestamps: {createdAt: 'created_at', updatedAt: 'updated_at'} });
 		UserSchema.pre('save', function(next) {
 			var user = this;
@@ -81,6 +86,73 @@ var Factory = function(Schema,mongoose) {
 					return res.status(401).json({message: 'invalid password'});
 				}
 			});
+		});
+	}
+
+	this.requestReset = function(email, res) {
+		async.waterfall([
+			function(done) {
+				crypto.randomBytes(20, function(err, buf) {
+					var token = buf.toString('hex');
+					done(err, token);
+				});
+			},
+			function(token, done) {
+				this.User.findOne({ email: email }, function(err, user) {
+					if (err) throw err;
+					user.resetPasswordToken = token;
+					user.resetPasswordExpires = Date.now() + 3600000;
+					user.save(function(err) {
+						done(err, token, user);
+					});
+				});
+			},
+			function(token, user, done) {
+				var smtpTransport = nodemailer.createTransport('SMTP', smptpConfig);
+				var mailOptions = {
+					to: email,
+					from: 'noreply@betterdataservices.com',
+					subject: 'Your Password Reset',
+					text: 'Click here to reset your password: http://nba-game-log.herokuapp.com/reset/' + token,
+				}
+				smtpTransport.sendMail(mailOptions, function(err) {
+					done(err, 'done');
+				});
+			}
+			], function(err) {
+				if (err) return next(err);
+				res.json(err);
+			});
+	}
+
+	this.checkResetToken = function(token) {
+		this.User.findOne({ resetPasswordToken: token, resetPasswordExpires: {$ gt: Date.now() } }, function(err, user) {
+			if (!user) {
+				res.json('no user found');
+			} else {
+				res.json(user);
+			}
+		});
+	}
+
+	this.resetPassword = function(password, token) {
+		User.findOne({ resetPasswordToken: token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
+			if (!user) {
+				res.json('error: no user found');
+			}
+			bcrypt.genSalt(10, function(err, salt) {
+				if (err) return next(err);
+
+				bcrypt.hash(user.password, salt, function(err, hash) {
+					if (err) return next(err);
+
+					user.password = hash;
+					next();
+				});
+			});
+			user.resetPasswordToken = undefined;
+			user.resetPasswordExpires = undefined;
+			user.save();
 		});
 	}
 	
